@@ -50,8 +50,8 @@ Default Variables
   font-size: 62.5%;
   --tst-backup-fonts: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  --tst-text-font: "Noto Sans", var(--tst-backup-fonts);
-  --tst-highlight-font: "Federo", var(--tst-backup-fonts);
+  --tst-text-font: var(--tst-backup-fonts);
+  --tst-highlight-font: var(--tst-backup-fonts);
   --tst-icon-font: "Material Symbols Rounded";
   --tst-nav-icon-font-size: 2rem;
 
@@ -94,10 +94,10 @@ Default Variables
    * 10% Accent Color
   */
 
-  --tst-color-primary: #fdf9f7;
+  --tst-color-primary: #f7fafd;
 
   --tst-color-secondary: #588fca;
-  --tst-color-secondary-light: #e6e0db;
+  --tst-color-secondary-light: #b0cbe8;
   --tst-color-secondary-2: #375575;
   --tst-color-accent: rgb(225, 0, 25);
 
@@ -534,8 +534,8 @@ Desktop: Sub Menu
   background-color: var(--tst-color-primary);
   flex-direction: column;
   gap: var(--tst-nav-gap-y);
-  left: 50%;
-  transform: translate(-50%);
+  left: 0;
+  transform: translateX(calc(-1 * var(--tst-space-x)));
 }
 
 #tst-site-nav:not(.tst-nav-mobile)
@@ -1043,7 +1043,7 @@ ________________________________________________________________________________
 }
 
 #tst-form label:not([for="privacy"]):focus-within {
-  border: 2px solid var(--tst-color-accent);
+  border: 2px solid var(--tst-color-secondary-2);
 }
 
 #tst-form label span.label {
@@ -1113,14 +1113,19 @@ ________________________________________________________________________________
 
 /* invalid message */
 
-#tst-form input:invalid:not(:placeholder-shown) + span::before {
+#tst-form
+  input:not([type="date"]):invalid:not(:placeholder-shown)
+  + span::before,
+#tst-form input[type="date"]:focus:invalid + span::before {
   content: "Ungültig";
   font-size: 1.3rem;
   font-weight: bold;
   color: var(--tst-color-accent);
   display: block;
 }
-#tst-form input:invalid:not(:placeholder-shown) + span {
+
+#tst-form input:not([type="date"]):invalid:not(:placeholder-shown) + span,
+#tst-form input[type="date"]:focus:invalid + span {
   position: absolute;
 
   border: 0.2rem solid var(--tst-color-accent);
@@ -1130,45 +1135,6 @@ ________________________________________________________________________________
   top: 0;
   right: 0;
   transform: translate(0.5rem, -0.5rem);
-}
-
-/* Datenschutz */
-
-#tst-form [for="privacy"] {
-  display: flex;
-  padding-left: 0;
-  flex-direction: row-reverse;
-  justify-content: start;
-  gap: var(--tst-space-m);
-  align-items: center;
-  background-color: transparent;
-  border: 0;
-}
-
-#tst-form [for="privacy"] span.label {
-  opacity: 1;
-}
-
-#tst-form [for="privacy"] input {
-  width: 2.2rem;
-  aspect-ratio: 1 / 1;
-  background-color: var(--tst-color-secondary-light);
-  border: 2px solid var(--tst-color-secondary-light);
-  position: relative;
-}
-
-#tst-form [for="privacy"] input:checked::before {
-  content: "\e5ca";
-  font-family: var(--tst-icon-font);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2rem;
-}
-
-#tst-form [for="privacy"] input:is(:hover, :focus-visible) {
-  border-color: var(--tst-color-accent);
 }
 
 /*______________________________________________________________________________

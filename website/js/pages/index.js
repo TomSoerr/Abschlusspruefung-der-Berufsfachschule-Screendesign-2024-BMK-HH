@@ -4,7 +4,7 @@ import hero from '../modules/hero.js';
 import section from '../modules/section.js';
 import p from '../modules/paragraph.js';
 import footer from '../modules/footer.js';
-import productPreview from '../modules/product-preview.js';
+// import productPreview from '../modules/product-preview.js';
 import Helper from '../modules/helper.js';
 import button from '../modules/button.js';
 
@@ -55,7 +55,7 @@ function load() {
 
       section(
         [
-          _('h2', { text: 'Die nächsten Termine' }),
+          _('h2', { text: 'Kundenmeinungen' }),
           _('blockquote', {
             text: 'Absolute Empfehlung! Sympathische Guides, die die Herzen der Kinder im Sturm erobern.',
           }),

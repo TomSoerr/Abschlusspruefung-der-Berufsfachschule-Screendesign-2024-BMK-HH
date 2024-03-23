@@ -59,7 +59,6 @@ const subMenuItemEvent = [
 ];
 
 export default function navLink({ href, text }, subMenu, isSubMenuItem) {
-  // debugger;
   const relHref = Helper.relativPath(window.location.pathname, href);
   return _(
     'li',

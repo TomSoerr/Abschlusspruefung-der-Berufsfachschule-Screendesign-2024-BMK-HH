@@ -4,16 +4,16 @@ import button from './button.js';
 
 const _ = Helper.create;
 
-const path = `${Helper.absolutePath(
-  window.location.pathname,
-  window.location.origin,
-)}data/produkte.json`;
+// const path = `${Helper.absolutePath(
+//   window.location.pathname,
+//   window.location.origin,
+// )}data/produkte.json`;
 
-const dataJson = await fetch(path, {
-  method: 'GET',
-  mode: 'cors',
-});
-const productData = await dataJson.json();
+// const dataJson = await fetch(path, {
+//   method: 'GET',
+//   mode: 'cors',
+// });
+// const productData = await dataJson.json();
 
 const validateInput = {
   type: 'click',
@@ -78,23 +78,6 @@ const formItems = (() => {
     _('span'),
   ]);
 
-  const email = () => _('label', { for: 'email' }, [
-    _('span', { text: 'E-Mail*', class: 'label' }),
-    _('input', {
-      type: 'email',
-      name: 'email',
-      id: 'email',
-      autocomplete: 'email',
-      placeholder: ' ',
-      required: true,
-      title: 'E-Mail',
-      data: {
-        msg: 'Bitte gib deine E-Mail an (Beispiel:vorname@nachname.com)',
-      },
-    }),
-    _('span'),
-  ]);
-
   const tel = () => _('label', { for: 'phone' }, [
     _('span', { text: 'Telefon', class: 'label' }),
     _('input', {
@@ -113,108 +96,99 @@ const formItems = (() => {
     _('span'),
   ]);
 
-  const productChangeEvent = (number) => ({
-    type: 'change',
-    listener: (e) => {
-      const productName = e.target.value;
-      const productObj = productData.products.find(
-        (prod) => prod.name === productName,
-      );
+  const email = () => _('label', { for: 'email' }, [
+    _('span', { text: 'E-Mail*', class: 'label' }),
+    _('input', {
+      type: 'email',
+      name: 'email',
+      id: 'email',
+      autocomplete: 'email',
+      placeholder: ' ',
+      required: true,
+      title: 'E-Mail',
+      data: {
+        msg: 'Bitte gib deine E-Mail an (Beispiel:vorname@nachname.com)',
+      },
+    }),
+    _('span'),
+  ]);
 
-      if (
-        e.target.parentElement.parentElement.lastChild
-          .getAttribute('for')
-          .match('variant')
-      ) {
-        e.target.parentElement.parentElement.lastChild.remove();
-      }
+  const numberOfPeople = () => _('label', { for: 'people' }, [
+    _('span', { text: 'Anzahl Personen*', class: 'label' }),
+    _('input', {
+      type: 'number',
+      name: 'people',
+      id: 'people',
+      placeholder: ' ',
+      required: true,
+      min: '1',
+      max: '50',
+      title: 'Anzahl der Personen',
+      data: {
+        msg: 'Bitte gib die Anzahl der Personen an',
+      },
+    }),
+    _('span'),
+  ]);
 
-      if (productObj?.variants) {
-        e.target.parentElement.parentElement.append(
-          _('label', { for: `variant-${number}` }, [
-            _('span', { text: 'Variante*', class: 'label' }),
-            _(
-              'select',
-              {
-                title: 'Variante auswählen',
-                name: `variant-${number}`,
-                id: `variant-${number}`,
-                required: '',
-                data: {
-                  msg: 'Bitte wähle eine Variante aus oder lösche das Produkt',
-                },
-              },
-              [
-                _(
-                  'option',
-                  {
-                    value: '',
-                    title: 'Variante',
-                    disabled: '',
-                    selected: '',
-                  },
-                  ['Keine Variante'],
-                ),
-                ...productObj.variants.map((variant) => _('option', { value: variant }, [variant])),
-              ],
-            ),
-          ]),
-        );
-      }
+  const dateEvent = [
+    {
+      type: 'focus',
+      listener: (e) => {
+        console.log('hover');
+        const today = new Date().toISOString().split('T')[0];
+        e.target.setAttribute('min', today);
+        e.target.removeEventListener('focus', dateEvent[0].listener);
+      },
     },
-  });
+  ];
 
-  const product = (number) => _('div', { class: 'product' }, [
-    _('div', null, [
-      _('label', { for: `product-${number}` }, [
-        _('span', { text: 'Produkt*', class: 'label' }),
-        _(
-          'select',
-          {
-            title: 'Produkt auswählen',
-            name: `product-${number}`,
-            id: `product-${number}`,
-            required: '',
-            data: {
-              msg: 'Bitte wähle ein Produkt aus oder lösche das Produkt',
-            },
-          },
-          [
-            _(
-              'option',
-              {
-                value: '', title: 'Produkt', disabled: '', selected: '',
-              },
-              ['Kein Produkt'],
-            ),
-            ...productData.products.map((product) => _('option', { value: product.name }, [product.name])),
-          ],
-          [productChangeEvent(number)],
-        ),
-      ]),
-    ]),
-    button({
-      type: 'button',
-      event: {
-        type: 'click',
-        listener: (e) => e.target.parentElement.remove(),
+  const date = () => _('label', { for: 'date' }, [
+    _('span', { text: 'Datum*', class: 'label' }),
+    _('input', {
+      type: 'date',
+      name: 'date',
+      id: 'date',
+      placeholder: ' ',
+      required: true,
+      title: 'Datum',
+      data: {
+        msg: 'Bitte gib das Datum an',
       },
-    }),
+    }, null, dateEvent),
+    _('span'),
   ]);
 
-  let idCounter = 1;
-
-  const productsWrapper = () => _('div', { class: 'products' }, [
-    product(idCounter++),
-    button({
-      type: 'button',
-      text: 'Produkt hinzufügen',
-      event: {
-        type: 'click',
-        listener: (e) => e.target.parentElement.insertBefore(product(idCounter++), e.target),
-      },
-    }),
-  ]);
+  // const tourThema = (number) => _('div', { class: 'product' }, [
+  //   _('div', null, [
+  //     _('label', { for: `product-${number}` }, [
+  //       _('span', { text: 'Produkt*', class: 'label' }),
+  //       _(
+  //         'select',
+  //         {
+  //           title: 'Produkt auswählen',
+  //           name: `product-${number}`,
+  //           id: `product-${number}`,
+  //           required: '',
+  //           data: {
+  //             msg: 'Bitte wähle ein Produkt aus oder lösche das Produkt',
+  //           },
+  //         },
+  //         [
+  //           _(
+  //             'option',
+  //             {
+  //               value: '', title: 'Produkt', disabled: '', selected: '',
+  //             },
+  //             ['Kein Produkt'],
+  //           ),
+  //           ...productData.products.map((product) => _('option', { value: product.name }, [product.name])),
+  //         ],
+  //         [productChangeEvent(number)],
+  //       ),
+  //     ]),
+  //   ]),
+  // ]);
 
   const message = () => _('label', { for: 'message' }, [
     _('span', { text: 'Nachricht*', class: 'label' }),
@@ -231,44 +205,25 @@ const formItems = (() => {
     }),
   ]);
 
-  const privacy = () => _('label', { class: 'Datenschutz', for: 'privacy' }, [
-    _('span', { class: 'label' }, [
-      _('a', {
-        href: `${Helper.pathToMain(window.location.pathname)}datenschutz.html`,
-        text: 'Datenschutzerklärung*',
-      }),
-    ]),
-    _('input', {
-      type: 'checkbox',
-      name: 'privacy',
-      id: 'privacy',
-      value: 'accepted',
-      required: true,
-      title: 'Datenschutzerklärung akzeptieren',
-      data: {
-        msg: 'Du musst die Datenschutzerklärung akzeptieren, um das Formular absenden zu können',
-      },
-    }),
-  ]);
   const submit = () => button({
     type: 'submit',
-    text: 'Anfrage senden',
+    text: 'Absenden',
     event: validateInput,
   });
 
   return {
     givenName,
     famName,
-    email,
+    numberOfPeople,
+    date,
     tel,
-    productsWrapper,
+    email,
     message,
-    privacy,
     submit,
   };
 })();
 
-export default function form() {
+function buchungForm() {
   return section(
     [
       _('p', null, [
@@ -288,15 +243,16 @@ export default function form() {
             formItems.givenName(),
             formItems.famName(),
           ]),
-          formItems.email(),
+          formItems.numberOfPeople(),
+          formItems.date(),
           formItems.tel(),
-          formItems.productsWrapper(),
+          formItems.email(),
           formItems.message(),
-          formItems.privacy(),
           formItems.submit(),
         ],
       ),
     ],
-    'f r',
   );
 }
+
+export { buchungForm };
