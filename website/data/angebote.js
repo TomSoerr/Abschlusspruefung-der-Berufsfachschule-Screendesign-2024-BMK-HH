@@ -3,6 +3,7 @@ export default {
     'speicherstadt-und-gewuerzmuseum': {
       name: 'Speicherstadt & Gewürzmuseum',
       text: 'Ist ein Pfeffersack ein Sack Pfeffer? Erfahrt nicht nur die Antwort auf diese Frage, sondern viele weitere Geheimnisse aus der Speicherstadt. Begebt euch auf die Spuren der Hamburger Kaufleute, als diese noch mit Gewürzen und Kolonialwaren handelten',
+      img: { src: 'speicherstadt-und-gewuerzmuseum.jpg', alt: 'Speicherstadt & Gewürzmuseum' },
       dauer: '1,5 Stunden',
       alter: '6-10 Jahre (in Begleitung Erwachsener)',
       kategorien: ['kt', 'in'],
@@ -12,7 +13,8 @@ export default {
     },
     klabautermanntour: {
       name: 'Klabautermanntour',
-      text: 'Beim Klabautermann! Habt ihr diesen Ausruf schon einmal gehört? Dann wisst ihr sicherlich, warum die Seemänner auch heute noch Respekt vor ihm haben. br !!!! Der Alltag auf See aus der Sicht eines Kapitäns und des Klabautermanns. Das ist nichts für schwache Nerven! Mehr erfahren',
+      text: 'Beim Klabautermann! Habt ihr diesen Ausruf schon einmal gehört? Dann wisst ihr sicherlich, warum die Seemänner auch heute noch Respekt vor ihm haben. br !!!! Der Alltag auf See aus der Sicht eines Kapitäns und des Klabautermanns. Das ist nichts für schwache Nerven!',
+      img: { src: 'ap2024_tour_05.jpg', alt: 'Klabautermanntour' },
       dauer: '1,5 Stunden',
       alter: '8-12 Jahre',
       kategorien: ['kt', 'ou'],
@@ -23,6 +25,7 @@ export default {
     'gruseltour-mit-nachtwaechter': {
       name: 'Gruseltour mit Nachtwächter',
       text: 'An welchen Orten hausten in früherer Zeit die schaurigsten Gespenster von Hamburg? Stimmt es, dass Hamburger Eltern ihren Kindern mit Geschichten über einen Kinderfresser Angst gemacht hat? Kann man unter den Brückern der Speicherstadt noch das Stöhnen und Wehklagen früherer Epochen hören? Entdeckt die Speicherstadt bei Nacht und lasst euch von unserem Nachtwächter gruselige Details über Sagen und Legenden erzählen. <br> Diese Führung ist speziell für Mutige: Im Mittelalter mussten Nachtwächter die Stadtmauern bewachen und das Gesindel vertreiben. Ihr wandert gemeinsam mit einem von ihnen durch die Speicherstadt und lasst euch von ihm aus erster Hand berichten! Haarsträubend, was sich in der alten Hansestadt alles zugetragen hat! Meisterdiebe, Halsabschneider und Schmuggler geben sich auf diesem Rundgang ein Stelldichein. Und achtet ruhig auf die geheimen Zeichen am Weg, es wird sich lohnen … <br> Eine Straßentheater- Erlebnistour, Erzählkunst und Schauspiel mit mehreren Darstellern!',
+      img: { src: 'gruseltour-mit-nachtwaechter.jpg', alt: 'Gruseltour mit Nachtwächter' },
       dauer: '1,5 Stunden',
       alter: '6-12 Jahre (nur in Begleitung Erwachsener)',
       kategorien: ['be', 'ou'],
@@ -38,6 +41,7 @@ export default {
       name: 'Sportliche Entdeckertour',
       fullName: 'Sportliche Entdeckertour Hafencity und Speicherstadt mit dem Fahrrad',
       text: 'Die Hafencity und die Speicherstadt lassen sich vielseitig entdecken: mit dem Fahrrad oder Tandem, auf Inlinern oder mit 7-Meilen-Stiefeln. Worauf habt ihr Lust? Neben der sportlichen Betätigung entdeckt ihr bei dieser Tour besondere Ecken der Hafencity und der Speicherstadt und erfahrt dabei etwas über den Wandel dieses Stadtteils.',
+      img: { src: 'sportliche-entdeckertour.jpg', alt: 'Sportliche Entdeckertour' },
       dauer: '2 Stunden',
       alter: '6-12 Jahre (nur in Begleitung Erwachsener)',
       kategorien: ['be', 'ou'],

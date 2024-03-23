@@ -4,7 +4,7 @@ import hero from '../modules/hero.js';
 import section from '../modules/section.js';
 import p from '../modules/paragraph.js';
 import footer from '../modules/footer.js';
-// import productPreview from '../modules/product-preview.js';
+import tourPreview from '../modules/tour-preview.js';
 import Helper from '../modules/helper.js';
 import button from '../modules/button.js';
 
@@ -15,10 +15,6 @@ function load() {
     nav(),
     main(
       hero({
-        img: {
-          src: 'index-hero.jpg',
-          alt: 'Hamburger Fernsehturm aus einem Park fotografiert',
-        },
         heading: 'Leinen los für Erlebnisse im Hamburg Hafen? Aye, Aye!',
         buttonObj: {
           text: 'Zu den Angeboten',
@@ -26,6 +22,7 @@ function load() {
           type: 'link',
         },
       }),
+      tourPreview(),
       section([
         ...p(
           'Wir nehmen euch mit auf eine Entdeckungsreise in den neuesten und den ältesten Stadtteil Hamburgs, die Hafencity und die Speicherstadt. <br> Wir möchten euch zeigen, dass Geschichte und Architektur alles andere als langweilig, sondern – ganz im Gegenteil – spannend und voller Überraschungen sein können. Ob bei einem Kindergeburtstag, einer Klassenfahrt, einer Stadtrallye oder einem Familienausflug hier bei uns an der Elbe gibt es immer etwas Aufregendes zu erleben und zu erfahren. <br> Unser aufgeschlossenes und junges Team aus Kunsthistorikerinnen, Architektur- und Schauspielstudenten freut sich darauf, mit euch die spannenden und bislang unbekannten Seiten der Hafencity zu erkunden und vermittelt Hintergrundwissen in altersangemessener und fesselnder Art und Weise. <br> Wir sind seit vielen Jahren in diesem neuen Stadtteil verwurzelt und haben uns zum Ziel gesetzt, euch die Hafencity aus einem ganz eigenen Blickwinkel zu zeigen und euch die vielseitigen Facetten erleben zu lassen. <br> Ganz nach euren Wünschen könnt ihr uns jeden Tag in der Woche im Rahmen einer privaten Tour buchen, oder ihr schließt euch einer unserer offenen Touren an, die wir in regelmäßigen Abständen anbieten. <br> Wir freuen uns auf euch demnächst hier an der Waterkant <br> Akina Henyes und Anjuli Sayyed',

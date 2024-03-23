@@ -4,17 +4,6 @@ import button from './button.js';
 
 const _ = Helper.create;
 
-// const path = `${Helper.absolutePath(
-//   window.location.pathname,
-//   window.location.origin,
-// )}data/produkte.json`;
-
-// const dataJson = await fetch(path, {
-//   method: 'GET',
-//   mode: 'cors',
-// });
-// const productData = await dataJson.json();
-
 const validateInput = {
   type: 'click',
   listener: (e) => {
@@ -79,7 +68,7 @@ const formItems = (() => {
   ]);
 
   const tel = () => _('label', { for: 'phone' }, [
-    _('span', { text: 'Telefon', class: 'label' }),
+    _('span', { text: 'Telefon*', class: 'label' }),
     _('input', {
       type: 'tel',
       id: 'phone',
@@ -89,6 +78,7 @@ const formItems = (() => {
       autocomplete: 'off',
       pattern: '\\d{10,18}',
       title: 'Telefonnummer',
+      required: true,
       data: {
         msg: 'Bitte gib deine Telefonnummer im richtigen Format an (Beispiel: 012345678901)',
       },
@@ -135,7 +125,7 @@ const formItems = (() => {
     {
       type: 'focus',
       listener: (e) => {
-        console.log('hover');
+        e.target.classList.remove('tst-preload');
         const today = new Date().toISOString().split('T')[0];
         e.target.setAttribute('min', today);
         e.target.removeEventListener('focus', dateEvent[0].listener);
@@ -147,6 +137,7 @@ const formItems = (() => {
     _('span', { text: 'Datum*', class: 'label' }),
     _('input', {
       type: 'date',
+      class: 'tst-preload',
       name: 'date',
       id: 'date',
       placeholder: ' ',
@@ -159,36 +150,48 @@ const formItems = (() => {
     _('span'),
   ]);
 
-  // const tourThema = (number) => _('div', { class: 'product' }, [
-  //   _('div', null, [
-  //     _('label', { for: `product-${number}` }, [
-  //       _('span', { text: 'Produkt*', class: 'label' }),
-  //       _(
-  //         'select',
-  //         {
-  //           title: 'Produkt auswählen',
-  //           name: `product-${number}`,
-  //           id: `product-${number}`,
-  //           required: '',
-  //           data: {
-  //             msg: 'Bitte wähle ein Produkt aus oder lösche das Produkt',
-  //           },
-  //         },
-  //         [
-  //           _(
-  //             'option',
-  //             {
-  //               value: '', title: 'Produkt', disabled: '', selected: '',
-  //             },
-  //             ['Kein Produkt'],
-  //           ),
-  //           ...productData.products.map((product) => _('option', { value: product.name }, [product.name])),
-  //         ],
-  //         [productChangeEvent(number)],
-  //       ),
-  //     ]),
-  //   ]),
-  // ]);
+  const tourThema = () => _('div', { class: 'tour' }, [
+    _('div', null, [
+      _('label', { for: 'tour' }, [
+        _('span', { text: 'Tour*', class: 'label' }),
+        _(
+          'select',
+          {
+            title: 'Tour auswählen',
+            name: 'tour',
+            id: 'tour',
+            required: '',
+            data: {
+              msg: 'Bitte wähle ein Tour aus',
+            },
+          },
+          [
+            _(
+              'option',
+              {
+                value: '', title: 'Tour', disabled: '', selected: '',
+              },
+              ['Keine Tour ausgewählt'],
+            ),
+            ...Helper.navItems.navigation.reduce(
+              (acc, item) => {
+                if (item.parent) {
+                  acc.push(
+                    _('optgroup', { label: item.parent }, [
+                      ...item.unterpunkte.map((subpage) => _('option', { value: subpage.href.match(/(.*)\.html/)[1] }, [subpage.text])),
+                    ]),
+                  );
+                }
+                return acc;
+              },
+              [],
+            ),
+
+          ],
+        ),
+      ]),
+    ]),
+  ]);
 
   const message = () => _('label', { for: 'message' }, [
     _('span', { text: 'Nachricht*', class: 'label' }),
@@ -215,6 +218,7 @@ const formItems = (() => {
     givenName,
     famName,
     numberOfPeople,
+    tourThema,
     date,
     tel,
     email,
@@ -244,6 +248,7 @@ function buchungForm() {
             formItems.famName(),
           ]),
           formItems.numberOfPeople(),
+          formItems.tourThema(),
           formItems.date(),
           formItems.tel(),
           formItems.email(),

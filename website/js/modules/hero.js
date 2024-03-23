@@ -19,8 +19,8 @@ export default function hero({
   heading = 'undefined',
   text = 'undefined',
   img = {
-    src: 'index-hero.jpg',
-    alt: 'Hamburger Fernsehturm aus einem Park fotografiert',
+    src: 'default.png',
+    alt: 'Bild aufgrund urheberrechtlicher Gründe nicht online',
     hidden: false,
   },
   buttonObj = '',
