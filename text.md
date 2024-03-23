@@ -8,7 +8,8 @@ Wir nehmen euch mit auf eine Entdeckungsreise in den neuesten und den ältesten 
 
 - Speicherstadt & Gewürzmuseum (3.Juni 15:00-16:30 Uhr) [Verlinkung zur Unterseite, Anzeige: wenige Restplätze]
 - Die wachsende Stadt (4. Juni 14:00 Uhr) [Verlinkung zur Unterseite, Anzeige: wenige Restplätze]
-- Sportliche Entdeckertour mit dem Fahrrad (5. Juni 14:00 Uhr) ) [Verlinkung zur Unterseite, Anzeige: ausreichend Restplätze]
+
+- Sportliche Entdeckertour ~~mit dem Fahrrad~~ (5. Juni 14:00 Uhr) ) [Verlinkung zur Unterseite, Anzeige: ausreichend Restplätze]
 - Gruseltour mit Nachtwächter (9. Juni 20:00-21:30 Uhr) ) [Verlinkung zur Unterseite, Anzeige: ausgebucht]
 - Große Baumeister (10. Juni 16:00 Uhr) [Verlinkung zur Unterseite, Anzeige: ausgebucht]
 - Klabautermanntour (11. Juni 15:00-16:30 Uhr) [Verlinkung zur Unterseite, Anzeige: ausreichend Restplätze]
@@ -40,11 +41,7 @@ Wir nehmen euch mit auf eine Entdeckungsreise in den neuesten und den ältesten 
 
 > Stadtführungen der anderen Art für Kinder und Familien
 
-Ob historische Speicherstadt, die klingende Elbphilharmonie oder noch weniger bekannte Orte wie das kreative Oberhafenquartier – es gibt für euch einiges zu entdecken und zu hören. Geschichten und Geschichte werden bei uns spannend erzählt, ob beim Spaziergang an der Elbe oder auf einer Schnuppertour durch das Gewürzmuseum.
-
-Für jede Altersklasse gibt es speziell ausgearbeitete Touren, die beispielsweise anhand von Ratespielen oder Schnitzeljagden die Geschichte des Stadtteils zum Leben erwecken. Natürlich gehen wir auch auf die Wissbegier der Eltern ein!
-
-Bei Aye Aye ist alles möglich. Bucht ihr eine private Tour, dann bestimmt ihr den Tag und den Beginn der Tour. Oder ihr kommt allein, zu zweit oder als Familie und schließt euch einer der offenen Touren an, die wir regelmäßig anbieten.
+Ob historische Speicherstadt, die klingende Elbphilharmonie oder noch weniger bekannte Orte wie das kreative Oberhafenquartier – es gibt für euch einiges zu entdecken und zu hören. Geschichten und Geschichte werden bei uns spannend erzählt, ob beim Spaziergang an der Elbe oder auf einer Schnuppertour durch das Gewürzmuseum. <br> Für jede Altersklasse gibt es speziell ausgearbeitete Touren, die beispielsweise anhand von Ratespielen oder Schnitzeljagden die Geschichte des Stadtteils zum Leben erwecken. Natürlich gehen wir auch auf die Wissbegier der Eltern ein! <br> Bei Aye Aye ist alles möglich. Bucht ihr eine private Tour, dann bestimmt ihr den Tag und den Beginn der Tour. Oder ihr kommt allein, zu zweit oder als Familie und schließt euch einer der offenen Touren an, die wir regelmäßig anbieten.
 
 ## Speicherstadt & Gewürzmuseum [Verlinken zur Unterseite]
 
@@ -80,12 +77,11 @@ Dauer: 2 Stunden
 Alter: 6-12 Jahre (nur in Begleitung Erwachsener)
 Kategorie: Begleitung Erwachsener, Outdoor
 
+---
+
 # Gruseltour mit Nachtwächter
 
-An welchen Orten hausten in früherer Zeit die schaurigsten Gespenster von Hamburg? Stimmt es, dass Hamburger Eltern ihren Kindern mit Geschichten über einen Kinderfresser Angst gemacht hat? Kann man unter den Brückern der Speicherstadt noch das Stöhnen und Wehklagen früherer Epochen hören? Entdeckt die Speicherstadt bei Nacht und lasst euch von unserem Nachtwächter gruselige Details über Sagen und Legenden erzählen.
-
-Diese Führung ist speziell für Mutige: Im Mittelalter mussten Nachtwächter die Stadtmauern bewachen und das Gesindel vertreiben. Ihr wandert gemeinsam mit einem von ihnen durch die Speicherstadt und lasst euch von ihm aus erster Hand berichten! Haarsträubend, was sich in der alten Hansestadt alles zugetragen hat! Meisterdiebe, Halsabschneider und Schmuggler geben sich auf diesem Rundgang ein Stelldichein. Und achtet ruhig auf die geheimen Zeichen am Weg, es wird sich lohnen …
-Eine Straßentheater- Erlebnistour, Erzählkunst und Schauspiel mit mehreren Darstellern!
+An welchen Orten hausten in früherer Zeit die schaurigsten Gespenster von Hamburg? Stimmt es, dass Hamburger Eltern ihren Kindern mit Geschichten über einen Kinderfresser Angst gemacht hat? Kann man unter den Brückern der Speicherstadt noch das Stöhnen und Wehklagen früherer Epochen hören? Entdeckt die Speicherstadt bei Nacht und lasst euch von unserem Nachtwächter gruselige Details über Sagen und Legenden erzählen. <br> Diese Führung ist speziell für Mutige: Im Mittelalter mussten Nachtwächter die Stadtmauern bewachen und das Gesindel vertreiben. Ihr wandert gemeinsam mit einem von ihnen durch die Speicherstadt und lasst euch von ihm aus erster Hand berichten! Haarsträubend, was sich in der alten Hansestadt alles zugetragen hat! Meisterdiebe, Halsabschneider und Schmuggler geben sich auf diesem Rundgang ein Stelldichein. Und achtet ruhig auf die geheimen Zeichen am Weg, es wird sich lohnen … <br> Eine Straßentheater- Erlebnistour, Erzählkunst und Schauspiel mit mehreren Darstellern!
 
 Dauer: 1,5 Stunden
 Alter: 7-12 Jahre (nur in Begleitung Erwachsener)
@@ -93,10 +89,14 @@ Kategorie: Begleitung Erwachsener, Outdoor
 
 ## Offene Touren
 
-Einzelpreis: Erwachsene 17,50 Euro
-Kinder (bis 12 Jahre) 10 Euro
-Nächste Termine: 9. Juni 20 Uhr
+Einzelpreis:
 
+Erwachsene 17,50 Euro
+Kinder (bis 12 Jahre) 10 Euro
+
+Nächste Termine:
+
+9 Juni 20 Uhr
 8 Juli 20 Uhr
 12 August 20 Uhr
 9 September 20 Uhr
@@ -117,21 +117,7 @@ Gruppenpreis: 180 €
 # Buchung
 
 **Ihr direkter Draht zu uns**
-info@aye-aye.hamburg oder (0 40) 13 99 040
-
-Agentur Aye Aye
-
-Akina Henyes und Anjuli Sayyed
-
-Am Sandtorkai 48
-
-20457 Hamburg
-
-Mail: info@aye-aye.hamburg
-
-Telefon (0 40) 13 99 04-0
-
-Telefax (0 40) 13 99 04-30
+info@aye-aye.hamburg oder (0 40) 13 99 040 <br> Agentur Aye Aye <br> Akina Henyes und Anjuli Sayyed <br> Am Sandtorkai 48 <br> 20457 Hamburg <br> Mail: info@aye-aye.hamburg <br> Telefon (0 40) 13 99 04-0 <br> Telefax (0 40) 13 99 04-30
 
 ## Ich möchte mit auf Tour …
 

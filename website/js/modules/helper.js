@@ -1,3 +1,5 @@
+import angebote from '../../data/angebote.js';
+
 export default class Helper {
   static development = true;
 
@@ -17,59 +19,60 @@ export default class Helper {
   }
 
   /* ______________________________________
+  angebote data functions
+  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+
+  static getAngeboteSubmenu(folder) {
+    return Object.entries(angebote[folder]).map(([key, value]) => ({
+      text: value.name,
+      href: `${key}.html`,
+    }));
+  }
+
+  /* ______________________________________
+  Image path
+  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+
+  /* ______________________________________
   Site structure
   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
   static navItems = {
     logo: { src: 'logo.svg', alt: 'Logo', srcset: 'logo-mobile.svg' },
     navigation: [
       {
-        text: 'Touren für Kinder & Familien',
+        text: 'Kinder & Familien',
         folder: 'touren-fuer-kinder-und-familien',
-        href: 'touren-fuer-kinder-und-familien.html',
+        href: '#',
         unterpunkte: [
           {
-            text: 'Gruseltour mit Nachtwaechter',
-            href: 'gruseltour-mit-nachtwaechter.html',
+            text: 'Alle Touren für Kinder & Familien',
+            href: 'touren-fuer-kinder-und-familien.html',
           },
-          { text: 'Klabautermanntour', href: 'klabautermanntour.html' },
-          {
-            text: 'Speicherstadt und Gewuerzmuseum',
-            href: 'speicherstadt-und-gewuerzmuseum.html',
-          },
-          {
-            text: 'Sportliche Entdeckertour',
-            href: 'sportliche-entdeckertour.html',
-          },
+          ...Helper.getAngeboteSubmenu('touren-fuer-kinder-und-familien'),
         ],
       },
       {
-        text: 'Touren für Jugendliche',
+        text: 'Jugendliche',
         folder: 'touren-fuer-jugendliche',
-        href: 'touren-fuer-jugendliche.html',
+        href: '#',
         unterpunkte: [
-          { text: 'Die wachsende Stadt', href: 'die-wachsende-stadt.html' },
-          { text: 'Große Baumeister', href: 'große-baumeister.html' },
-          { text: 'Hafencity Rallye', href: 'hafencity-rallye.html' },
           {
-            text: 'Sportliche Entdeckertour',
-            href: 'sportliche-entdeckertour.html',
+            text: 'Touren für Jugendliche',
+            href: 'touren-fuer-jugendliche.html',
           },
+          ...Helper.getAngeboteSubmenu('touren-fuer-jugendliche'),
         ],
       },
       {
         text: 'Kindergeburtstage',
         folder: 'kindergeburtstage',
-        href: 'kindergeburtstage.html',
+        href: '#',
         unterpunkte: [
           {
-            text: 'Elbphilharmonie entdecken',
-            href: 'elbphilharmonie-entdecken.html',
+            text: 'Kindergeburtstage Übersicht',
+            href: 'kindergeburtstage.html',
           },
-          {
-            text: 'Pfefferkoerner und Verbrecherjagd',
-            href: 'pfefferkoerner-und-verbrecherjagd.html',
-          },
-          { text: 'Piraten Rallye', href: 'piraten-rallye.html' },
+          ...Helper.getAngeboteSubmenu('kindergeburtstage'),
         ],
       },
       { text: 'Buchung', href: 'buchung.html' },
