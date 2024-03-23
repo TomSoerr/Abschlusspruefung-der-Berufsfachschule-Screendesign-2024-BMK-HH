@@ -1070,26 +1070,6 @@ ________________________________________________________________________________
   resize: vertical;
 }
 
-/* Product Wrapper */
-
-#tst-form .products {
-  row-gap: var(--tst-space-m);
-  display: grid;
-  margin: var(--tst-space-m) 0;
-  padding: var(--tst-space-s) 0;
-  border-top: 3px solid var(--tst-color-secondary-light);
-  border-bottom: 3px solid var(--tst-color-secondary-light);
-}
-
-#tst-form .products .product {
-  display: flex;
-  gap: var(--tst-space-m);
-}
-
-#tst-form .products .product > div {
-  flex: 1 1 auto;
-}
-
 #tst-form .two-col {
   display: flex;
   gap: var(--tst-space-m);
@@ -1101,22 +1081,11 @@ ________________________________________________________________________________
   flex: 1 1 auto;
 }
 
-#tst-form .products .product select:invalid {
-  color: var(--tst-color-accent);
-}
-
-#tst-form .products .product .tst-button::after {
-  font-family: var(--tst-icon-font);
-  content: "\e872";
-  font-size: 2rem;
-}
-
 /* invalid message */
 
 #tst-form
-  input:not([type="date"]):invalid:not(:placeholder-shown)
-  + span::before,
-#tst-form input[type="date"]:focus:invalid + span::before {
+  input:not(.tst-preload):invalid:not(:placeholder-shown)
+  + span::before {
   content: "Ungültig";
   font-size: 1.3rem;
   font-weight: bold;
@@ -1124,8 +1093,7 @@ ________________________________________________________________________________
   display: block;
 }
 
-#tst-form input:not([type="date"]):invalid:not(:placeholder-shown) + span,
-#tst-form input[type="date"]:focus:invalid + span {
+#tst-form input:not(.tst-preload):invalid:not(:placeholder-shown) + span {
   position: absolute;
 
   border: 0.2rem solid var(--tst-color-accent);
@@ -1147,14 +1115,14 @@ ________________________________________________________________________________
 
 /* Product preview */
 
-.tst-product-preview .tst-product-preview-wrapper {
+.tst-tour-preview .tst-tour-preview-wrapper {
   display: flex;
   width: max-content;
   gap: var(--tst-space-x);
   padding-bottom: 2rem;
 }
 
-.tst-product-preview .tst-button-wrapper {
+.tst-tour-preview .tst-button-wrapper {
   display: flex;
   margin-top: var(--tst-space-x);
   gap: var(--tst-space-x);
@@ -1162,13 +1130,13 @@ ________________________________________________________________________________
   flex-wrap: wrap;
 }
 
-.tst-product-preview .tst-product-preview-outer-wrapper {
+.tst-tour-preview .tst-tour-preview-outer-wrapper {
   overflow: scroll;
   scroll-snap-type: x mandatory;
   scroll-snap-stop: always;
 }
 
-.tst-product-preview .tst-product-preview-wrapper > * {
+.tst-tour-preview .tst-tour-preview-wrapper > * {
   scroll-snap-align: start;
   --columns: 1;
   width: min(
@@ -1182,26 +1150,26 @@ ________________________________________________________________________________
   );
 }
 
-.tst-product-preview.c4 .tst-product-preview-wrapper > * {
+.tst-tour-preview.c4 .tst-tour-preview-wrapper > * {
   --columns: 4;
 }
 
-.tst-product-preview.c3 .tst-product-preview-wrapper > * {
+.tst-tour-preview.c3 .tst-tour-preview-wrapper > * {
   --columns: 3;
 }
 
-.tst-product-preview.c2 .tst-product-preview-wrapper > * {
+.tst-tour-preview.c2 .tst-tour-preview-wrapper > * {
   --columns: 2;
 }
 
-.tst-product-preview.c1 .tst-product-preview-wrapper > * {
+.tst-tour-preview.c1 .tst-tour-preview-wrapper > * {
   --columns: 1;
 }
 
-.tst-product-preview .tst-section-inner > h2 {
+.tst-tour-preview .tst-section-inner > h2 {
   margin-bottom: var(--tst-space-x);
 }
-.tst-product-preview.tst-about-me .tst-section-inner > h2 {
+.tst-tour-preview.tst-about-me .tst-section-inner > h2 {
   margin-left: min(
     calc((var(--tst-default-page-width) - var(--tst-page-width-text)) / 2),
     max(
@@ -1213,7 +1181,7 @@ ________________________________________________________________________________
 
 /* Card */
 
-.tst-product-card {
+.tst-tour-card {
   background-color: var(--tst-color-secondary-2);
   display: flex;
   box-shadow: 0px 6px 20px 0px #3e434420;
@@ -1222,27 +1190,27 @@ ________________________________________________________________________________
   flex-direction: column;
 }
 
-.tst-product-card > div {
+.tst-tour-card > div {
   padding: var(--tst-space-m);
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
 }
 
-.tst-product-price {
+.tst-tour-price {
   margin-top: auto;
   margin-bottom: var(--tst-space-s);
   font-weight: bold;
 }
 
-.tst-product-card h2 {
+.tst-tour-card h2 {
   font-size: var(--tst-h3);
   font-family: var(--tst-text-font);
   margin-bottom: var(--tst-space-m);
   hyphens: auto;
 }
 
-.tst-product-card .tst-img {
+.tst-tour-card .tst-img {
   min-width: 0;
   aspect-ratio: 1 / 1;
 }

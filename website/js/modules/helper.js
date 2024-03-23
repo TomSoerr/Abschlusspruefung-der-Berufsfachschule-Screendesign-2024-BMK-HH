@@ -3,7 +3,11 @@ import angebote from '../../data/angebote.js';
 export default class Helper {
   static development = true;
 
-  static imgPath(img, hidden = false, source) {
+  /* ______________________________________
+  Image path
+  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
+
+  static imgPath(img, hidden, source) {
     function imgSource() {
       if (source) {
         const imgVersion = img.split('.');
@@ -13,8 +17,13 @@ export default class Helper {
     }
 
     if (hidden && Helper.development) {
-      return `${Helper.pathToMain(window.location.pathname)}img-hidden/${imgSource()}`;
+      return `${Helper.pathToMain(window.location.pathname)}img/ap/${imgSource()}`;
     }
+
+    if (hidden && !Helper.development) {
+      return `${Helper.pathToMain(window.location.pathname)}img/default.png`;
+    }
+
     return `${Helper.pathToMain(window.location.pathname)}img/${imgSource()}`;
   }
 
@@ -28,10 +37,6 @@ export default class Helper {
       href: `${key}.html`,
     }));
   }
-
-  /* ______________________________________
-  Image path
-  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
 
   /* ______________________________________
   Site structure
@@ -54,7 +59,7 @@ export default class Helper {
       {
         parent: 'Kindergeburtstage',
         folder: 'kindergeburtstage',
-        text: 'Alle Kindergeburtstage',
+        text: 'Kindergeburtstage Übersicht',
         unterpunkte: Helper.getAngeboteSubmenu('kindergeburtstage'),
       },
       { text: 'Buchung', href: 'buchung.html' },
@@ -177,6 +182,10 @@ export default class Helper {
 
   static relativPath(from, to) {
     const relativePath = Helper.pathToMain(from);
+
+    if (to === '#') {
+      return to;
+    }
 
     if (Helper.getFolderPath(from) === Helper.getFolderData(to)) {
       return to;
