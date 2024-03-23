@@ -255,13 +255,16 @@ const navigation = (function navigationIIFE() {
               ]),
             ],
           ),
+          // Main Navigation
+          // ///////////////////////////////////////////////////////////////////
           _('ul', { class: 'tst-nav-top-level' }, [
             ...Helper.navItems.navigation.reduce((acc, item) => {
               if (item.unterpunkte) {
                 acc.push(
                   navLink(
-                    { href: item.href, text: item.text },
+                    { href: '#', text: item.parent },
                     _('ul', null, [
+                      navLink({ text: item.text, href: `${item.folder}.html` }),
                       ...item.unterpunkte.reduce((accInner, itemInner) => {
                         accInner.push(
                           navLink(
@@ -284,6 +287,7 @@ const navigation = (function navigationIIFE() {
               return acc;
             }, []),
           ]),
+          // ///////////////////////////////////////////////////////////////////
           _(
             'button',
             {

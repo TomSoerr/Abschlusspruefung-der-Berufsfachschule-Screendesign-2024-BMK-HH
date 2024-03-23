@@ -40,40 +40,22 @@ export default class Helper {
     logo: { src: 'logo.svg', alt: 'Logo', srcset: 'logo-mobile.svg' },
     navigation: [
       {
-        text: 'Kinder & Familien',
+        parent: 'Kinder & Familien',
         folder: 'touren-fuer-kinder-und-familien',
-        href: '#',
-        unterpunkte: [
-          {
-            text: 'Alle Touren für Kinder & Familien',
-            href: 'touren-fuer-kinder-und-familien.html',
-          },
-          ...Helper.getAngeboteSubmenu('touren-fuer-kinder-und-familien'),
-        ],
+        text: 'Alle Touren für Kinder & Familien',
+        unterpunkte: Helper.getAngeboteSubmenu('touren-fuer-kinder-und-familien'),
       },
       {
-        text: 'Jugendliche',
+        parent: 'Jugendliche',
         folder: 'touren-fuer-jugendliche',
-        href: '#',
-        unterpunkte: [
-          {
-            text: 'Touren für Jugendliche',
-            href: 'touren-fuer-jugendliche.html',
-          },
-          ...Helper.getAngeboteSubmenu('touren-fuer-jugendliche'),
-        ],
+        text: 'Alle Touren für Jugendliche',
+        unterpunkte: Helper.getAngeboteSubmenu('touren-fuer-jugendliche'),
       },
       {
-        text: 'Kindergeburtstage',
+        parent: 'Kindergeburtstage',
         folder: 'kindergeburtstage',
-        href: '#',
-        unterpunkte: [
-          {
-            text: 'Kindergeburtstage Übersicht',
-            href: 'kindergeburtstage.html',
-          },
-          ...Helper.getAngeboteSubmenu('kindergeburtstage'),
-        ],
+        text: 'Alle Kindergeburtstage',
+        unterpunkte: Helper.getAngeboteSubmenu('kindergeburtstage'),
       },
       { text: 'Buchung', href: 'buchung.html' },
     ],
@@ -132,14 +114,14 @@ export default class Helper {
 
   static getAllSubFolders() {
     const folders = [];
-    this.navItems.navigation.forEach((item) => {
+    Helper.navItems.navigation.forEach((item) => {
       if (item.folder) folders.push(item.folder);
     });
     return folders;
   }
 
   static folderExists(folder) {
-    return this.getAllSubFolders().includes(folder);
+    return Helper.getAllSubFolders().includes(folder);
   }
 
   static getFolderPath(pathname) {
@@ -157,7 +139,7 @@ export default class Helper {
     if (pathWithoutFile) {
       const lastFolder = pathWithoutFile[0].match(lastFolderRegEx)[0];
 
-      if (this.folderExists(lastFolder)) {
+      if (Helper.folderExists(lastFolder)) {
         return lastFolder;
       }
     }
@@ -168,14 +150,14 @@ export default class Helper {
   static pathToMain(pathname) {
     const path = pathname;
 
-    if (this.getFolderPath(path)) {
+    if (Helper.getFolderPath(path)) {
       return '../';
     }
     return '';
   }
 
   static getFolderData(fileName) {
-    const subNav = this.navItems.navigation.filter((item) => item.folder);
+    const subNav = Helper.navItems.navigation.filter((item) => item.folder);
     const folder = subNav.find((item) => {
       // folderObj is undefined if filename is not in the folder
       const folderObj = item.unterpunkte.find(
@@ -189,22 +171,22 @@ export default class Helper {
   }
 
   static checkIfNotSubpage(fileName) {
-    const notSubNav = this.navItems.navigation.filter((item) => !item.folder);
-    return notSubNav.find((item) => item.href === fileName);
+    const notSubNav = Helper.navItems.navigation.filter((item) => fileName === `${item.folder}.html` || !item.folder);
+    return notSubNav.find((item) => item.href === fileName || `${item.folder}.html` === fileName);
   }
 
   static relativPath(from, to) {
-    const relativePath = this.pathToMain(from);
+    const relativePath = Helper.pathToMain(from);
 
-    if (this.getFolderPath(from) === this.getFolderData(to)) {
+    if (Helper.getFolderPath(from) === Helper.getFolderData(to)) {
       return to;
     }
 
-    if (this.checkIfNotSubpage(to)) {
+    if (Helper.checkIfNotSubpage(to)) {
       return `${relativePath}${to}`;
     }
 
-    return `${this.pathToMain(from)}${this.getFolderData(to)}/${to}`;
+    return `${relativePath}${Helper.getFolderData(to)}/${to}`;
   }
 
   static absolutePath(pathname, origin) {
@@ -217,7 +199,7 @@ export default class Helper {
       return `${origin}/`;
     }
 
-    if (this.getFolderPath(pathname)) {
+    if (Helper.getFolderPath(pathname)) {
       return `${origin}${pathname.match(PathWithoutLastFolder)}`;
     }
 
@@ -311,7 +293,8 @@ export default class Helper {
       });
     }
     if (elChildren) {
-      newEl.append(...elChildren);
+      const truthyChildren = elChildren.filter((child) => child);
+      newEl.append(...truthyChildren);
     }
 
     if (elEvent) {
