@@ -15,7 +15,9 @@ function load() {
       section([
         _('h1', { text: 'Ihr direkter Draht zu uns' }),
         ...p(
-          'info@aye-aye.hamburg oder (0 40) 13 99 040 <br> Agentur Aye Aye <br> Akina Henyes und Anjuli Sayyed <br> Am Sandtorkai 48 <br> 20457 Hamburg <br> Mail: info@aye-aye.hamburg <br> Telefon (0 40) 13 99 04-0 <br> Telefax (0 40) 13 99 04-30',
+          {
+            text: 'info@aye-aye.hamburg oder (0 40) 13 99 040 <br> Agentur Aye Aye <br> Akina Henyes und Anjuli Sayyed <br> Am Sandtorkai 48 <br> 20457 Hamburg <br> Mail: info@aye-aye.hamburg <br> Telefon (0 40) 13 99 04-0 <br> Telefax (0 40) 13 99 04-30',
+          },
         ),
         _('h2', { text: 'Ich möchte mit auf Tour …' }),
       ]),
