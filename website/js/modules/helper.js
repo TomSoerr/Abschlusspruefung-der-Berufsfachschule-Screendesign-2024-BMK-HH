@@ -293,9 +293,11 @@ export default class Helper {
         } else if (key === 'text') {
           newEl.textContent = value;
         } else if (key === 'data') {
-          Object.entries(value).forEach(([dataKey, dataValue]) => {
-            newEl.dataset[dataKey] = dataValue;
-          });
+          if (value) {
+            Object.entries(value).forEach(([dataKey, dataValue]) => {
+              newEl.dataset[dataKey] = dataValue;
+            });
+          }
         } else {
           newEl.setAttribute(key, value);
         }

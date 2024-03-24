@@ -434,6 +434,10 @@ footer ul {
   font-size: 1.8rem;
 }
 
+#tst-site-nav .tst-section-inner li.tst-active > a {
+  font-weight: 700;
+}
+
 /*______________________________________
 Shrinking Nav
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
