@@ -1182,7 +1182,7 @@ ________________________________________________________________________________
 /* Card */
 
 .tst-tour-card {
-  background-color: var(--tst-color-secondary-2);
+  background-color: var(--tst-color-secondary);
   display: flex;
   box-shadow: 0px 6px 20px 0px #3e434420;
   overflow: hidden;
