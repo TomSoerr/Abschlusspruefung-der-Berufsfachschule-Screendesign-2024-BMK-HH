@@ -164,37 +164,50 @@ const navigation = (function navigationIIFE() {
 
   // why: sets the important vars and waits for the image to load
   async function initNav() {
-    // if html elements are not queried, do the following
-    if (!navHtmlEl) {
-      navHtmlEl = document.querySelector('#tst-site-nav');
-      navImgEl = navHtmlEl.querySelector('#tst-site-nav #tst-site-logo img');
-      navSubMenuEl = navHtmlEl.querySelectorAll('.tst-nav-sub-level').length;
+    navHtmlEl = document.querySelector('#tst-site-nav');
+    navImgEl = navHtmlEl.querySelector('#tst-site-nav #tst-site-logo img');
+    navSubMenuEl = navHtmlEl.querySelectorAll('.tst-nav-sub-level').length;
 
-      navGapX = parseFloat(
-        getComputedStyle(navHtmlEl.children[0]).getPropertyValue('gap'),
-      );
+    navGapX = parseFloat(
+      getComputedStyle(navHtmlEl.children[0]).getPropertyValue('gap'),
+    );
 
-      navIconFontSize =
+    navIconFontSize =
         parseFloat(
           getComputedStyle(document.body).getPropertyValue(
             '--tst-nav-icon-font-size',
           ),
         ) * 10;
 
-      navIconFontSize *= Helper.customFontSizeMultiplier;
+    navIconFontSize *= Helper.customFontSizeMultiplier;
 
-      htmlSpaceX = parseFloat(
-        getComputedStyle(navHtmlEl.children[0]).getPropertyValue(
-          'padding-left',
-        ),
-      );
-    }
+    htmlSpaceX = parseFloat(
+      getComputedStyle(navHtmlEl.children[0]).getPropertyValue(
+        'padding-left',
+      ),
+    );
 
     // set the scroll top for the shrink nav function
     scrollTop = document.querySelector('main > :first-child').clientHeight;
 
     Helper.addScrollFn(shrinkNav);
     Helper.addScrollFn(removePreloadClass);
+
+    // highlight the current nav link
+    if (Helper.pathToMain(window.location.pathname)) {
+      const activeLink = document.querySelector(`[data-href="${Helper.getFolderPath(window.location.pathname)}"]`);
+
+      if (activeLink) {
+        activeLink.classList.add('tst-active');
+      }
+    } else {
+      const activeLink = document.querySelector(`[data-href="${Helper.getFileName(window.location.pathname)}"]`);
+
+      if (activeLink) {
+        activeLink.classList.add('tst-active');
+      }
+    }
+    // debugger;
 
     // calculate the min width of the nav for the Breakpoint
     calculateNavBreakpoint();
@@ -262,7 +275,7 @@ const navigation = (function navigationIIFE() {
               if (item.unterpunkte) {
                 acc.push(
                   navLink(
-                    { href: '#', text: item.parent },
+                    { href: '#', text: item.parent, data: item.folder },
                     _('ul', null, [
                       navLink({ text: item.text, href: `${item.folder}.html` }),
                       ...item.unterpunkte.reduce((accInner, itemInner) => {
@@ -283,7 +296,7 @@ const navigation = (function navigationIIFE() {
                 );
                 return acc;
               }
-              acc.push(navLink({ href: item.href, text: item.text }));
+              acc.push(navLink({ href: item.href, text: item.text, data: Helper.getFileName(item.href) }));
               return acc;
             }, []),
           ]),
