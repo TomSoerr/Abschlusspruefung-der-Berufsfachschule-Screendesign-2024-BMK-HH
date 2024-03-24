@@ -41,7 +41,7 @@ export default function sectionImgText({
     [
       _('div', null, [
         _('h2', null, [heading]),
-        ...p(text),
+        ...p({ text }),
         buttonObj ? button(buttonObj) : '',
       ]),
 

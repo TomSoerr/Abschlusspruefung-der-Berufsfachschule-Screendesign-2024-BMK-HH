@@ -1,5 +1,6 @@
 import Helper from './helper.js';
-import picture from './picture.js';
+// import picture from './picture.js';
+import image from './image.js';
 import button from './button.js';
 
 const _ = Helper.create;
@@ -28,7 +29,7 @@ export default function hero({
   return _('header', { class: 'tst-hero tst-section secondary-2 w' }, [
     _('div', { class: 'tst-section-inner' }, [
       _('h1', null, [heading]),
-      picture(img),
+      image(img),
       _('div', null, [
         _('p', null, [text]),
         buttonObj ? button(buttonObj) : '',

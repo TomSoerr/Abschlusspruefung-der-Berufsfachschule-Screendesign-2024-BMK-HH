@@ -1,5 +1,6 @@
 import Helper from './helper.js';
 import button from './button.js';
+import p from './paragraph.js';
 import image from './image.js';
 
 const _ = Helper.create;
@@ -21,7 +22,7 @@ export default function tourCard({
     }),
     _('div', null, [
       _('h2', null, [name]),
-      _('p', { class: 'tst-tour-teaser' }, [teaser]),
+      ...p({ text: teaser, teaser: true }),
       button({
         text: 'Mehr erfahren',
         href,
@@ -29,7 +30,7 @@ export default function tourCard({
       }),
       _('p', { class: 'tst-tour-duration' }, [duration]),
       _('p', { class: 'tst-tour-age' }, [age]),
-      _('p', { class: 'tst-tour-categories' }, [categories.join(', ')]),
+      _('p', { class: 'tst-tour-categories' }, [categories.join(' || ')]),
 
     ]),
   ]);
