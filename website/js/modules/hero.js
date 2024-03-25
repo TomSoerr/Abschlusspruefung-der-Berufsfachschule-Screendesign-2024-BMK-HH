@@ -1,9 +1,26 @@
 import Helper from './helper.js';
 // import picture from './picture.js';
-import image from './image.js';
-import button from './button.js';
+// import image from './image.js';
+// import button from './button.js';
 
 const _ = Helper.create;
+
+const video = _('video', {
+  poster: Helper.imgPath('hero.jpeg', true),
+  muted: '',
+  controlslist: 'nofullscreen nodownload',
+  autoplay: '',
+  controls: '',
+  loop: '',
+  playsinline: '',
+  disablepictureinpicture: '',
+  disableremoteplayback: '',
+}, [
+  _('source', {
+    src: Helper.imgPath('hero.mp4', true),
+    type: 'video/mp4',
+  }),
+]);
 
 /**
  * @param {Object} content
@@ -18,22 +35,11 @@ const _ = Helper.create;
  */
 export default function hero({
   heading = 'undefined',
-  text = 'undefined',
-  img = {
-    src: 'default.png',
-    alt: 'Bild aufgrund urheberrechtlicher Gründe nicht online',
-    hidden: false,
-  },
-  buttonObj = '',
 } = {}) {
-  return _('header', { class: 'tst-hero tst-section secondary-2 w' }, [
+  return _('header', { class: 'tst-hero tst-section secondary-2 wide' }, [
     _('div', { class: 'tst-section-inner' }, [
+      video,
       _('h1', null, [heading]),
-      image(img),
-      _('div', null, [
-        _('p', null, [text]),
-        buttonObj ? button(buttonObj) : '',
-      ]),
     ]),
   ]);
 }
