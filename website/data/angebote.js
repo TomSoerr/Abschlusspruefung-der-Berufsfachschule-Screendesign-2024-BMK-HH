@@ -1,4 +1,24 @@
 export default {
+  'touren-fuer-jugendliche': {
+    'große-baumeister': {
+      name: 'Große Baumeister',
+      termine: {
+        '2024-06-10': ['10. Juni 16:00 Uhr', 'ausgebucht'],
+      },
+    },
+    'die-wachsende-stadt': {
+      name: 'Die wachsende Stadt',
+      termine: {
+        '2024-06-04': ['4. Juni 14:00 Uhr', 'wenige Restplätze'],
+      },
+    },
+    'hafencity-rallye': {
+      name: 'Hafencity Rallye',
+    },
+    'sportliche-entdeckertour': {
+      name: 'Sportliche Entdeckertour',
+    },
+  },
   'touren-fuer-kinder-und-familien': {
     'speicherstadt-und-gewuerzmuseum': {
       name: 'Speicherstadt & Gewürzmuseum',
@@ -30,9 +50,9 @@ export default {
       alter: '6-12 Jahre (nur in Begleitung Erwachsener)',
       kategorien: ['be', 'ou'],
       termine: {
-        '2024-06-09': ['9. Juni 20:00-21:30 Uhr', 'ausgebucht'],
         '2024-07-08': ['8. Juli 20 Uhr'],
         '2024-08-12': ['12. August 20 Uhr'],
+        '2024-06-09': ['9. Juni 20:00-21:30 Uhr', 'ausgebucht'],
         '2024-09-09': ['9. September 20 Uhr'],
       },
 
@@ -50,26 +70,7 @@ export default {
       },
     },
   },
-  'touren-fuer-jugendliche': {
-    'große-baumeister': {
-      name: 'Große Baumeister',
-      termine: {
-        '2024-06-10': ['10. Juni 16:00 Uhr', 'ausgebucht'],
-      },
-    },
-    'die-wachsende-stadt': {
-      name: 'Die wachsende Stadt',
-      termine: {
-        '2024-06-04': ['4. Juni 14:00 Uhr', 'wenige Restplätze'],
-      },
-    },
-    'hafencity-rallye': {
-      name: 'Hafencity Rallye',
-    },
-    'sportliche-entdeckertour': {
-      name: 'Sportliche Entdeckertour',
-    },
-  },
+
   kindergeburtstage: {
     'piraten-rallye': {
       name: 'Piraten-Rallye',
