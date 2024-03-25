@@ -6,13 +6,28 @@ import image from '../modules/image.js';
 import button from '../modules/button.js';
 import footer from '../modules/footer.js';
 import Helper from '../modules/helper.js';
+import angebote from '../../data/angebote.js';
+import { category } from '../modules/categories.js';
+import tourDates from '../modules/tour-dates.js';
 
 const _ = Helper.create;
+
+function tourTemplate({ site }) {
+  const tourData = angebote[Helper.getFolderData(`${site}.html`)][site];
+  return [
+    _('h1', { text: tourData.name }),
+    ...p({ text: tourData.text }),
+    _('ul', null, tourData.kategorien.map((cat) => category({ c: cat }))),
+    tourDates({ filterBy: site, noLink: true }),
+    button({ type: 'link', text: 'Zurück zur Übersicht', href: `${Helper.getFolderData(`${site}.html`)}.html` }),
+  ];
+}
 
 function load() {
   document.body.append(
     nav(),
     main(
+      ...tourTemplate({ site: 'gruseltour-mit-nachtwaechter' }),
       section([
         _('h2', { text: 'Offene Touren' }),
         ...p({ text: 'Einzelpreis: <br> Erwachsene 17,50 Euro <br> Kinder (bis 12 Jahre) 10 Euro <br> Treffpunkt: Südufer Brooksbrücke, vor der Bar Barrossa' }),
