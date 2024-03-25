@@ -2,7 +2,6 @@
 
 # TODO
 
-- Form JS muss bereinigt werden und unnötige Inhalte vom letzten Lernfeld gelöscht werden
 - Fragen: dürfen Rechtschreibfehler korrigiert werden?
 
 # Icons Lizenz

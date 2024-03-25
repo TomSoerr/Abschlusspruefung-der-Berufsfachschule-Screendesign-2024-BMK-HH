@@ -82,7 +82,7 @@ Default Variables
 
   --tst-border-radius: 0rem;
 
-  --tst-nav-height: 9.5rem;
+  --tst-nav-height: 8.5rem;
   --tst-nav-gap-x: 4rem;
   --tst-nav-gap-y: 3rem;
   --tst-nav-height-scrolled: 7.5rem;
@@ -104,7 +104,7 @@ Default Variables
 
   --tst-color-text: #3e4344;
   --tst-color-background-1: var(--tst-color-primary);
-  --tst-color-nav: var(--tst-color-accent-light);
+  --tst-color-nav: var(--tst-color-primary);
 }
 
 [data-scrolled="true"] {
@@ -1060,7 +1060,7 @@ ________________________________________________________________________________
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-0. BLOCK TOUR PREVIEW
+0. BLOCK TOUR PREVIEW AND GRID
 ________________________________________________________________________________
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
 
@@ -1156,12 +1156,6 @@ ________________________________________________________________________________
   flex-direction: column;
 }
 
-.tst-tour-price {
-  margin-top: auto;
-  margin-bottom: var(--tst-space-s);
-  font-weight: bold;
-}
-
 .tst-tour-card h2 {
   font-size: var(--tst-h3);
   font-family: var(--tst-text-font);
@@ -1203,6 +1197,32 @@ ________________________________________________________________________________
 [data-category="in"] [data-category="in"],
 [data-category="ou"] [data-category="ou"] {
   background-color: var(--tst-color-secondary-light);
+}
+
+/*______________________________________________________________________________
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+0. BLOCK TOUR LIST AND LISTCARD
+________________________________________________________________________________
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+.tst-tour-list-wrapper {
+}
+
+.tst-tour-list-card {
+  display: flex;
+}
+
+.tst-tour-list-card > div {
+  padding: var(--tst-space-m);
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.tst-tour-list-card img {
+  min-width: 0;
+  aspect-ratio: unset;
 }
 
 /*______________________________________________________________________________

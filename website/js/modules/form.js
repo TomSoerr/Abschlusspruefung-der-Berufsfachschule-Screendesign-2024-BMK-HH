@@ -175,7 +175,7 @@ const formItems = (() => {
             ),
             ...Helper.navItems.navigation.reduce(
               (acc, item) => {
-                if (item.parent) {
+                if (item.parent && item.folder !== 'kindergeburtstage') {
                   acc.push(
                     _('optgroup', { label: item.parent }, [
                       ...item.unterpunkte.map((subpage) => _('option', { value: subpage.href.match(/(.*)\.html/)[1] }, [subpage.text])),
