@@ -7,9 +7,9 @@ if (window.location.hostname.match(/github/)) {
 /* ______________________________________
 initialize Helper class
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
-const observer = new MutationObserver(Helper.init);
+Helper.observer = new MutationObserver(Helper.init);
 
-observer.observe(document.body, {
+Helper.observer.observe(document.body, {
   attributes: false,
   childList: true,
   subtree: true,

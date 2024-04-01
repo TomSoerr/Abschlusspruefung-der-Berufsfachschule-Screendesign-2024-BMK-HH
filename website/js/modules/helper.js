@@ -220,6 +220,8 @@ export default class Helper {
   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
   static customFontSizeMultiplier;
 
+  static observer;
+
   static initFn = [];
 
   static addInitFn(fn) {
@@ -242,10 +244,14 @@ export default class Helper {
         ) *
           10);
 
+      document.body.dataset.page = Helper.getFileName(window.location.pathname);
+
       // external functions
       if (Helper.initFn) Helper.initFn.forEach((fn) => fn());
-      // maybe remove all functions after inital load
+
+      // remove all functions after inital load
       Helper.initFn = null;
+      Helper.observer.disconnect();
     });
   }
 

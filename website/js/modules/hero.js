@@ -1,26 +1,9 @@
 import Helper from './helper.js';
 // import picture from './picture.js';
-// import image from './image.js';
+import image from './image.js';
 // import button from './button.js';
 
 const _ = Helper.create;
-
-const video = _('video', {
-  poster: Helper.imgPath('hero.jpeg', true),
-  muted: '',
-  controlslist: 'nofullscreen nodownload',
-  autoplay: '',
-  controls: '',
-  loop: '',
-  playsinline: '',
-  disablepictureinpicture: '',
-  disableremoteplayback: '',
-}, [
-  _('source', {
-    src: Helper.imgPath('hero.mp4', true),
-    type: 'video/mp4',
-  }),
-]);
 
 /**
  * @param {Object} content
@@ -36,10 +19,12 @@ const video = _('video', {
 export default function hero({
   heading = 'undefined',
 } = {}) {
-  return _('header', { class: 'tst-hero tst-section secondary-2 wide' }, [
+  return _('header', { class: 'tst-hero tst-section wide' }, [
     _('div', { class: 'tst-section-inner' }, [
-      video,
-      _('h1', null, [heading]),
+      image({ hidden: true, src: 'ap2024_hafencity_12.jpg', alt: 'Hafencity' }),
+      _('div', null, [
+        _('h1', null, [heading]),
+      ]),
     ]),
   ]);
 }
