@@ -17,7 +17,7 @@ function tourTemplate({ site }) {
   return [
     _('h1', { text: tourData.name }),
     ...p({ text: tourData.text }),
-    _('ul', null, tourData.kategorien.map((cat) => category({ c: cat }))),
+    _('ul', null, tourData.kategorien.map((cat) => category({ c: cat, home: true }))),
     tourDates({ filterBy: site, noLink: true }),
     button({ type: 'link', text: 'Zurück zur Übersicht', href: `${Helper.getFolderData(`${site}.html`)}.html` }),
   ];

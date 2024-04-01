@@ -1,4 +1,5 @@
 import Helper from './helper.js';
+import image from './image.js';
 
 const _ = Helper.create;
 
@@ -13,49 +14,123 @@ const events = [
   },
 ];
 
+const allTours = Object.values(Helper.navItems.navigation).filter(
+  (item) => item.folder,
+);
+
 export default function footer() {
   return _('footer', { class: 'tst-section', id: 'tst-footer' }, [
+    image({ src: 'wave.svg', alt: 'wave', CssClass: 'before' }),
     _('div', { class: 'tst-section-inner' }, [
-      _('ul', null, [
-        _('li', null, [
-          _(
-            'a',
-            {
-              href: `${Helper.pathToMain(window.location.pathname)}impressum.html`,
-              class: 'tst-preload',
-            },
-            ['Impressum'],
-            events,
-          ),
+      image({ src: 'logo-sw.svg', alt: 'Logo' }),
+
+      _('div', { class: 'tst-footer-socials' }, [
+        _('ul', null, [
+          _('li', null, [
+            _(
+              'a',
+              {
+                href: 'https://www.facebook.com/AyeAyeHamburg',
+                target: '_blank',
+              },
+              [
+                image({
+                  src: 'facebook.svg',
+                  hidden: true,
+                  alt: 'Facebook',
+                }),
+              ],
+            ),
+          ]),
+          _('li', null, [
+            _(
+              'a',
+              {
+                href: 'https://www.instagram.com/AyeAyeHamburg/',
+                target: '_blank',
+              },
+              [
+                image({
+                  src: 'instagram.svg',
+                  alt: 'Instagram',
+                  hidden: true,
+                }),
+              ],
+            ),
+          ]),
         ]),
-        _('li', null, [
-          _(
-            'a',
-            {
-              href: `${Helper.pathToMain(
-                window.location.pathname,
-              )}datenschutz.html`,
-              class: 'tst-preload',
-            },
-            ['Datenschutz'],
-            events,
-          ),
-        ]),
-        _('li', { class: 'tst-contact-link' }, [
-          'Webdesign von ',
-          _(
-            'a',
-            {
-              href: 'https://tomsoerr.github.io/portfolio/#/contact',
-              target: '_blank',
-              class: 'tst-preload',
-            },
-            ['Tom Soerr'],
-            events,
-          ),
+
+      ]),
+
+      _('div', { class: 'tst-footer-contact' }, [
+        _('h3', null, ['Kontakt']),
+        _('address', null, [
+          _('p', { text: 'Aye Aye GmbH' }, ['Hamburg']),
+          _('p', null, ['Am Sandtorpark 2']),
+          _('p', null, ['20457 Hamburg']),
+          _('p', null, ['Tel: 040 123456']),
+          _('p', null, ['E-Mail: info@aye-aye.de']),
         ]),
       ]),
 
+      ...allTours.map((tour) => _('div', { class: `tst-footer-${tour.folder}` }, [
+        _('h3', null, [tour.parent]),
+        _('ul', null, [
+          ...tour.unterpunkte.map((sub) => _('li', null, [
+            _(
+              'a',
+              {
+                href: `${Helper.relativPath(window.location.pathname, sub.href)}`,
+                class: 'tst-preload',
+                text: sub.text,
+              },
+              null,
+              events,
+            ),
+          ])),
+        ]),
+      ])),
+
+      _('div', { class: 'tst-footer-legal' }, [
+        _('h3', null, ['Rechtliches']),
+        _('ul', null, [
+          _('li', null, [
+            _(
+              'a',
+              {
+                href: `${Helper.pathToMain(window.location.pathname)}impressum.html`,
+                class: 'tst-preload',
+              },
+              ['Impressum'],
+              events,
+            ),
+          ]),
+          _('li', null, [
+            _(
+              'a',
+              {
+                href: `${Helper.pathToMain(window.location.pathname)}datenschutz.html`,
+                class: 'tst-preload',
+              },
+              ['Datenschutz'],
+              events,
+            ),
+          ]),
+        ]),
+      ]),
+      _('div', { class: 'tst-by-link' }, [
+        'Webdesign von ',
+        _(
+          'a',
+          {
+            href: 'https://tomsoerr.github.io/portfolio/#/contact',
+            target: '_blank',
+            class: 'tst-preload',
+          },
+          ['Tom Soerr'],
+          events,
+        ),
+      ]),
     ]),
   ]);
 }

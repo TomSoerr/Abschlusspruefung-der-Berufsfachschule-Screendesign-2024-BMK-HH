@@ -120,7 +120,7 @@ const navigation = (function navigationIIFE() {
     return new Promise((resolve, reject) => {
       const fontFile = new FontFace(
         'Noto Sans',
-        'url(./fonts/noto-sans-v35-latin-regular.woff2)',
+        'url(./fonts/noto-sans-v36-latin-regular.woff2)',
         {
           weight: '400',
           style: 'normal',
@@ -277,7 +277,7 @@ const navigation = (function navigationIIFE() {
                   navLink(
                     { href: '#', text: item.parent, data: item.folder },
                     _('ul', null, [
-                      navLink({ text: item.text, href: `${item.folder}.html` }),
+                      navLink({ text: item.text, href: `${item.folder}.html` }, null, true),
                       ...item.unterpunkte.reduce((accInner, itemInner) => {
                         accInner.push(
                           navLink(
