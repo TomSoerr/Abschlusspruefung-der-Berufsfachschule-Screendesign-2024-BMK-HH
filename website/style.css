@@ -1408,7 +1408,19 @@ ________________________________________________________________________________
 }
 
 .tst-tour-list-content .tst-paragraph {
-  max-width: 50ch;
+  /* max-width: 55ch; */
+}
+
+.tst-tour-list-content .tst-button {
+  margin-top: var(--tst-space-m);
+  align-self: flex-end;
+}
+
+.tst-tour-list-content > div {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: auto;
 }
 
 .tst-tour-list-info {
@@ -1418,30 +1430,27 @@ ________________________________________________________________________________
   margin-top: auto;
 }
 
-.tst-tour-list-info div {
+.tst-tour-list-info {
   display: flex;
   flex-direction: column;
   gap: var(--tst-space-s);
 }
 
-.tst-tour-list-info div li {
+.tst-tour-list-duration,
+.tst-tour-list-age,
+.tst-tour-list-info li > a {
   display: flex;
   align-items: center;
   gap: var(--tst-space-m);
 }
 
-.tst-tour-list-info div li span {
+.tst-tour-list-info li span {
   max-width: 22ch;
 }
 
-.tst-tour-list-info > li {
-  align-self: flex-end;
-  margin-left: auto;
-  padding-top: var(--tst-space-m);
-}
 .tst-tour-list-info li img {
-  height: 3.5rem;
-  width: auto;
+  width: 3.5rem;
+  height: auto;
 }
 
 /* tourCardImg() */
@@ -1452,7 +1461,7 @@ ________________________________________________________________________________
 }
 
 .tst-tour-list-card .tst-img {
-  aspect-ratio: 2 / 1.6;
+  aspect-ratio: 2 / 1.5;
 }
 
 /* default-page-width + space-x * 2 */

@@ -11,6 +11,9 @@ import hero from '../modules/hero.js';
 const _ = Helper.create;
 
 function load() {
+  // set tab title to 'Stadtführungen für Kinder und Familien'
+  document.title = 'Stadtführungen für Kinder und Familien';
+
   document.body.append(
     nav(),
     main(

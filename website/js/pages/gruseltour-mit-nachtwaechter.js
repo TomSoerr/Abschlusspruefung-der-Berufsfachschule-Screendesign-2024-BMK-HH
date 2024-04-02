@@ -15,6 +15,8 @@ const _ = Helper.create;
 
 function tourTemplate({ site }) {
   const tourData = angebote[Helper.getFolderData(`${site}.html`)][site];
+  document.title = tourData.name;
+
   return [
     hero({ img: { src: tourData.img.src, alt: tourData.img.alt }, heading: tourData.name }),
     section([

@@ -26,7 +26,7 @@ function getLink(home) {
   return link;
 }
 
-function categoryIcon({ c, home = false } = {}) {
+function categoryIcon({ c, home = false, showLabel = false } = {}) {
   const link = getLink(home);
 
   return _('li', null, [
@@ -39,6 +39,7 @@ function categoryIcon({ c, home = false } = {}) {
         src: Helper.imgPath(`${c}.svg`),
         alt: categoryList[c],
       }),
+      showLabel ? _('span', null, [categoryList[c]]) : null,
     ]),
   ]);
 }
