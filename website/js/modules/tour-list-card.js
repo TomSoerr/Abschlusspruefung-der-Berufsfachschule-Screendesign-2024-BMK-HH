@@ -2,7 +2,7 @@ import Helper from './helper.js';
 import p from './paragraph.js';
 import image from './image.js';
 import button from './button.js';
-import { category, categoryIcon } from './categories.js';
+import { categoryIcon } from './categories.js';
 
 const _ = Helper.create;
 

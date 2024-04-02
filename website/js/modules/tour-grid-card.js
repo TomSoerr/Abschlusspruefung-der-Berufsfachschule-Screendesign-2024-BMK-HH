@@ -1,17 +1,13 @@
 import Helper from './helper.js';
 import button from './button.js';
-import p from './paragraph.js';
 import image from './image.js';
-import { category, categoryList } from './categories.js';
+import { categoryIcon } from './categories.js';
 
 const _ = Helper.create;
 
-export default function tourCard({
+export default function tourGridCard({
   name,
   img,
-  teaser = '',
-  duration,
-  age,
   categories = [],
   href,
 }) {
@@ -22,15 +18,13 @@ export default function tourCard({
       hidden: true,
     }),
     _('div', null, [
-      _('h2', null, [name]),
-      ...p({ text: teaser, teaser: true }),
+      _('h3', null, [name]),
+
       _(
         'div',
-        { class: 'tst-category-wrapper' },
-        categories.map((categoryItem) => category({ c: categoryItem, home: true })),
+        { class: 'tst-category-icons' },
+        categories.map((categoryItem) => categoryIcon({ c: categoryItem, home: true })),
       ),
-      _('p', { class: 'tst-tour-duration' }, [duration]),
-      _('p', { class: 'tst-tour-age' }, [age]),
 
       button({
         text: 'Mehr erfahren',

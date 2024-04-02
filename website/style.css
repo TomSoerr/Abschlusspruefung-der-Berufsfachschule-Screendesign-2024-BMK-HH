@@ -239,6 +239,7 @@ h3 {
   font-weight: 400;
   line-height: 1.2;
   margin-bottom: 0.35em;
+  hyphens: auto;
   scroll-margin-top: calc(var(--tst-current-nav-height) + var(--tst-space-y));
 }
 
@@ -1305,50 +1306,92 @@ ________________________________________________________________________________
 .tst-tour-grid {
   display: grid;
   gap: var(--tst-space-l);
-  grid-template-columns: repeat(auto-fill, minmax(23rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+}
+
+.tst-tour-grid li {
+  list-style: none;
 }
 
 /* Card */
 
 .tst-tour-card {
-  background-color: var(--tst-color-secondary);
-  display: flex;
+  position: relative;
   box-shadow: 0px 6px 20px 0px #3e434420;
   overflow: hidden;
   border-radius: var(--tst-border-radius);
-  flex-direction: column;
+}
+
+.tst-tour-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.175) 0%,
+    rgba(0, 0, 0, 0.519) 100%
+  );
+  z-index: 2;
 }
 
 .tst-tour-card > div {
+  aspect-ratio: 1.4 / 1;
   padding: var(--tst-space-m);
-  display: flex;
-  flex: 1 1 auto;
+  color: var(--tst-color-primary);
+  inset: 0;
+  display: grid;
+  grid:
+    "h w"
+    "b b" /
+    auto 4rem;
+  gap: var(--tst-space-m);
   flex-direction: column;
+  position: relative;
+  z-index: 3;
 }
 
-.tst-tour-card h2 {
-  font-size: var(--tst-h3);
-  font-family: var(--tst-text-font);
-  margin-bottom: var(--tst-space-m);
-  hyphens: auto;
+.tst-tour-card h3 {
+  margin: 0;
+  grid-area: h;
 }
 
 .tst-tour-card .tst-img {
-  min-width: 0;
-  aspect-ratio: 1 / 1;
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  z-index: 1;
+}
+
+.tst-tour-card .tst-category-icon img {
+  width: 4rem;
+  height: auto;
+  filter: grayscale(100%) brightness(2);
+}
+
+.tst-tour-card .tst-button {
+  margin: auto 0 0 auto;
+  grid-area: b;
+}
+
+.tst-category-icons {
+  grid-area: w;
+  display: flex;
+  flex-direction: column;
+  gap: var(--tst-space-s);
 }
 
 /* category-wrapper */
 
 .tst-category-wrapper {
   display: flex;
-  gap: var(--tst-space-xs) var(--tst-space-s);
   flex-wrap: wrap;
+  gap: var(--tst-space-xs) var(--tst-space-s);
   margin-bottom: var(--tst-space-m);
 }
 
 .tst-category-wrapper li {
   list-style: none;
+  text-wrap: nowrap;
 }
 
 .tst-category-cell {
@@ -1357,6 +1400,11 @@ ________________________________________________________________________________
   background-color: inherit;
   border: 2px solid var(--tst-color-secondary-2);
   font-size: 1.5rem;
+  background-color: var(--tst-color-secondary-2);
+  color: var(--tst-color-text);
+}
+
+.tst-category-cell a {
 }
 
 /* categoryList from ./js/modules/categories.js */
@@ -1366,7 +1414,15 @@ ________________________________________________________________________________
 [data-category="be"] [data-category="be"],
 [data-category="in"] [data-category="in"],
 [data-category="ou"] [data-category="ou"] {
-  background-color: var(--tst-color-secondary-light);
+  background-color: var(--tst-color-secondary);
+  color: var(--tst-color-primary);
+  border-color: var(--tst-color-secondary);
+}
+
+@media (max-width: 768px) {
+  .tst-tour-card > div {
+    aspect-ratio: 16 / 9;
+  }
 }
 
 /*______________________________________________________________________________
