@@ -1,13 +1,19 @@
 import Helper from './helper.js';
 import section from './section.js';
 import tourCard from './tour-card.js';
-import { categories } from './categories.js';
+import { categoryList, category } from './categories.js';
 import angebote from '../../data/angebote.js';
 
 const _ = Helper.create;
 
 const tourGridContainer = _('div', { class: 'tst-tour-grid' });
-const categoriesNavContainer = _('div', null, [categories()]);
+const categoriesNavContainer = _('div', null, [
+  _(
+    'ul',
+    { class: 'tst-category-wrapper' },
+    Object.keys(categoryList).map((categoryItem) => category({ c: categoryItem })),
+  ),
+]);
 
 // get all tours with a "kategorie" key
 function getAllTours() {

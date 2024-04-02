@@ -227,9 +227,10 @@ const formItems = (() => {
   };
 })();
 
-function buchungForm() {
+function buchungForm({ text }) {
   return section(
     [
+      _('h2', { text }),
       _('p', null, [
         _('strong', {
           text: 'Verpflichtende Felder sind mit einem * gekennzeichnet.',

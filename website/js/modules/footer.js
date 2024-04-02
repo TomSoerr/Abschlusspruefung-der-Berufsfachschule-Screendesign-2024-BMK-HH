@@ -65,11 +65,12 @@ export default function footer() {
       _('div', { class: 'tst-footer-contact' }, [
         _('h3', null, ['Kontakt']),
         _('address', null, [
-          _('p', { text: 'Aye Aye GmbH' }, ['Hamburg']),
-          _('p', null, ['Am Sandtorpark 2']),
+          _('p', { text: 'Agentur Aye Aye' }),
+          _('p', { text: 'Akina Henyes und Anjuli Sayyed' }),
+          _('p', null, ['Am Sandtorkai 48']),
           _('p', null, ['20457 Hamburg']),
-          _('p', null, ['Tel: 040 123456']),
-          _('p', null, ['E-Mail: info@aye-aye.de']),
+          _('p', null, ['Tel: (040) 13 99 04-0']),
+          _('p', null, ['E-Mail: info@aye-aye.hamburg']),
         ]),
       ]),
 

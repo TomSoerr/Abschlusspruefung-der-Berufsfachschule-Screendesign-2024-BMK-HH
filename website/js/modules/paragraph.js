@@ -3,11 +3,17 @@ import Helper from './helper.js';
 const _ = Helper.create;
 
 /**
- *
- * @param {string} text
- * @returns {Array}
- */
-export default function p({ text, teaser, htmlClass }) {
+  * Create paragraphs from text string
+  * @param {Object} param0 - Object with text, teaser, htmlClass, teaserLink
+  * @param {string} text - Text string
+  * @param {boolean} teaser - If the text should be as long as a teaser
+  * @param {string} htmlClass - Class for the paragraph
+  * @param {string} teaserLink - Link for the teaser
+  * @returns {Array}
+  */
+export default function p({
+  text, teaser, htmlClass, teaserLink = null,
+} = {}) {
   function applyFormatting(ctn, separator, tag, subTag = null) {
     return ctn.map((e) => {
       if (typeof e === 'string') {
@@ -48,6 +54,14 @@ export default function p({ text, teaser, htmlClass }) {
 
     return _('p', { class: classes }, content);
   });
+
+  if (teaser && teaserLink) {
+    paragraphs[paragraphs.length - 1].append('... ', _('a', {
+      class: 'tst-read-more',
+      text: 'Weiterlesen',
+      href: Helper.relativPath(window.location.pathname, teaserLink),
+    }));
+  }
 
   return paragraphs;
 }

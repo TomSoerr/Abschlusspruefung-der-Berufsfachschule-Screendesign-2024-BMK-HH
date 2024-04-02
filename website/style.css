@@ -2,29 +2,6 @@
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-TABLE OF CONTENTS
-________________________________________________________________________________
-¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
-/*
-Table of Contents
-1. GENERAL
-2. BLOCK NAVIGATION
-3. DEFAULT SECTION
-4. SECTIONS IMG TEXT
-5. SECTIONS CTA
-6. SECTIONS ABOUT ME
-7. BLOCK FOOTER
-8. SECTION HERO
-9. BLOCK FORMULAR
-10. BLOCK PRODUCT LIST
-11. BLOCK WARUM NATURKOSMETIK
-12. BLOCK IMAGES
-*/
-
-/*______________________________________________________________________________
-||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 0. GENERAL
 ________________________________________________________________________________
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
@@ -111,6 +88,8 @@ Default Variables
   --tst-icon-font: "Material Symbols Rounded";
   --tst-nav-icon-font-size: 2rem;
 
+  /* Default root space should always be 1rem */
+  /* if not change padding here: #tst-site-nav > .tst-section-inner */
   --tst-root-space: 1rem;
   --tst-space-xs: calc(var(--tst-root-space) * 0.5);
   --tst-space-s: calc(var(--tst-root-space) * 1);
@@ -119,7 +98,7 @@ Default Variables
   --tst-space-xl: calc(var(--tst-root-space) * 8);
   --tst-space-xxl: calc(var(--tst-root-space) * 12);
 
-  --tst-space-y: var(--tst-space-xl);
+  --tst-space-y: var(--tst-space-l);
   --tst-space-x: var(--tst-space-l);
 
   --tst-page-width-l: 1728px;
@@ -131,7 +110,7 @@ Default Variables
   --tst-h1: 6rem;
   --tst-h1: clamp(2.1rem, 5vw, 5.5rem);
   --tst-h2: 3rem;
-  --tst-h3: 2.1rem;
+  --tst-h3: 2.5rem;
   --tst-text: 1.7rem;
 
   --tst-border-radius: 0rem;
@@ -143,8 +122,10 @@ Default Variables
   --tst-current-nav-height: var(--tst-nav-height);
   --tst-nav-underline-offset: 1.1rem;
 
-  --tst-aspect-ratio-home: 16 / 16;
-  --tst-aspect-ratio-hero: 16 / 9;
+  --tst-aspect-ratio-home: 16 / 7;
+  --tst-aspect-ratio-home-mobile: 70vh;
+  --tst-aspect-ratio-sub: 16 / 5;
+  --tst-aspect-ratio-sub-mobile: 48vh;
 
   --tst-color-primary: #fdfeff;
 
@@ -170,9 +151,8 @@ Breakpoints
 @media (max-width: 768px) {
   :root {
     --tst-root-space: 0.9rem;
-    --tst-space-y: var(--tst-space-xl);
     --tst-space-x: var(--tst-space-l);
-    --tst-h1: 3rem;
+    --tst-h1: 3.5rem;
     --tst-h2: 2.6rem;
     --tst-nav-underline-offset: 1.2rem;
   }
@@ -183,7 +163,6 @@ Breakpoints
 @media (max-width: 480px) {
   :root {
     --tst-root-space: 0.8rem;
-    --tst-space-y: var(--tst-space-xl);
     --tst-space-x: var(--tst-space-m);
   }
 }
@@ -257,19 +236,19 @@ h1,
 h2,
 h3 {
   font-family: var(--tst-highlight-font);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.2;
   margin-bottom: 0.35em;
   scroll-margin-top: calc(var(--tst-current-nav-height) + var(--tst-space-y));
 }
 
 h1 {
-  font-family: var(--tst-highlight-font);
+  color: var(--tst-color-secondary);
   font-size: var(--tst-h1);
 }
 
 h2 {
-  font-family: var(--tst-highlight-font);
+  color: var(--tst-color-secondary);
   font-size: var(--tst-h2);
 }
 
@@ -291,14 +270,18 @@ p.tst-paragraph {
   max-width: 75ch;
 }
 
+address p.tst-paragraph {
+  font-style: normal;
+  margin-bottom: 0;
+}
+
 a {
-  color: var(--tst-color-text);
   text-decoration: none;
   position: relative;
+  color: var(--tst-color-accent);
 }
 
 a:is(:hover, :focus-visible) {
-  color: var(--tst-color-accent);
   text-decoration: underline;
   outline: none;
 }
@@ -364,7 +347,7 @@ footer a:is(:hover, :focus-visible)::before {
   }
 }
 
-/* Button */
+/* button.js */
 
 .tst-button {
   text-wrap: nowrap;
@@ -415,7 +398,7 @@ footer a:is(:hover, :focus-visible)::before {
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-1. BLOCK NAVIGATION
+nav.js && nav-link.js
 ________________________________________________________________________________
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
 /*______________________________________
@@ -447,7 +430,7 @@ footer ul {
 
 #tst-site-nav > .tst-section-inner {
   /* don't change x padding this is needed for cs calculation */
-  padding: var(--tst-space-s) var(--tst-space-x);
+  padding: 1rem 4rem;
   height: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -606,6 +589,10 @@ Desktop: Sub Menu
 /*______________________________________
 Mobile: Navigation
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+
+#tst-site-nav.tst-nav-mobile > .tst-section-inner {
+  padding: var(--tst-space-s) var(--tst-space-x);
+}
 
 #tst-site-nav.tst-nav-open #tst-menu-btn::before {
   content: "\e5cd";
@@ -792,7 +779,7 @@ Mobile: Sub Menu
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-2. DEFAULT SECTION 
+section.js
 ________________________________________________________________________________
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
 
@@ -802,6 +789,7 @@ main {
 
 .tst-section {
   width: 100vw;
+
   background-position: bottom;
   background-size: cover;
   background: var(--tst-color-primary);
@@ -836,48 +824,7 @@ main {
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-2. SECTION IMG TEXT
-________________________________________________________________________________
-¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
-/* Change order */
-
-.tst-section-img-text > .tst-section-inner {
-  grid-gap: var(--tst-space-m);
-  align-items: center;
-}
-
-.tst-section-img-text .tst-picture {
-  aspect-ratio: 5 / 4;
-  width: 100%;
-  border-radius: var(--tst-border-radius);
-  flex: 1 1 0;
-}
-
-.tst-section-img-text .tst-button {
-  margin-top: var(--tst-space-l);
-}
-
-@media (max-width: 768px) {
-  .tst-section-img-text > .tst-section-inner {
-    align-items: start;
-  }
-
-  .tst-section-img-text .tst-picture {
-    display: block;
-    width: 100vw;
-    flex: 0;
-    aspect-ratio: 16 / 13;
-    border-radius: 0;
-    margin: calc(-1 * var(--tst-space-y)) calc(-1 * var(--tst-space-x))
-      var(--tst-space-m) calc(-1 * var(--tst-space-x));
-  }
-}
-
-/*______________________________________________________________________________
-||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-2. SECTIONS CTA
+cta.js
 ________________________________________________________________________________
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
 
@@ -896,7 +843,7 @@ ________________________________________________________________________________
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-2. BLOCK FOOTER
+footer.js
 ________________________________________________________________________________
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
 /*______________________________________
@@ -908,7 +855,6 @@ Section specific
   color: var(--tst-color-primary);
   position: relative;
   --wave-height: 4rem;
-  padding-top: calc(var(--wave-height) + var(--tst-space-y));
   margin-top: auto;
   overflow: hidden;
 }
@@ -923,6 +869,7 @@ Section specific
   gap: var(--tst-space-l) var(--tst-space-xxl);
   align-items: start;
   font-size: 1.5rem;
+  padding-top: calc(var(--wave-height) + var(--tst-space-y));
 }
 
 #tst-footer .tst-footer-socials {
@@ -1025,8 +972,38 @@ Section specific
     width: 3.5rem;
   }
 
-  #tst-footer .tst-by-link {
+  #tst-footer .tst-section-inner > .tst-by-link:last-child {
     justify-self: center;
+  }
+}
+
+@media (max-width: 480px) {
+  #tst-footer {
+    --wave-height: 2.4rem;
+  }
+  #tst-footer .tst-section-inner {
+    grid:
+      "som"
+      "con"
+      "leg"
+      "byt" /
+      auto;
+  }
+
+  #tst-footer .tst-section-inner > .tst-footer-socials {
+    justify-self: center;
+    gap: var(--tst-space-l);
+  }
+
+  #tst-footer
+    .tst-section-inner
+    > :not(
+      .tst-footer-socials,
+      .tst-by-link,
+      .tst-footer-contact,
+      .tst-footer-legal
+    ) {
+    display: none;
   }
 }
 
@@ -1047,7 +1024,7 @@ Section specific
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-4. SECTION HERO
+hero.js
 ________________________________________________________________________________
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
 /*______________________________________
@@ -1058,16 +1035,22 @@ Section specific
 }
 
 .tst-hero.tst-section > .tst-section-inner {
-  aspect-ratio: 16 / 5;
+  aspect-ratio: var(--tst-aspect-ratio-sub);
+  min-height: var(--tst-aspect-ratio-sub-mobile);
   padding: 0;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: end;
+  width: 100%;
+}
+
+[data-page="index"] .tst-hero.tst-section > .tst-section-inner {
+  aspect-ratio: var(--tst-aspect-ratio-home);
+  min-height: var(--tst-aspect-ratio-home-mobile);
 }
 
 .tst-hero > .tst-section-inner h1 {
-  color: var(--tst-color-secondary);
   max-width: 80%;
 }
 
@@ -1078,6 +1061,7 @@ Section specific
   padding: var(--tst-space-l) var(--tst-space-x);
   z-index: 50;
   position: relative;
+  width: 100%;
 }
 
 .tst-hero > .tst-section-inner > div::before,
@@ -1099,7 +1083,8 @@ Section specific
 }
 
 .tst-hero .tst-img {
-  max-height: 100%;
+  height: 100%;
+  width: 100%;
   filter: brightness(0.8);
   position: absolute;
 }
@@ -1108,11 +1093,30 @@ Section specific
   padding-top: 0;
 }
 
+@media (max-width: 480px) {
+  body[data-page="index"] .tst-hero + .tst-section > .tst-section-inner {
+    padding-top: var(--tst-space-y);
+  }
+
+  body[data-page="index"] .tst-hero .tst-img {
+    filter: brightness(0.7);
+  }
+
+  body[data-page="index"] .tst-hero > .tst-section-inner > div {
+    background-color: transparent;
+  }
+
+  body[data-page="index"] .tst-hero > .tst-section-inner h1 {
+    color: var(--tst-color-primary);
+    max-width: unset;
+  }
+}
+
 /*______________________________________________________________________________
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-0. BLOCK FORMULAR
+form.js
 ________________________________________________________________________________
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
 
@@ -1226,7 +1230,7 @@ ________________________________________________________________________________
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-0. BLOCK TOUR PREVIEW AND GRID
+tour-preview.js && tour-grid.js
 ________________________________________________________________________________
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
 
@@ -1369,33 +1373,110 @@ ________________________________________________________________________________
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-0. BLOCK TOUR LIST AND LISTCARD
+tour-list-card.js && tour-list.js
 ________________________________________________________________________________
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
-.tst-tour-list-wrapper {
-}
 
-.tst-tour-list-card {
-  display: flex;
-}
+/* tour-list.js */
 
-.tst-tour-list-card > div {
-  padding: var(--tst-space-m);
+.tst-tour-list {
   display: flex;
-  flex: 1 1 auto;
   flex-direction: column;
 }
 
-.tst-tour-list-card img {
-  min-width: 0;
-  aspect-ratio: unset;
+.tst-tour-list li {
+  list-style-type: none;
+}
+
+/* tour-list-card.js */
+
+.tst-tour-list-card {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: var(--tst-space-l);
+  padding: var(--tst-space-l) 0;
+  border-bottom: var(--tst-color-text) 2px solid;
+}
+
+.tst-tour-list-card:last-child {
+  border-bottom: none;
+}
+
+.tst-tour-list-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.tst-tour-list-content .tst-paragraph {
+  max-width: 50ch;
+}
+
+.tst-tour-list-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--tst-space-m);
+  margin-top: auto;
+}
+
+.tst-tour-list-info div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tst-space-s);
+}
+
+.tst-tour-list-info div li {
+  display: flex;
+  align-items: center;
+  gap: var(--tst-space-m);
+}
+
+.tst-tour-list-info div li span {
+  max-width: 22ch;
+}
+
+.tst-tour-list-info > li {
+  align-self: flex-end;
+  margin-left: auto;
+  padding-top: var(--tst-space-m);
+}
+.tst-tour-list-info li img {
+  height: 3.5rem;
+  width: auto;
+}
+
+/* tourCardImg() */
+
+.tst-tour-list-card .tst-image {
+  position: relative;
+  align-self: start;
+}
+
+.tst-tour-list-card .tst-img {
+  aspect-ratio: 2 / 1.6;
+}
+
+/* default-page-width + space-x * 2 */
+@media (min-width: 1376px) {
+  .tst-tour-list-card {
+    padding: var(--tst-space-l) var(--tst-space-xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .tst-tour-list-card {
+    grid-template-columns: 1fr;
+  }
+
+  .tst-tour-list-card > .tst-img {
+    aspect-ratio: 2 / 1.2;
+  }
 }
 
 /*______________________________________________________________________________
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-12. BLOCK IMAGES
+image.js && picture.js
 ________________________________________________________________________________
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
 

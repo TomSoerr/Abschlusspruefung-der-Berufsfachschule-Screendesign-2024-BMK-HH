@@ -7,6 +7,13 @@ export default class Helper {
   Image path
   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
 
+  /**
+   *
+   * @param {String} img - image name with extension
+   * @param {Boolean} hidden - set this to true if img is inside ap folder
+   * @param {String} source - use this for different img sizes inside picture tag
+   * @returns {string} - relative path to image
+   */
   static imgPath(img, hidden, source) {
     function imgSource() {
       if (source) {
