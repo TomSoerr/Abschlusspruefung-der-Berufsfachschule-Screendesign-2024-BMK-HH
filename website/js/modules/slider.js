@@ -1,7 +1,6 @@
 import Helper from './helper.js';
 import section from './section.js';
 import tourCard from './tour-card.js';
-import button from './button.js';
 import angebote from '../../data/angebote.js';
 
 const _ = Helper.create;
@@ -11,7 +10,7 @@ let tourSection;
 function gridTemplateColumns() {
   tourSection.classList.remove('c1', 'c2', 'c3', 'c4');
 
-  const min = 230 * Helper.customFontSizeMultiplier;
+  const min = 300 * Helper.customFontSizeMultiplier;
   const gap = parseFloat(getComputedStyle(tourSection.children[0].children[1].children[0]).getPropertyValue('gap'));
 
   const sectionWidth = tourSection.children[0].children[1].clientWidth;

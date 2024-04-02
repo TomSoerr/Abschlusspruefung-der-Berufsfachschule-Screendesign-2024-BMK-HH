@@ -1,6 +1,6 @@
 import Helper from './helper.js';
 import section from './section.js';
-import tourCard from './tour-card.js';
+import tourGridCard from './tour-grid-card.js';
 import { categoryList, category } from './categories.js';
 import angebote from '../../data/angebote.js';
 
@@ -31,7 +31,7 @@ function getAllTours() {
 }
 
 function buildTourGrid(tours) {
-  return tours.map((curr) => tourCard({
+  return tours.map((curr) => tourGridCard({
     img: curr[1].img,
     name: curr[1].name,
     duration: curr[1].dauer,
