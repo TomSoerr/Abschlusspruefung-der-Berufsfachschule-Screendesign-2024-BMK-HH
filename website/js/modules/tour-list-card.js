@@ -30,12 +30,15 @@ export default function tourCard({
         teaser: true,
         teaserLink: href,
       }),
-      _(
-        'ul',
-        { class: 'tst-tour-list-info' },
-        [
-          _('div', null, [
-            ...categories.map((categoryItem) => categoryIcon({ c: categoryItem })),
+      _('div', null, [
+        _(
+          'ul',
+          { class: 'tst-tour-list-info' },
+          [
+
+            ...categories.map((categoryItem) => (
+              categoryIcon({ c: categoryItem, showLabel: true })
+            )),
             _('li', { class: 'tst-tour-list-duration' }, [
               _('img', { src: Helper.imgPath('dauer.svg'), alt: 'Dauer' }),
               _('span', null, [duration]),
@@ -44,19 +47,15 @@ export default function tourCard({
               _('img', { src: Helper.imgPath('alter.svg'), alt: 'Alter' }),
               _('span', null, [age]),
             ]),
-          ]),
-          _('li', null, [
-            button({
-              type: 'link',
-              text: 'Mehr erfahren',
-              href,
-            }),
-          ]),
 
-        ],
-
-      ),
-
+          ],
+        ),
+        button({
+          type: 'link',
+          text: 'Mehr erfahren',
+          href,
+        }),
+      ]),
     ]),
   ]);
 }

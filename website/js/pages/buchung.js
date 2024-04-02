@@ -10,6 +10,8 @@ import { buchungForm } from '../modules/form.js';
 const _ = Helper.create;
 
 function load() {
+  document.title = 'Buchung';
+
   document.body.append(
     nav(),
     main(
