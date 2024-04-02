@@ -120,7 +120,7 @@ const navigation = (function navigationIIFE() {
     return new Promise((resolve, reject) => {
       const fontFile = new FontFace(
         'Noto Sans',
-        'url(./fonts/noto-sans-v36-latin-regular.woff2)',
+        `url(${Helper.pathToMain(window.location.pathname)}fonts/noto-sans-v36-latin-regular.woff2)`,
         {
           weight: '400',
           style: 'normal',
@@ -138,7 +138,7 @@ const navigation = (function navigationIIFE() {
 
     let navWidth = start;
 
-    navWidth += navSubMenuEl * navIconFontSize;
+    // navWidth += navSubMenuEl * navIconFontSize;
     navWidth += htmlSpaceX * 2;
     navWidth += navImgEl.getClientRects()[0].width;
     navHtmlEl.querySelectorAll('.tst-nav-top-level > li').forEach((li) => {
@@ -210,17 +210,17 @@ const navigation = (function navigationIIFE() {
     // debugger;
 
     // calculate the min width of the nav for the Breakpoint
-    calculateNavBreakpoint();
+    calculateNavBreakpoint(10);
 
     // wait till the image is loaded so the correct nav width can be calculated
     await navImgLoaded();
 
     // calculate the min width of the nav for the Breakpoint
 
-    calculateNavBreakpoint();
+    calculateNavBreakpoint(10);
 
     fontsLoaded().then(
-      () => calculateNavBreakpoint(),
+      () => calculateNavBreakpoint(10),
       (err) => {
         console.error('Error while loading the font with js');
         calculateNavBreakpoint(20);

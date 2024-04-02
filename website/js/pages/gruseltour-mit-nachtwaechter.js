@@ -7,6 +7,7 @@ import button from '../modules/button.js';
 import footer from '../modules/footer.js';
 import Helper from '../modules/helper.js';
 import angebote from '../../data/angebote.js';
+import hero from '../modules/hero.js';
 import { category } from '../modules/categories.js';
 import tourDates from '../modules/tour-dates.js';
 
@@ -15,11 +16,13 @@ const _ = Helper.create;
 function tourTemplate({ site }) {
   const tourData = angebote[Helper.getFolderData(`${site}.html`)][site];
   return [
-    _('h1', { text: tourData.name }),
-    ...p({ text: tourData.text }),
-    _('ul', null, tourData.kategorien.map((cat) => category({ c: cat, home: true }))),
-    tourDates({ filterBy: site, noLink: true }),
-    button({ type: 'link', text: 'Zurück zur Übersicht', href: `${Helper.getFolderData(`${site}.html`)}.html` }),
+    hero({ img: { src: tourData.img.src, alt: tourData.img.alt }, heading: tourData.name }),
+    section([
+      ...p({ text: tourData.text }),
+      _('ul', null, tourData.kategorien.map((cat) => category({ c: cat, home: true }))),
+      tourDates({ filterBy: site, noLink: true }),
+      button({ type: 'link', text: 'Zurück zur Übersicht', href: `${Helper.getFolderData(`${site}.html`)}.html` }),
+    ]),
   ];
 }
 

@@ -13,7 +13,7 @@ const categoryList = {
   ou: 'Outdoor',
 };
 
-function category({ c, home = false } = {}) {
+function getLink(home) {
   let link = '';
   if (home) {
     link = Helper.pathToMain(window.location.pathname);
@@ -23,6 +23,29 @@ function category({ c, home = false } = {}) {
     link += `${PAGE_WITH_TOUR_GRID}.html`;
   }
 
+  return link;
+}
+
+function categoryIcon({ c, home = false } = {}) {
+  const link = getLink(home);
+
+  return _('li', null, [
+    _('a', {
+      class: 'tst-category-icon',
+      href: `${link}#touren-hilfe?${c}`,
+      data: { category: c, title: categoryList[c] },
+    }, [
+      _('img', {
+        src: Helper.imgPath(`${c}.svg`),
+        alt: categoryList[c],
+      }),
+    ]),
+  ]);
+}
+
+function category({ c, home = false } = {}) {
+  const link = getLink(home);
+
   return _('li', null, [_('a', {
     class: 'tst-category-cell',
     text: categoryList[c],
@@ -31,8 +54,4 @@ function category({ c, home = false } = {}) {
   })]);
 }
 
-function categories() {
-  return _('ul', { class: 'tst-category-wrapper' }, Object.keys(categoryList).map((categoryItem) => category({ c: categoryItem })));
-}
-
-export { categoryList, categories, category };
+export { categoryList, category, categoryIcon };

@@ -28,7 +28,7 @@ const kundenmeinungen = () => (
         text: 'Vielen Dank für einen unvergesslichen Tag in Hamburg. Abseits der Touristenströme haben wir sehr persönliche Einblicke in diesen wunderbaren Stadtteil erhalten.',
       }),
     ],
-    'secondary',
+
   )
 );
 
@@ -72,7 +72,7 @@ function load() {
       kundenmeinungen(),
       empfehlungen(),
       section([tourDate({ maxDates: 6 }), button({ text: 'Kontakt', href: 'kontakt.html', type: 'link' }),
-      ], 'secondary'),
+      ]),
       tourGrid(),
 
       section([
