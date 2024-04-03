@@ -130,14 +130,22 @@ Default Variables
   --tst-color-primary: #fdfeff;
 
   --tst-color-secondary: #0e4176;
+  /* --tst-color-secondary: #5fd2ff; */
   --tst-color-secondary-light: #b0cbe8;
   --tst-color-secondary-2: #b3d562;
+  /* --tst-color-secondary-2: #00f0a5; */
+  /* --tst-color-secondary-2: #0d9268; */
   --tst-color-accent: #ff6823;
+  --tst-color-accent: #ff5f14;
+  /* --tst-color-accent: #ff5000; */
   --tst-color-accent-light: #f7c7c7;
 
   --tst-color-text: #000a14;
   --tst-color-background-1: var(--tst-color-primary);
   --tst-color-nav: var(--tst-color-primary);
+
+  /* needs to get changes inside nav.js:321 */
+  --tst-animation-short: 0.2s;
 }
 
 [data-scrolled="true"] {
@@ -307,11 +315,11 @@ footer a:not(.tst-preload)::before {
   height: 2px;
   width: 100%;
   background-color: var(--tst-color-text);
-  transition: width 0.3s ease-in-out;
+  transition: width var(--tst-animation-short) ease-in-out;
   top: 50%;
   right: 0;
   transform: translateY(var(--tst-nav-underline-offset));
-  animation: link-out 0.3s ease-in-out forwards;
+  animation: link-out var(--tst-animation-short) ease-in-out forwards;
 }
 
 footer a:not(.tst-preload)::before {
@@ -332,7 +340,7 @@ footer a:not(.tst-preload)::before {
   ul
   :is(li:hover, li:focus-within)::before,
 footer a:is(:hover, :focus-visible)::before {
-  animation: link-in 0.3s ease-in-out forwards;
+  animation: link-in var(--tst-animation-short) ease-in-out forwards;
 }
 
 @keyframes link-in {
@@ -370,6 +378,7 @@ footer a:is(:hover, :focus-visible)::before {
   color: var(--tst-color-primary);
   border: 2px solid var(--tst-color-accent);
   background-color: var(--tst-color-accent);
+  transition: all var(--tst-animation-short) ease-in-out;
 }
 
 .tst-button.secondary {
@@ -422,8 +431,8 @@ footer ul {
   z-index: 100;
   background-color: var(--tst-color-nav);
   color: var(--tst-color-text);
-  transition: transform 0.3s ease-in-out;
-  animation: open-nav 0.3s ease-in-out forwards;
+  transition: transform var(--tst-animation-short) ease-in-out;
+  animation: open-nav var(--tst-animation-short) ease-in-out forwards;
   /* If this is changes the loaded font in "./js/modules/nav.js" has to be changed */
   font-family: "Noto Sans", var(--tst-backup-fonts);
   font-weight: 400;
@@ -482,7 +491,7 @@ Shrinking Nav
 }
 
 [data-scrolled="true"] #tst-site-nav {
-  animation: shrink-nav 0.3s ease-in-out forwards;
+  animation: shrink-nav var(--tst-animation-short) ease-in-out forwards;
 }
 
 @keyframes shrink-nav {
@@ -513,12 +522,17 @@ Desktop: Navigation
   display: none;
   background-color: unset;
   color: var(--tst-color-text);
+  cursor: pointer;
   border: none;
   margin: 0;
   padding: 0;
   font-size: calc(var(--tst-current-nav-height) - 3 * var(--tst-space-s));
   line-height: 1;
-  transition: all 0.3s ease-in-out;
+  transition: all var(--tst-animation-short) ease-in-out;
+}
+
+#tst-site-nav #tst-menu-btn:is(:hover, :focus-visible) {
+  color: var(--tst-color-accent);
 }
 
 #tst-site-nav #tst-menu-btn::before {
@@ -569,6 +583,7 @@ Desktop: Sub Menu
   gap: var(--tst-nav-gap-y);
   left: 0;
   transform: translateX(calc(-1 * var(--tst-space-x)));
+  box-shadow: 0px 20px 20px 0px #3e43440d;
 }
 
 #tst-site-nav:not(.tst-nav-mobile)
@@ -611,7 +626,7 @@ Mobile: Navigation
 }
 
 #tst-site-nav.tst-nav-mobile.tst-nav-open > .tst-section-inner > ul {
-  animation: slide-in 0.1s ease-out forwards;
+  animation: slide-in var(--tst-animation-short) ease-out forwards;
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -638,7 +653,7 @@ Mobile: Navigation
 #tst-site-nav.tst-nav-mobile.tst-nav-open.tst-nav-close
   > .tst-section-inner
   > ul {
-  animation: slide-out 0.1s ease-out forwards;
+  animation: slide-out var(--tst-animation-short) ease-out forwards;
 }
 
 #tst-site-nav.tst-nav-mobile.tst-nav-open
@@ -684,13 +699,13 @@ Mobile: Overlay
   > .tst-section-inner
   .tst-nav-overlay {
   display: block;
-  animation: blur-in 0.1s ease-out forwards;
+  animation: blur-in var(--tst-animation-short) ease-out forwards;
 }
 
 #tst-site-nav.tst-nav-mobile.tst-nav-open.tst-nav-close
   > .tst-section-inner
   .tst-nav-overlay {
-  animation: blur-out 0.1s ease-out forwards;
+  animation: blur-out var(--tst-animation-short) ease-out forwards;
 }
 
 @keyframes blur-in {
@@ -1235,71 +1250,18 @@ tour-preview.js && tour-grid.js
 ________________________________________________________________________________
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
 
-/* Tour preview */
-
-.tst-tour-preview .tst-tour-preview-wrapper {
-  display: flex;
-  width: max-content;
-  gap: var(--tst-space-x);
-  padding-bottom: 2rem;
-}
-
-.tst-tour-preview .tst-button-wrapper {
-  display: flex;
-  margin-top: var(--tst-space-x);
-  gap: var(--tst-space-x);
-  justify-content: end;
-  flex-wrap: wrap;
-}
-
-.tst-tour-preview .tst-tour-preview-outer-wrapper {
-  overflow: scroll;
-  scroll-snap-type: x mandatory;
-  scroll-snap-stop: always;
-}
-
-.tst-tour-preview .tst-tour-preview-wrapper > * {
-  scroll-snap-align: start;
-  --columns: 1;
-  width: min(
-    calc(
-      (
-          var(--tst-default-page-width) - var(--tst-space-x) *
-            (var(--columns) - 1)
-        ) / var(--columns)
-    ),
-    calc((100vw - var(--tst-space-x) * (var(--columns) + 1)) / var(--columns))
-  );
-}
-
-.tst-tour-preview.c4 .tst-tour-preview-wrapper > * {
-  --columns: 4;
-}
-
-.tst-tour-preview.c3 .tst-tour-preview-wrapper > * {
-  --columns: 3;
-}
-
-.tst-tour-preview.c2 .tst-tour-preview-wrapper > * {
-  --columns: 2;
-}
-
-.tst-tour-preview.c1 .tst-tour-preview-wrapper > * {
-  --columns: 1;
-}
-
-.tst-tour-preview .tst-section-inner > h2 {
+/* .tst-tour-preview .tst-section-inner > h2 {
   margin-bottom: var(--tst-space-x);
-}
-.tst-tour-preview.tst-about-me .tst-section-inner > h2 {
+} */
+
+/* .tst-tour-preview.tst-about-me .tst-section-inner > h2 {
   margin-left: min(
     calc((var(--tst-default-page-width) - var(--tst-page-width-text)) / 2),
     max(
       calc(((100vw - var(--tst-page-width-text)) / 2) - var(--tst-space-x)),
       0px
     )
-  );
-}
+  ); */
 
 /* Tour Grid */
 
@@ -1400,11 +1362,9 @@ ________________________________________________________________________________
   background-color: inherit;
   border: 2px solid var(--tst-color-secondary-2);
   font-size: 1.5rem;
-  background-color: var(--tst-color-secondary-2);
+  background-color: var(--tst-color-primary);
   color: var(--tst-color-text);
-}
-
-.tst-category-cell a {
+  transition: all var(--tst-animation-short) ease-in-out;
 }
 
 /* categoryList from ./js/modules/categories.js */
@@ -1414,9 +1374,12 @@ ________________________________________________________________________________
 [data-category="be"] [data-category="be"],
 [data-category="in"] [data-category="in"],
 [data-category="ou"] [data-category="ou"] {
-  background-color: var(--tst-color-secondary);
-  color: var(--tst-color-primary);
-  border-color: var(--tst-color-secondary);
+  background-color: var(--tst-color-secondary-2);
+}
+
+.tst-category-cell:is(:hover, :focus-within) {
+  background-color: var(--tst-color-secondary-2);
+  text-decoration: none;
 }
 
 @media (max-width: 768px) {
@@ -1575,4 +1538,145 @@ ________________________________________________________________________________
   font-size: 1.4rem;
   text-align: center;
   margin: calc(-1 * var(--tst-space-s)) 0 var(--tst-space-s) 0;
+}
+
+/*______________________________________________________________________________
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+slider.js
+________________________________________________________________________________
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+.tst-slider-wrapper {
+  padding-bottom: 6rem;
+  position: relative;
+}
+
+.tst-slider {
+  cursor: ew-resize;
+  display: flex;
+  width: max-content;
+  gap: var(--tst-space-l);
+  padding-bottom: 2.5rem;
+}
+
+/* box-shwoadi nav */
+
+.tst-slider-outer {
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-snap-stop: always;
+}
+
+.tst-slider > * {
+  scroll-snap-align: start;
+  --columns: 1;
+  width: min(
+    calc(
+      (
+          var(--tst-default-page-width) - var(--tst-space-x) *
+            (var(--columns) - 1)
+        ) / var(--columns)
+    ),
+    calc((100vw - var(--tst-space-x) * (var(--columns) + 1)) / var(--columns))
+  );
+}
+
+.tst-slider-outer.c4 .tst-slider > * {
+  --columns: 4;
+}
+
+.tst-slider-outer.c3 .tst-slider > * {
+  --columns: 3;
+}
+
+.tst-slider-outer.c2 .tst-slider > * {
+  --columns: 2;
+}
+
+.tst-slider-outer.c1 .tst-slider > * {
+  --columns: 1;
+}
+
+.tst-slider-prev,
+.tst-slider-next {
+  font-family: var(--tst-icon-font);
+  appearance: none;
+  background-color: var(--tst-color-primary);
+  outline: 0;
+  border: 0;
+  color: var(--tst-color-text);
+  position: absolute;
+  bottom: 0;
+  font-size: 6rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all var(--tst-animation-short) ease-in-out;
+}
+
+:is(.tst-slider-prev, .tst-slider-next):is(:hover, :focus-visible) {
+  color: var(--tst-color-accent);
+}
+
+.tst-slider-prev {
+  left: 0;
+}
+
+.tst-hide-prev .tst-slider-prev {
+  display: none;
+}
+
+.tst-slider-prev::before {
+  content: "\e408";
+}
+
+.tst-slider-next {
+  right: 0;
+}
+
+.tst-hide-next .tst-slider-next {
+  display: none;
+}
+
+.tst-slider-next::before {
+  content: "\e409";
+}
+
+/*______________________________________________________________________________
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+id="kundenmeinungen"
+________________________________________________________________________________
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+
+.tst-slider blockquote {
+  font-size: 2rem;
+  font-weight: 400;
+  position: relative;
+  padding-top: 6rem;
+  padding-left: 2rem;
+  padding: 4rem 0 3rem 2rem;
+}
+
+.tst-slider blockquote::before {
+  content: "“";
+  font-size: 9rem;
+  font-weight: 700;
+  font-family: var(--tst-icon-font);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(0rem, -2.2rem);
+  line-height: 1;
+  color: var(--tst-color-secondary-2);
+}
+
+.tst-slider blockquote::after {
+  content: attr(data-author);
+  font-size: 1.5rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 0.7;
 }

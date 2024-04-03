@@ -8,24 +8,40 @@ import Helper from '../modules/helper.js';
 import button from '../modules/button.js';
 import tourGrid from '../modules/tour-grid.js';
 import tourDate from '../modules/tour-dates.js';
+import slider from '../modules/slider.js';
 
 const _ = Helper.create;
 
-const kundenmeinungen = () => (
+const kundenmeinungenData = [
+  {
+    text: 'Absolute Empfehlung! Sympathische Guides, die die Herzen der Kinder im Sturm erobern.',
+    author: 'Steffen Cole',
+  },
+  {
+    text: 'Der Kindergeburtstag meiner Tochter war der absolute Bringer! Die Kinder spielten noch wochenlang die Pfefferkörner nach und dachten sich immer neue Fälle aus.',
+    author: 'Robert Ehrlichmann',
+  },
+  {
+    text: 'Spannender geht Sightseeing nicht. So macht auch Kindern Stadtgeschichte Spaß.',
+    author: 'Andreas Adler',
+  },
+  {
+    text: 'Vielen Dank für einen unvergesslichen Tag in Hamburg. Abseits der Touristenströme haben wir sehr persönliche Einblicke in diesen wunderbaren Stadtteil erhalten.',
+    author: 'Mike Gruenewald',
+  },
+];
+
+const kundenmeinungen = ({ quotes }) => (
   section(
     [
-      _('h2', { text: 'Kundenmeinungen' }),
-      _('blockquote', {
-        text: 'Absolute Empfehlung! Sympathische Guides, die die Herzen der Kinder im Sturm erobern.',
-      }),
-      _('blockquote', {
-        text: 'Spannender geht Sightseeing nicht. So macht auch Kindern Stadtgeschichte Spaß.',
-      }),
-      _('blockquote', {
-        text: 'Der Kindergeburtstag meiner Tochter war der absolute Bringer! Die Kinder spielten noch wochenlang die Pfefferkörner nach und dachten sich immer neue Fälle aus.',
-      }),
-      _('blockquote', {
-        text: 'Vielen Dank für einen unvergesslichen Tag in Hamburg. Abseits der Touristenströme haben wir sehr persönliche Einblicke in diesen wunderbaren Stadtteil erhalten.',
+      _('h2', { text: 'Kundenmeinungen', id: 'kundenmeinungen' }),
+      slider({
+        content: quotes.map((quote) => (_('blockquote', {
+          text: quote.text,
+          data: { author: quote.author },
+        })
+        )),
+
       }),
     ],
 
@@ -69,7 +85,7 @@ function load() {
         ),
         button({ text: 'Kontakt', href: 'kontakt.html', type: 'link' }),
       ]),
-      kundenmeinungen(),
+      kundenmeinungen({ quotes: kundenmeinungenData }),
       empfehlungen(),
       section([tourDate({ maxDates: 6 }), button({ text: 'Kontakt', href: 'kontakt.html', type: 'link' }),
       ]),

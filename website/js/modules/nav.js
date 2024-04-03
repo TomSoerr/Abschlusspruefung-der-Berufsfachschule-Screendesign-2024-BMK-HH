@@ -318,7 +318,7 @@ const navigation = (function navigationIIFE() {
                         'tst-nav-open',
                         'tst-nav-close',
                       );
-                    }, 100);
+                    }, 200);
                     document.body.style.overflow = 'visible';
                   } else {
                     navHtmlEl.classList.add('tst-nav-open');
