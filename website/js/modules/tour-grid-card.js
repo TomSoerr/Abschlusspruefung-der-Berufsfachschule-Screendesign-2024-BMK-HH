@@ -30,6 +30,7 @@ export default function tourGridCard({
         text: 'Mehr erfahren',
         href,
         type: 'link',
+        color: 'primary',
       }),
     ]),
   ]);

@@ -9,10 +9,15 @@ import button from '../modules/button.js';
 import tourGrid from '../modules/tour-grid.js';
 import tourDate from '../modules/tour-dates.js';
 import slider from '../modules/slider.js';
+import image from '../modules/image.js';
 
 const _ = Helper.create;
 
 const kundenmeinungenData = [
+  {
+    text: 'Vielen Dank für einen unvergesslichen Tag in Hamburg. Abseits der Touristenströme haben wir sehr persönliche Einblicke in diesen wunderbaren Stadtteil erhalten.',
+    author: 'Mike Gruenewald',
+  },
   {
     text: 'Absolute Empfehlung! Sympathische Guides, die die Herzen der Kinder im Sturm erobern.',
     author: 'Steffen Cole',
@@ -25,45 +30,61 @@ const kundenmeinungenData = [
     text: 'Spannender geht Sightseeing nicht. So macht auch Kindern Stadtgeschichte Spaß.',
     author: 'Andreas Adler',
   },
-  {
-    text: 'Vielen Dank für einen unvergesslichen Tag in Hamburg. Abseits der Touristenströme haben wir sehr persönliche Einblicke in diesen wunderbaren Stadtteil erhalten.',
-    author: 'Mike Gruenewald',
-  },
+
 ];
 
 const kundenmeinungen = ({ quotes }) => (
   section(
     [
-      _('h2', { text: 'Kundenmeinungen', id: 'kundenmeinungen' }),
+      _('h2', { text: 'Kundenmeinungen' }),
       slider({
-        content: quotes.map((quote) => (_('blockquote', {
-          text: quote.text,
-          data: { author: quote.author },
-        })
-        )),
-
+        content: quotes.map((quote) => (_('li', null, [
+          _('blockquote', {
+            text: quote.text,
+            data: { author: quote.author },
+          }),
+        ]))),
       }),
+
     ],
 
   )
 );
 
-const empfehlungen = () => (
+const empfehlungenData = [
+  {
+    heading: 'Akinas Lieblingstour: Die Gruseltour mit Nachtwächter',
+    text: 'Ich mag die Gruseltour mit dem Nachtwächter am liebsten. Bei der Ausarbeitung dieser Tour sind wir auf großartige Geschichten und Legenden aus der Speicherstadt gestoßen. Unser Guide Thomas taucht mit den Kindern innerhalb kürzester Zeit in eine fantastische Welt ein, sodass sie alles um sich herum vergessen und nur noch den gruseligen Geschichten lauschen. Auch manch Erwachsene habe ich schon vor Schreck kreischen hören, wenn unsere Schausteller unvermittelt auftauchen. Ein großer Gruselspaß!',
+    link: { text: 'Zur Gruseltour', href: 'gruseltour-mit-nachtwaechter.html' },
+    img: { src: 'ap2024_team_Akina_Henyes_2.jpg', alt: 'Akina Henyes' },
+  },
+  {
+    heading: 'Anjulis Lieblingstour: Die Klabautermann-Tour',
+    text: 'Mein absoluter Favorit ist unsere Klabautermann-Tour. Ich mag die Seefahrer- und Schmugglergeschichten und entdecke an den Orten, die wir besuchen, immer wieder neue und spannende Details. Die Kinder wollen am Ende der Tour immer alle zur See fahren und das zeigt mir, dass wir alles richtig gemacht haben.',
+    link: { text: 'Zur Klabautermann Tour', href: 'klabautermann-tour.html' },
+    img: { src: 'ap2024_team_Anjuli_Sayyed_2.jpg', alt: 'Anjuli Sayyed' },
+  },
+];
+
+const empfehlungen = ({ data }) => (
   section([
     _('h2', { text: 'Unsere persönlichen Empfehlungen' }),
-    ...p({ text: '**Akinas Lieblingstour: Die Gruseltour mit Nachtwächter**' }),
-    _('blockquote', {
-      text: 'Ich mag die Gruseltour mit dem Nachtwächter am liebsten. Bei der Ausarbeitung dieser Tour sind wir auf großartige Geschichten und Legenden aus der Speicherstadt gestoßen. Unser Guide Thomas taucht mit den Kindern innerhalb kürzester Zeit in eine fantastische Welt ein, sodass sie alles um sich herum vergessen und nur noch den gruseligen Geschichten lauschen. Auch manch Erwachsene habe ich schon vor Schreck kreischen hören, wenn unsere Schausteller unvermittelt auftauchen. Ein großer Gruselspaß!',
-    }),
-    button({ text: 'Zur Gruseltour', href: 'produkte.html' }),
 
-    _('h2', { text: 'Unsere persönlichen Empfehlungen' }),
-    ...p({ text: '**Anjulis Lieblingstour: Die Klabautermann-Tour**' }),
-    _('blockquote', {
-      text: 'Mein absoluter Favorit ist unsere Klabautermann-Tour. Ich mag die Seefahrer- und Schmugglergeschichten und entdecke an den Orten, die wir besuchen, immer wieder neue und spannende Details. Die Kinder wollen am Ende der Tour immer alle zur See fahren und das zeigt mir, dass wir alles richtig gemacht haben.',
-    }),
-    button({ text: 'Klabautermann-Tour', href: 'produkte.html' }),
-  ])
+    ...data.map((item) => (
+      _('section', { class: 'tst-empfelungen-section' }, [
+        _('div', null, [
+          _('h3', { text: item.heading }),
+          ...p({
+            text: item.text,
+            teaserLink: item.link.href,
+            teaserText: item.link.text,
+          }),
+        ]),
+        image({ hidden: true, ...item.img }),
+      ])
+    )),
+
+  ], 'tst-empfehlungen')
 );
 
 function load() {
@@ -72,7 +93,7 @@ function load() {
     main(
       hero({
         img: {
-          src: 'ap2024_hafencity_12.jpg',
+          src: 'ap2024_hafencity_07.jpg',
           alt: 'Hafencity',
           hidden: true,
         },
@@ -81,20 +102,28 @@ function load() {
       }),
       section([
         ...p(
-          { text: 'Wir nehmen euch mit auf eine Entdeckungsreise in den neuesten und den ältesten Stadtteil Hamburgs, die Hafencity und die Speicherstadt. <br> Wir möchten euch zeigen, dass Geschichte und Architektur alles andere als langweilig, sondern – ganz im Gegenteil – spannend und voller Überraschungen sein können. Ob bei einem Kindergeburtstag, einer Klassenfahrt, einer Stadtrallye oder einem Familienausflug hier bei uns an der Elbe gibt es immer etwas Aufregendes zu erleben und zu erfahren. <br> Unser aufgeschlossenes und junges Team aus Kunsthistorikerinnen, Architektur- und Schauspielstudenten freut sich darauf, mit euch die spannenden und bislang unbekannten Seiten der Hafencity zu erkunden und vermittelt Hintergrundwissen in altersangemessener und fesselnder Art und Weise. <br> Wir sind seit vielen Jahren in diesem neuen Stadtteil verwurzelt und haben uns zum Ziel gesetzt, euch die Hafencity aus einem ganz eigenen Blickwinkel zu zeigen und euch die vielseitigen Facetten erleben zu lassen. <br> Ganz nach euren Wünschen könnt ihr uns jeden Tag in der Woche im Rahmen einer privaten Tour buchen, oder ihr schließt euch einer unserer offenen Touren an, die wir in regelmäßigen Abständen anbieten. <br> Wir freuen uns auf euch demnächst hier an der Waterkant <br> Akina Henyes und Anjuli Sayyed' },
+          { text: 'Wir nehmen euch mit auf eine Entdeckungsreise in den neuesten und den ältesten Stadtteil Hamburgs, die Hafencity und die Speicherstadt. <br> Wir möchten euch zeigen, dass Geschichte und Architektur alles andere als langweilig, sondern – ganz im Gegenteil – spannend und voller Überraschungen sein können. Ob bei einem Kindergeburtstag, einer Klassenfahrt, einer Stadtrallye oder einem Familienausflug hier bei uns an der Elbe gibt es immer etwas Aufregendes zu erleben und zu erfahren. ' },
         ),
         button({ text: 'Kontakt', href: 'kontakt.html', type: 'link' }),
       ]),
+
       kundenmeinungen({ quotes: kundenmeinungenData }),
-      empfehlungen(),
-      section([tourDate({ maxDates: 6 }), button({ text: 'Kontakt', href: 'kontakt.html', type: 'link' }),
-      ]),
-      tourGrid(),
 
       section([
-        _('h2', { text: 'Wir Möchten euch unsere Agentur und uns Vorstellen!!! Mit vielnen Bildern und so' }),
+        _('h2', { text: 'Die nächsten Termine' }),
+        tourDate({ maxDates: 6 }), button({ text: 'Kontakt', href: 'kontakt.html', type: 'link' }),
+      ]),
+
+      tourGrid(),
+
+      empfehlungen({ data: empfehlungenData }),
+
+      section([
+        _('h2', { text: 'Mehr über uns' }),
         _('p', { text: 'Die Links zu den Unterseiten und zur Buchung muss da sein' }),
         _('p', { text: 'Ganz Viele Bilder nicht vergessen' }),
+
+        ...p({ text: 'Unser aufgeschlossenes und junges Team aus Kunsthistorikerinnen, Architektur- und Schauspielstudenten freut sich darauf, mit euch die spannenden und bislang unbekannten Seiten der Hafencity zu erkunden und vermittelt Hintergrundwissen in altersangemessener und fesselnder Art und Weise. <br> Wir sind seit vielen Jahren in diesem neuen Stadtteil verwurzelt und haben uns zum Ziel gesetzt, euch die Hafencity aus einem ganz eigenen Blickwinkel zu zeigen und euch die vielseitigen Facetten erleben zu lassen. <br> Ganz nach euren Wünschen könnt ihr uns jeden Tag in der Woche im Rahmen einer privaten Tour buchen, oder ihr schließt euch einer unserer offenen Touren an, die wir in regelmäßigen Abständen anbieten. <br> Wir freuen uns auf euch demnächst hier an der Waterkant <br> Akina Henyes und Anjuli Sayyed' }),
 
         button({ text: 'Kontakt', href: 'kontakt.html', type: 'link' }),
       ]),

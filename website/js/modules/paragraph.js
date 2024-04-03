@@ -12,7 +12,11 @@ const _ = Helper.create;
   * @returns {Array}
   */
 export default function p({
-  text, teaser, htmlClass, teaserLink = null,
+  text,
+  teaser,
+  htmlClass,
+  teaserLink = null,
+  teaserText = 'Weiterlesen',
 } = {}) {
   function applyFormatting(ctn, separator, tag, subTag = null) {
     return ctn.map((e) => {
@@ -55,12 +59,15 @@ export default function p({
     return _('p', { class: classes }, content);
   });
 
-  if (teaser && teaserLink) {
-    paragraphs[paragraphs.length - 1].append('... ', _('a', {
-      class: 'tst-read-more',
-      text: 'Weiterlesen',
-      href: Helper.relativPath(window.location.pathname, teaserLink),
-    }));
+  if (teaserLink) {
+    paragraphs[paragraphs.length - 1].append(
+      (teaser) ? '... ' : ' – ',
+      _('a', {
+        class: 'tst-read-more arrow',
+        text: teaserText,
+        href: Helper.relativPath(window.location.pathname, teaserLink),
+      }),
+    );
   }
 
   return paragraphs;

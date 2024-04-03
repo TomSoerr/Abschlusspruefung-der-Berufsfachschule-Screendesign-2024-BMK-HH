@@ -34,12 +34,13 @@ function categoryIcon({ c, home = false, showLabel = false } = {}) {
       class: 'tst-category-icon',
       href: `${link}#touren-hilfe?${c}`,
       data: { category: c, title: categoryList[c] },
+      target: (showLabel) ? '_blank' : null,
     }, [
       _('img', {
         src: Helper.imgPath(`${c}.svg`),
         alt: categoryList[c],
       }),
-      showLabel ? _('span', null, [categoryList[c]]) : null,
+      showLabel ? _('span', { class: 'arrow new' }, [categoryList[c]]) : null,
     ]),
   ]);
 }
