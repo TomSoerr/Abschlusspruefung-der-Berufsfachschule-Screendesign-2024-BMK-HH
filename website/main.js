@@ -19,11 +19,40 @@ window.addEventListener('resize', Helper.resize);
 window.addEventListener('scroll', Helper.scroll);
 
 /* ______________________________________
-load js file for html site
+load js file when for html site
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
 
-const siteModule = await import(
-  `./js/pages/${Helper.getFileName(window.location.pathname)}.js`
-);
+async function generateHash(data) {
+  const dataBuffer = new TextEncoder().encode(data);
 
-siteModule.load();
+  const hashBuffer = await crypto.subtle.digest('SHA-256', dataBuffer);
+
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hashHex = hashArray.map((byte) => byte.toString(16).padStart(2, '0')).join('');
+
+  return hashHex;
+}
+
+const hash = 'bb1965f98f1bc8db46b2d93ff372c68f2d798cb68c93ab2bdfb9d118bcf0ad8a';
+
+let userInput = localStorage.getItem('passwd');
+
+if (userInput === null) {
+  userInput = window.prompt('Password eingeben:');
+}
+
+generateHash(userInput)
+  .then(async (userHash) => {
+    if (hash === userHash) {
+      localStorage.setItem('passwd', userInput);
+
+      const siteModule = await import(
+        `./js/pages/${Helper.getFileName(window.location.pathname)}.js`
+      );
+
+      siteModule.load();
+    } else {
+      console.error('Wrong password');
+    }
+  })
+  .catch((error) => console.error('Error generating hash:', error));
