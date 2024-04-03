@@ -21,14 +21,14 @@ export default function button({
   type,
   target = '',
   event,
-  color = 'accent',
+  color = null,
 }) {
   if (type === 'link') {
     return _('a', {
       href: Helper.relativPath(window.location.pathname, href),
       target,
       text,
-      class: `tst-button ${color}`,
+      class: (color) ? `tst-button ${color}` : 'tst-button',
     });
   }
 
