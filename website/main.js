@@ -22,6 +22,9 @@ window.addEventListener('scroll', Helper.scroll);
 load js file when for html site
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
 
+// this is extremely poor. I know that all my files are accessible
+// The reason for this is that no one would thing this is a real website
+// In this case i would need a impressum
 async function generateHash(data) {
   const dataBuffer = new TextEncoder().encode(data);
 

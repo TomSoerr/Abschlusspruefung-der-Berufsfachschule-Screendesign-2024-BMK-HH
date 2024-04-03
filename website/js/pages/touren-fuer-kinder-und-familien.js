@@ -19,7 +19,7 @@ function load() {
     main(
       hero({
         heading: 'Stadtführungen der anderen Art für Kinder und Familien',
-        img: { src: 'ap2024_hafencity_14.jpg', alt: 'Hafencity' },
+        img: { src: 'ap2024_tour_06.jpg', alt: 'Hafencity' },
       }),
       section([
 

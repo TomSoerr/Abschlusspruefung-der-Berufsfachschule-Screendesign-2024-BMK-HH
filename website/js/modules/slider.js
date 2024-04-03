@@ -84,7 +84,7 @@ Helper.addInitFn(() => {
 export default function slider({ content }) {
   return _('div', { class: 'tst-slider-wrapper' }, [
     _('div', { class: 'tst-slider-outer' }, [
-      _('div', { class: 'tst-slider' }, content),
+      _('ul', { class: 'tst-slider' }, content),
     ]),
     _('button', { class: 'tst-slider-prev' }, null, [
       { type: 'click', listener: sliderButton({ direction: 'prev' }) },
