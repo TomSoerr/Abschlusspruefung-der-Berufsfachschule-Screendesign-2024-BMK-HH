@@ -55,7 +55,9 @@ export default class Helper {
         parent: 'Kinder & Familien',
         folder: 'touren-fuer-kinder-und-familien',
         text: 'Alle Touren für Kinder & Familien',
-        unterpunkte: Helper.getAngeboteSubmenu('touren-fuer-kinder-und-familien'),
+        unterpunkte: Helper.getAngeboteSubmenu(
+          'touren-fuer-kinder-und-familien',
+        ),
       },
       {
         parent: 'Jugendliche',
@@ -182,13 +184,22 @@ export default class Helper {
     return folder.folder;
   }
 
-  static checkIfNotSubpage(fileName) {
-    const notSubNav = Helper.navItems.navigation.filter((item) => fileName === `${item.folder}.html` || !item.folder);
-    return notSubNav.find((item) => item.href === fileName || `${item.folder}.html` === fileName);
+  static checkIfTopLevel(fileName) {
+    const notSubNav = Helper.navItems.navigation.filter(
+      (item) => fileName === `${item.folder}.html` || !item.folder,
+    );
+
+    return notSubNav.find(
+      (item) => item.href === fileName || `${item.folder}.html` === fileName,
+    );
   }
 
   static relativPath(from, to) {
     const relativePath = Helper.pathToMain(from);
+
+    if (to === 'buchen.html') {
+      console.log('buchen');
+    }
 
     if (to === '#') {
       return to;
@@ -198,7 +209,7 @@ export default class Helper {
       return to;
     }
 
-    if (Helper.checkIfNotSubpage(to)) {
+    if (Helper.checkIfTopLevel(to)) {
       return `${relativePath}${to}`;
     }
 

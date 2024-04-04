@@ -137,7 +137,7 @@ ________________________________________________________________________________
   --tst-nav-gap-y: 3rem;
   --tst-nav-height-scrolled: 7.5rem;
   --tst-current-nav-height: var(--tst-nav-height);
-  --tst-nav-underline-offset: 1.1rem;
+  --tst-nav-underline-offset: 1rem;
 
   --tst-aspect-ratio-home: 16 / 7;
   --tst-aspect-ratio-home-mobile: 70vh;

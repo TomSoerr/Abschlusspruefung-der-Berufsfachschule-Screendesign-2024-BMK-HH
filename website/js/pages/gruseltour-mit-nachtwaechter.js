@@ -59,7 +59,7 @@ function load() {
         }),
         button({
           text: 'Offene Tour buchen',
-          href: 'buchen.html',
+          href: 'buchung.html',
           type: 'link',
         }),
         _('h2', { text: 'Private Touren' }),
@@ -69,7 +69,10 @@ function load() {
         button({
           text: 'Private Tour anfragen',
           href: 'kontakt.html',
-          type: 'link',
+          home: true,
+        }),
+        _('h6', {
+          text: Helper.relativPath(window.location.pathname, 'impressum.html'),
         }),
       ]),
     ),

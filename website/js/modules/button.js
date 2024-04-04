@@ -22,10 +22,14 @@ export default function button({
   target = '',
   event,
   color = null,
+  home = false,
 }) {
   if (type === 'link') {
+    const link = home
+      ? `${Helper.pathToMain(window.location.pathname, href)}${href}`
+      : Helper.relativPath(window.location.pathname, href);
     return _('a', {
-      href: Helper.relativPath(window.location.pathname, href),
+      href: link,
       target,
       text,
       class: color ? `tst-button ${color}` : 'tst-button',
