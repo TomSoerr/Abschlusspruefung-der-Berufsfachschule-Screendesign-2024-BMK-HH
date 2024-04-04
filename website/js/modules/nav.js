@@ -155,7 +155,8 @@ const navigation = (function navigationIIFE() {
 
     // add function that is called when the window is resized
     // why: to check if the nav links are to wide for the screen
-    if (mediaQuery) mediaQuery.removeEventListener('change', checkNavBreakpoint);
+    if (mediaQuery)
+      mediaQuery.removeEventListener('change', checkNavBreakpoint);
     mediaQuery = window.matchMedia(
       `(max-width: ${navBreakpoint > minBreakpoint ? navBreakpoint : minBreakpoint}px)`,
     );
@@ -173,18 +174,16 @@ const navigation = (function navigationIIFE() {
     );
 
     navIconFontSize =
-        parseFloat(
-          getComputedStyle(document.body).getPropertyValue(
-            '--tst-nav-icon-font-size',
-          ),
-        ) * 10;
+      parseFloat(
+        getComputedStyle(document.body).getPropertyValue(
+          '--tst-nav-icon-font-size',
+        ),
+      ) * 10;
 
     navIconFontSize *= Helper.customFontSizeMultiplier;
 
     htmlSpaceX = parseFloat(
-      getComputedStyle(navHtmlEl.children[0]).getPropertyValue(
-        'padding-left',
-      ),
+      getComputedStyle(navHtmlEl.children[0]).getPropertyValue('padding-left'),
     );
 
     // set the scroll top for the shrink nav function
@@ -195,13 +194,17 @@ const navigation = (function navigationIIFE() {
 
     // highlight the current nav link
     if (Helper.pathToMain(window.location.pathname)) {
-      const activeLink = document.querySelector(`[data-href="${Helper.getFolderPath(window.location.pathname)}"]`);
+      const activeLink = document.querySelector(
+        `[data-href="${Helper.getFolderPath(window.location.pathname)}"]`,
+      );
 
       if (activeLink) {
         activeLink.classList.add('tst-active');
       }
     } else {
-      const activeLink = document.querySelector(`[data-href="${Helper.getFileName(window.location.pathname)}"]`);
+      const activeLink = document.querySelector(
+        `[data-href="${Helper.getFileName(window.location.pathname)}"]`,
+      );
 
       if (activeLink) {
         activeLink.classList.add('tst-active');
@@ -237,112 +240,113 @@ const navigation = (function navigationIIFE() {
   HTML Elements
   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
   function nav() {
-    return _(
-      'nav',
-      { id: 'tst-site-nav', class: 'tst-section tst-preload' },
-      [
-        _('div', { class: 'tst-section-inner' }, [
-          _(
-            'a',
-            {
-              href: `${Helper.pathToMain(window.location.pathname)}index.html`,
-              id: 'tst-site-logo',
-            },
-            [
-              _('picture', null, [
-                _('source', {
-                  media: '(min-width: 501px)',
-                  srcset: Helper.imgPath(Helper.navItems.logo.src)
-                  ,
-                }),
+    return _('nav', { id: 'tst-site-nav', class: 'tst-section tst-preload' }, [
+      _('div', { class: 'tst-section-inner' }, [
+        _(
+          'a',
+          {
+            href: `${Helper.pathToMain(window.location.pathname)}index.html`,
+            id: 'tst-site-logo',
+          },
+          [
+            _('picture', null, [
+              _('source', {
+                media: '(min-width: 501px)',
+                srcset: Helper.imgPath(Helper.navItems.logo.src),
+              }),
 
-                _('source', {
-                  media: '(max-width: 500px)',
-                  srcset: Helper.imgPath(Helper.navItems.logo.srcset)
-                  ,
-                }),
-                _('img', {
-                  src: Helper.imgPath(Helper.navItems.logo.src),
-                  alt: Helper.navItems.logo.alt,
-                }),
-              ]),
-            ],
-          ),
-          // Main Navigation
-          // ///////////////////////////////////////////////////////////////////
-          _('ul', { class: 'tst-nav-top-level' }, [
-            ...Helper.navItems.navigation.reduce((acc, item) => {
-              if (item.unterpunkte) {
-                acc.push(
-                  navLink(
-                    { href: '#', text: item.parent, data: item.folder },
-                    _('ul', null, [
-                      navLink({ text: item.text, href: `${item.folder}.html` }, null, true),
-                      ...item.unterpunkte.reduce((accInner, itemInner) => {
-                        accInner.push(
-                          navLink(
-                            {
-                              href: itemInner.href,
-                              text: itemInner.text,
-                            },
-                            null,
-                            true,
-                          ),
-                        );
-                        return accInner;
-                      }, []),
-                    ]),
-                  ),
-                );
-                return acc;
-              }
-              acc.push(navLink({ href: item.href, text: item.text, data: Helper.getFileName(item.href) }));
-              return acc;
-            }, []),
-          ]),
-          // ///////////////////////////////////////////////////////////////////
-          _(
-            'button',
-            {
-              id: 'tst-menu-btn',
-            },
-            null,
-            [
-              {
-                type: 'click',
-                listener: () => {
-                  if (navHtmlEl.classList.contains('tst-nav-open')) {
-                    navHtmlEl.classList.add('tst-nav-close');
-                    setTimeout(() => {
-                      navHtmlEl.classList.remove(
-                        'tst-nav-open',
-                        'tst-nav-close',
+              _('source', {
+                media: '(max-width: 500px)',
+                srcset: Helper.imgPath(Helper.navItems.logo.srcset),
+              }),
+              _('img', {
+                src: Helper.imgPath(Helper.navItems.logo.src),
+                alt: Helper.navItems.logo.alt,
+              }),
+            ]),
+          ],
+        ),
+        // Main Navigation
+        // ///////////////////////////////////////////////////////////////////
+        _('ul', { class: 'tst-nav-top-level' }, [
+          ...Helper.navItems.navigation.reduce((acc, item) => {
+            if (item.unterpunkte) {
+              acc.push(
+                navLink(
+                  { href: '#', text: item.parent, data: item.folder },
+                  _('ul', null, [
+                    navLink(
+                      { text: item.text, href: `${item.folder}.html` },
+                      null,
+                      true,
+                    ),
+                    ...item.unterpunkte.reduce((accInner, itemInner) => {
+                      accInner.push(
+                        navLink(
+                          {
+                            href: itemInner.href,
+                            text: itemInner.text,
+                          },
+                          null,
+                          true,
+                        ),
                       );
-                    }, 200);
-                    document.body.style.overflow = 'visible';
-                  } else {
-                    navHtmlEl.classList.add('tst-nav-open');
-                    document.body.style.overflow = 'hidden';
-                  }
-                },
-              },
-            ],
-          ),
-          _('div', { class: 'tst-nav-overlay' }, null, [
+                      return accInner;
+                    }, []),
+                  ]),
+                ),
+              );
+              return acc;
+            }
+            acc.push(
+              navLink({
+                href: item.href,
+                text: item.text,
+                data: Helper.getFileName(item.href),
+              }),
+            );
+            return acc;
+          }, []),
+        ]),
+        // ///////////////////////////////////////////////////////////////////
+        _(
+          'button',
+          {
+            id: 'tst-menu-btn',
+          },
+          null,
+          [
             {
               type: 'click',
               listener: () => {
-                navHtmlEl.classList.add('tst-nav-close');
-                setTimeout(() => {
-                  navHtmlEl.classList.remove('tst-nav-open', 'tst-nav-close');
+                if (navHtmlEl.classList.contains('tst-nav-open')) {
+                  navHtmlEl.classList.add('tst-nav-close');
+                  setTimeout(() => {
+                    navHtmlEl.classList.remove('tst-nav-open', 'tst-nav-close');
+                  }, 200);
                   document.body.style.overflow = 'visible';
-                }, 100);
+                } else {
+                  navHtmlEl.classList.add('tst-nav-open');
+                  document.body.style.overflow = 'hidden';
+                }
               },
             },
-          ]),
+          ],
+        ),
+        _('div', { class: 'tst-nav-overlay' }, null, [
+          {
+            type: 'click',
+            listener: () => {
+              navHtmlEl.classList.add('tst-nav-close');
+              setTimeout(() => {
+                navHtmlEl.classList.remove('tst-nav-open', 'tst-nav-close');
+                document.body.style.overflow = 'visible';
+              }, 100);
+            },
+          },
         ]),
-      ],
-    );
+      ]),
+    ]);
   }
   return {
     nav,

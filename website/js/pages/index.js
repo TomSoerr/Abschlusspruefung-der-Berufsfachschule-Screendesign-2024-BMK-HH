@@ -132,7 +132,7 @@ function load() {
         ...p({
           text: 'Wir nehmen euch mit auf eine **Entdeckungsreise** in den neuesten und den ältesten Stadtteil Hamburgs, die Hafencity und die Speicherstadt. <br> Wir möchten euch zeigen, dass Geschichte und Architektur alles andere als langweilig, sondern – ganz im Gegenteil – *spannend* und voller *Überraschungen* sein können. Ob bei einem **Kindergeburtstag**, einer **Klassenfahrt**, einer **Stadtrallye** oder einem **Familienausflug** hier bei uns an der Elbe gibt es immer etwas Aufregendes zu erleben und zu erfahren. ',
         }),
-        button({ text: 'Kontakt', href: 'kontakt.html', type: 'link' }),
+        button({ text: 'Kontakt', href: 'kontakt.html', home: true }),
       ]),
 
       kundenmeinungen({ quotes: kundenmeinungenData }),
