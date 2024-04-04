@@ -2,12 +2,14 @@ export default {
   'touren-fuer-jugendliche': {
     'große-baumeister': {
       name: 'Große Baumeister',
+      img: { src: 'ap2024_tour_23.jpg', alt: 'Große Baumeister' },
       termine: {
         '2024-06-10': ['10. Juni 16:00 Uhr', 'ausgebucht'],
       },
     },
     'die-wachsende-stadt': {
       name: 'Die wachsende Stadt',
+      img: { src: 'ap2024_hafencity_06.jpg', alt: 'Die wachsend Stadt' },
       termine: {
         '2024-06-04': ['4. Juni 14:00 Uhr', 'wenige Restplätze'],
       },
@@ -31,7 +33,7 @@ export default {
         '2024-06-03': ['3.Juni 15:00-16:30 Uhr', 'wenige Restplätze'],
       },
     },
-    klabautermanntour: {
+    'klabautermanntour': {
       name: 'Klabautermanntour',
       text: 'Beim Klabautermann! Habt ihr diesen Ausruf schon einmal gehört? Dann wisst ihr sicherlich, warum die Seemänner auch heute noch Respekt vor ihm haben. <br> Der Alltag auf See aus der Sicht eines Kapitäns und des Klabautermanns. Das ist nichts für schwache Nerven!',
       img: { src: 'ap2024_tour_01.jpg', alt: 'Speicherstadt & Gewürzmuseum' },
@@ -55,11 +57,11 @@ export default {
         '2024-06-09': ['9. Juni 20:00-21:30 Uhr', 'ausgebucht'],
         '2024-09-09': ['9. September 20 Uhr'],
       },
-
     },
     'sportliche-entdeckertour': {
       name: 'Sportliche Entdeckertour',
-      fullName: 'Sportliche Entdeckertour Hafencity und Speicherstadt mit dem Fahrrad',
+      fullName:
+        'Sportliche Entdeckertour Hafencity und Speicherstadt mit dem Fahrrad',
       text: 'Die Hafencity und die Speicherstadt lassen sich vielseitig entdecken: mit dem Fahrrad oder Tandem, auf Inlinern oder mit 7-Meilen-Stiefeln. Worauf habt ihr Lust? Neben der sportlichen Betätigung entdeckt ihr bei dieser Tour besondere Ecken der Hafencity und der Speicherstadt und erfahrt dabei etwas über den Wandel dieses Stadtteils.',
       img: { src: 'ap2024_tour_07.jpg', alt: 'Sportliche Entdeckertour' },
       dauer: '2 Stunden',
@@ -71,7 +73,7 @@ export default {
     },
   },
 
-  kindergeburtstage: {
+  'kindergeburtstage': {
     'piraten-rallye': {
       name: 'Piraten-Rallye',
     },

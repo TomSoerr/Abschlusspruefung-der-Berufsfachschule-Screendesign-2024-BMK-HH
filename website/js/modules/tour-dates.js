@@ -1,5 +1,6 @@
 import Helper from './helper.js';
 import angebote from '../../data/angebote.js';
+import image from './image.js';
 
 const _ = Helper.create;
 const allDates = [];
@@ -17,10 +18,14 @@ Object.entries(angebote).forEach((type) => {
 
 // create an array with only the termine object,
 // the name of the tour, and the filename
-// [[{…}, 'Gruseltour mit Nachtwächter', 'gruseltour-mit-nachtwaechter'], ...]
+// [[{…}, 'Gruseltour mit Nachtwächter', 'gruseltour-mit-nachtwaechter', {…}], ...]
 // while the first object is the termine object
-let allDatesArr = allDates
-  .map((tour) => [tour[1].termine, tour[1].name, tour[0]]);
+let allDatesArr = allDates.map((tour) => [
+  tour[1].termine,
+  tour[1].name,
+  tour[0],
+  tour[1].img,
+]);
 
 // create an array with objects for each date
 // [[{date, name, details, href}], ...]
@@ -29,14 +34,20 @@ allDatesArr = allDatesArr.map((tour) => {
   const name = tour[1];
   const href = Helper.relativPath(window.location.pathname, `${tour[2]}.html`);
   const filename = tour[2];
+  const img = tour[3];
   return dates.map((date) => ({
-    date: date[0], name, details: date[1], href, filename,
+    date: date[0],
+    name,
+    details: date[1],
+    href,
+    filename,
+    img,
   }));
 });
 
 // flatten the array so all dates are in one array
 // [{date, name, details, href}, ...]
-allDatesArr = allDatesArr.reduce((acc, curr) => ([...acc, ...curr]), []);
+allDatesArr = allDatesArr.reduce((acc, curr) => [...acc, ...curr], []);
 
 // sort the array by date
 allDatesArr = allDatesArr.sort((a, b) => a.date.localeCompare(b.date));
@@ -54,10 +65,58 @@ function filterDates({ maxDates, filterBy }) {
   return allDatesArr;
 }
 
-export default function tourDate({ maxDates = 10, filterBy = null, noLink = false } = {}) {
+function tourDateSlider({ maxDates = 10, filterBy = null, noLink = false }) {
+  const datesList = [];
+  const imgList = [];
+
+  filterDates({ maxDates, filterBy }).forEach((date) => {
+    datesList.push(
+      _('li', null, [
+        _(noLink ? 'span' : 'a', {
+          href: date.href,
+          text: `${date.name} (${date.details.join(', ')})`,
+        }),
+      ]),
+    );
+
+    imgList.push(
+      _('li', null, [
+        image({
+          src: date.img.src,
+          alt: date.img.alt,
+          hidden: true,
+        }),
+      ]),
+    );
+  });
+
   return (
     _('h2', { text: 'Die nächsten Termine' }),
-    _('div', { class: 'tst-tour-dates' }),
-    _('ul', null, filterDates({ maxDates, filterBy }).map((date) => _('li', null, [_((noLink) ? 'span' : 'a', { href: date.href, text: `${date.name} (${date.details.join(', ')})` })])))
+    _('div', { class: 'tst-tour-dates-slider' }, [
+      _('div', { class: 'tst-tour-dates' }, [_('ul', null, datesList)]),
+      _('div', { class: 'tst-tour-date-images' }, [_('ul', null, imgList)]),
+    ])
   );
 }
+
+function tourDate({ maxDates = 10, filterBy = null, noLink = false } = {}) {
+  return (
+    _('h2', { text: 'Die nächsten Termine' }),
+    _('div', { class: 'tst-tour-dates' }, [
+      _(
+        'ul',
+        null,
+        filterDates({ maxDates, filterBy }).map((date) =>
+          _('li', null, [
+            _(noLink ? 'span' : 'a', {
+              href: date.href,
+              text: `${date.name} (${date.details.join(', ')})`,
+            }),
+          ]),
+        ),
+      ),
+    ])
+  );
+}
+
+export { tourDate, tourDateSlider };
