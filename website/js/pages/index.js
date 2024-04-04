@@ -11,6 +11,7 @@ import { tourDateSlider } from '../modules/tour-dates.js';
 import slider from '../modules/slider.js';
 import image from '../modules/image.js';
 import col2 from '../modules/col-2.js';
+import cta from '../modules/cta.js';
 
 const _ = Helper.create;
 
@@ -140,6 +141,16 @@ function load() {
         _('h2', { text: 'Die nächsten Termine' }),
         tourDateSlider({ maxDates: 6 }),
       ]),
+
+      cta({
+        text: 'Möchtest du, dass deine Kinder Hamburg auf eine ganz besondere Art und Weise kennenlernen? Dann buche jetzt eine unserer Touren!',
+        buttonObj: {
+          text: 'Tour Buchen',
+          href: 'buchen.html',
+          // color: 'primary',
+        },
+        // classes: 'secondary',
+      }),
 
       tourGrid(),
 

@@ -18,7 +18,7 @@ const _ = Helper.create;
 export default function button({
   text,
   href,
-  type,
+  type = 'link',
   target = '',
   event,
   color = null,
@@ -28,7 +28,7 @@ export default function button({
       href: Helper.relativPath(window.location.pathname, href),
       target,
       text,
-      class: (color) ? `tst-button ${color}` : 'tst-button',
+      class: color ? `tst-button ${color}` : 'tst-button',
     });
   }
 

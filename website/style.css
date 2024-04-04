@@ -103,7 +103,7 @@ ________________________________________________________________________________
   --tst-text-font: "Noto Sans", var(--tst-backup-fonts);
   --tst-highlight-font: "Poppins", var(--tst-backup-fonts);
   --tst-icon-font: "Material Symbols Rounded";
-  --tst-nav-icon-font-size: 2rem;
+  --tst-nav-icon-font-size: 3rem;
 
   /* Default root space should always be 1rem */
   /* if not change padding here: #tst-site-nav > .tst-section-inner */
@@ -153,12 +153,10 @@ ________________________________________________________________________________
   --tst-color-accent-dark: #9e3dff;
 
   --tst-color-text: #000a14;
-  --tst-color-background-1: var(--tst-color-primary);
   --tst-color-nav: var(--tst-color-primary);
 
   /* needs to get changes inside nav.js:321 */
   --tst-animation-short: 0.2s;
-  color: #184376;
 }
 
 [data-scrolled="true"] {
@@ -244,7 +242,7 @@ h3 {
   font-family: var(--tst-highlight-font);
   font-weight: 400;
   line-height: 1.2;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.6em;
   hyphens: auto;
   white-space: pre-line;
   scroll-margin-top: calc(var(--tst-current-nav-height) + var(--tst-space-y));
@@ -260,6 +258,7 @@ h2 {
 
 h3 {
   font-size: var(--tst-h3);
+  margin-bottom: 0.35em;
 }
 
 .arrow::after {
@@ -834,6 +833,7 @@ ________________________________________________________________________________
 
 .tst-col-2 {
   display: flex;
+  width: 100%;
   flex-wrap: wrap;
   gap: var(--tst-space-l);
 }
@@ -896,15 +896,16 @@ cta.js
 ________________________________________________________________________________
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
 
-.tst-cta .tst-section-inner {
+.tst-cta-section .tst-section-inner {
   display: grid;
   gap: var(--tst-space-m);
   place-items: center;
   text-align: center;
+  padding: calc(var(--tst-space-y) * 2) var(--tst-space-x);
 }
 
-.tst-cta .tst-section-inner {
-  max-width: 75ch;
+.tst-cta-section .tst-section-inner h2 {
+  max-width: 40ch;
 }
 
 /*______________________________________________________________________________
@@ -925,6 +926,7 @@ Section specific
   --wave-height: 4rem;
   margin-top: auto;
   overflow: hidden;
+  margin-top: var(--tst-space-y);
 }
 
 #tst-footer .tst-section-inner {
@@ -972,10 +974,6 @@ Section specific
   font-style: normal;
   font-size: 1.6rem;
   line-height: 1.5;
-}
-
-#tst-footer h3 {
-  margin-bottom: 0.35em;
 }
 
 #tst-footer .tst-footer-socials a::before {
@@ -1678,7 +1676,7 @@ ________________________________________________________________________________
 }
 
 :is(.tst-slider-prev, .tst-slider-next):is(:hover, :focus-visible) {
-  color: var(--tst-color-accent);
+  color: var(--tst-color-accent-dark);
 }
 
 .tst-slider-prev {
@@ -1877,12 +1875,184 @@ tour-dates.js
 ________________________________________________________________________________
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
 
-.tst-tour-dates-slider {
+.tst-tour-dates ul {
   display: flex;
+  flex-direction: column;
 }
 
-.tst-tour-date-images li {
-  display: none;
+.tst-tour-dates li {
+  list-style: none;
+  border-bottom: 2px solid var(--tst-color-text);
+}
+
+.tst-tour-dates li :is(a, div) {
+  list-style: none;
+  display: grid;
+  align-items: center;
+  gap: var(--tst-space-xs) var(--tst-space-m);
+  grid:
+    "name status"
+    "date ." /
+    1fr auto;
+  padding: var(--tst-space-s) 0;
+  text-decoration: none;
+  color: var(--tst-color-text);
+}
+
+.tst-tour-dates li div {
+  gap: 0 var(--tst-space-m);
+}
+
+.tst-tour-dates li :is(a, div) .tst-date {
+  grid-area: date;
+}
+
+.tst-tour-dates li :is(a, div) .tst-status {
+  grid-area: status;
+}
+
+.tst-tour-dates li :is(a, div) strong {
+  grid-area: name;
+  font-family: var(--tst-highlight-font);
+  font-size: 1.9rem;
+  font-weight: 400;
+}
+
+.tst-tour-dates li a strong.arrow {
+  transform: translateY(-0.3rem);
+}
+
+.tst-tour-dates li a:is(:hover, :focus-visible) strong {
+  text-decoration: underline;
+  color: var(--tst-color-accent-dark);
+}
+
+.tst-tour-dates
+  li[data-status="ausgebucht"]
+  a:is(:hover, :focus-visible)
+  strong {
+  color: var(--tst-color-text);
+}
+
+.tst-tour-dates li[data-status="ausgebucht"] :is(a, div) {
+  opacity: 0.56;
+}
+
+/* --------------------------------------------------------- */
+
+.tst-tour-dates-slider.tst-col-2 > * {
+  min-width: unset;
+}
+
+.tst-tour-dates-slider li {
+  list-style: none;
+}
+
+/* right */
+
+.tst-tour-dates-slider .tst-col-2-right {
+  position: relative;
+}
+
+.tst-tour-dates-slider .tst-col-2-right ul {
+  position: relative;
+  aspect-ratio: 1 / 1.2;
+}
+
+.tst-tour-dates-slider .tst-col-2-right li {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  opacity: 0;
+  transition: all var(--tst-animation-short) ease-in-out;
+}
+
+.tst-tour-dates-slider .tst-col-2-right li::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    270deg,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 0.444) 100%
+  );
+  border-radius: var(--tst-border-radius);
+}
+.tst-tour-dates-slider .tst-col-2-right li.active {
+  opacity: 1;
+}
+
+.tst-tour-dates-slider .tst-col-2-right li .tst-img {
+  height: 100%;
+  width: 100%;
+}
+
+/* up down buttons */
+
+.tst-tour-dates-slider .tst-col-2-right button {
+  font-family: var(--tst-icon-font);
+  appearance: none;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  color: var(--tst-color-primary);
+  position: absolute;
+  left: 1.5rem;
+  font-size: 6rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+  transition: all var(--tst-animation-short) ease-in-out;
+}
+
+.tst-tour-dates-slider .tst-col-2-right button:hover {
+  color: var(--tst-color-accent);
+}
+.tst-tour-dates-slider .tst-col-2-right button.tst-tour-up::after {
+  content: "\e5ce";
+}
+
+.tst-tour-dates-slider .tst-col-2-right button.tst-tour-up {
+  top: 1rem;
+}
+
+.tst-tour-dates-slider .tst-col-2-right button:last-of-type::after {
+  content: "\e5cf";
+}
+
+.tst-tour-dates-slider .tst-col-2-right button:last-of-type {
+  bottom: 1rem;
+}
+
+/* left */
+
+.tst-tour-dates-slider .tst-col-2-left {
+  flex: 1.2 1 0;
+}
+
+.tst-tour-dates-slider .tst-col-2-left a::after {
+  content: "\e3f4";
+  margin-left: 0.5rem;
+  font-family: var(--tst-icon-font);
+  justify-self: end;
+  font-size: 2.4rem;
+  line-height: 1;
+  opacity: 0;
+  color: var(--tst-color-text);
+  transition: all var(--tst-animation-short) ease-in-out;
+}
+
+.tst-tour-dates-slider .tst-col-2-left li.active a::after {
+  opacity: 1;
+}
+
+@media (max-width: 1024px) {
+  .tst-tour-dates-slider .tst-col-2-right {
+    display: none;
+  }
+  .tst-tour-dates-slider .tst-col-2-left li.active a::after {
+    opacity: 0;
+  }
 }
 
 /*______________________________________________________________________________

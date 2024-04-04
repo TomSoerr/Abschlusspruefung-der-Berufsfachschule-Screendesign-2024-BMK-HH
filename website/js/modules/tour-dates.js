@@ -1,6 +1,7 @@
 import Helper from './helper.js';
 import angebote from '../../data/angebote.js';
 import image from './image.js';
+import col2 from './col-2.js';
 
 const _ = Helper.create;
 const allDates = [];
@@ -65,58 +66,192 @@ function filterDates({ maxDates, filterBy }) {
   return allDatesArr;
 }
 
-function tourDateSlider({ maxDates = 10, filterBy = null, noLink = false }) {
+const tourDateSliderHelper = {
+  previousItems: [],
+  slider: null,
+  sliderLength: 0,
+
+  moveTo: (id) => {
+    if (tourDateSliderHelper.previousItems.length === 0) {
+      tourDateSliderHelper.previousItems[0] =
+        tourDateSliderHelper.slider.querySelectorAll('li.active');
+    }
+
+    tourDateSliderHelper.previousItems[0].forEach((item) => {
+      item.classList.remove('active');
+      item.classList.add('hidden');
+    });
+
+    tourDateSliderHelper.previousItems[0] =
+      tourDateSliderHelper.slider.querySelectorAll(`li[data-id="${id}"]`);
+
+    tourDateSliderHelper.previousItems[0].forEach((item) => {
+      item.classList.remove('hidden');
+      item.classList.add('active');
+    });
+  },
+
+  move: (direction) => {
+    if (tourDateSliderHelper.previousItems.length === 0) {
+      tourDateSliderHelper.previousItems[0] =
+        tourDateSliderHelper.slider.querySelectorAll('li.active');
+    }
+
+    tourDateSliderHelper.previousItems[0].forEach((item) => {
+      item.classList.remove('active');
+      item.classList.add('hidden');
+    });
+
+    let { id } = tourDateSliderHelper.previousItems[0][0].dataset;
+    const length = tourDateSliderHelper.sliderLength - 1;
+
+    id = +id;
+
+    if (direction === 'up') {
+      id = id === 0 ? length : id - 1;
+    }
+
+    if (direction === 'down') {
+      id = id === length ? 0 : id + 1;
+    }
+
+    tourDateSliderHelper.previousItems[0] =
+      tourDateSliderHelper.slider.querySelectorAll(`li[data-id="${id}"]`);
+
+    tourDateSliderHelper.previousItems[0].forEach((item) => {
+      item.classList.remove('hidden');
+      item.classList.add('active');
+    });
+  },
+
+  cycle: () => {
+    if (window.innerWidth > 1024) {
+      setInterval(() => {
+        if (window.innerWidth > 1024) {
+          tourDateSliderHelper.move('right');
+        }
+      }, 1000);
+    }
+  },
+
+  event: () => {
+    const listener = (e) => {
+      if (window.innerWidth > 1024) {
+        const { id } =
+          e.target.nodeName === 'A'
+            ? e.target.parentElement.dataset
+            : e.target.parentElement.parentElement.dataset;
+
+        tourDateSliderHelper.moveTo(id);
+      }
+    };
+    return [
+      { type: 'mouseover', listener },
+      { type: 'focus', listener },
+    ];
+  },
+};
+
+function tourDateSlider({ maxDates = 10, filterBy = null }) {
   const datesList = [];
   const imgList = [];
 
-  filterDates({ maxDates, filterBy }).forEach((date) => {
+  filterDates({ maxDates, filterBy }).forEach((date, index) => {
     datesList.push(
-      _('li', null, [
-        _(noLink ? 'span' : 'a', {
-          href: date.href,
-          text: `${date.name} (${date.details.join(', ')})`,
-        }),
-      ]),
+      _(
+        'li',
+        {
+          data: { id: index, status: date.details[1] },
+          class: index === 0 ? 'active' : 'hidden',
+        },
+        [
+          _(
+            'a',
+            {
+              href: date.href,
+            },
+            [
+              _('strong', { text: date.name, class: 'arrow' }),
+              _('span', { text: date.details[0], class: 'tst-date' }),
+              _('span', { text: date.details[1], class: 'tst-status' }),
+            ],
+            tourDateSliderHelper.event(),
+          ),
+        ],
+      ),
     );
 
     imgList.push(
-      _('li', null, [
-        image({
-          src: date.img.src,
-          alt: date.img.alt,
-          hidden: true,
-        }),
-      ]),
+      _(
+        'li',
+        {
+          data: { id: index, status: date.details[1] },
+          class: index === 0 ? 'active' : 'hidden',
+        },
+        [
+          image({
+            src: date.img.src,
+            alt: date.img.alt,
+            hidden: true,
+          }),
+        ],
+      ),
     );
   });
 
-  return (
-    _('h2', { text: 'Die nächsten Termine' }),
-    _('div', { class: 'tst-tour-dates-slider' }, [
-      _('div', { class: 'tst-tour-dates' }, [_('ul', null, datesList)]),
-      _('div', { class: 'tst-tour-date-images' }, [_('ul', null, imgList)]),
-    ])
-  );
+  const slider = col2({
+    left: [_('ul', { class: 'tst-tour-dates' }, datesList)],
+    right: [
+      _('ul', null, [
+        ...imgList,
+        _('button', { class: 'tst-tour-up' }, null, [
+          { type: 'click', listener: () => tourDateSliderHelper.move('up') },
+        ]),
+        _('button', { class: 'tst-tour-down' }, null, [
+          { type: 'click', listener: () => tourDateSliderHelper.move('down') },
+        ]),
+      ]),
+    ],
+    htmlClass: 'tst-tour-dates-slider',
+  });
+
+  tourDateSliderHelper.slider = slider;
+  tourDateSliderHelper.sliderLength = slider.querySelectorAll(
+    '.tst-tour-dates [data-id]',
+  ).length;
+
+  // tourDateSliderHelper.cycle();
+
+  return slider;
 }
 
-function tourDate({ maxDates = 10, filterBy = null, noLink = false } = {}) {
-  return (
-    _('h2', { text: 'Die nächsten Termine' }),
-    _('div', { class: 'tst-tour-dates' }, [
+function tourDate({ maxDates = 10, filterBy = null } = {}) {
+  const datesList = [];
+
+  filterDates({ maxDates, filterBy }).forEach((date, index) => {
+    datesList.push(
       _(
-        'ul',
-        null,
-        filterDates({ maxDates, filterBy }).map((date) =>
-          _('li', null, [
-            _(noLink ? 'span' : 'a', {
+        'li',
+        {
+          data: { status: date.details[1] },
+          class: index === 0 ? 'active' : 'hidden',
+        },
+        [
+          _(
+            'div',
+            {
               href: date.href,
-              text: `${date.name} (${date.details.join(', ')})`,
-            }),
-          ]),
-        ),
+            },
+            [
+              _('strong', { text: date.details[0] }),
+              _('span', { text: date.details[1], class: 'tst-status' }),
+            ],
+          ),
+        ],
       ),
-    ])
-  );
+    );
+  });
+  return _('ul', { class: 'tst-tour-dates' }, datesList);
 }
 
 export { tourDate, tourDateSlider };

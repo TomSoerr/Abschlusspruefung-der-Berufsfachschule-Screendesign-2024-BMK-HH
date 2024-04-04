@@ -6,7 +6,7 @@ const _ = Helper.create;
 
 export default function cta({ text, buttonObj, classes }) {
   return section(
-    [_('h2', { text, class: 'tst-paragraph' }), button(buttonObj)],
-    `tst-cta${classes ? ` ${classes}` : ''}`,
+    [_('h2', { text }), button(buttonObj)],
+    `tst-cta-section${classes ? ` ${classes}` : ''}`,
   );
 }
