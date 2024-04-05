@@ -120,7 +120,7 @@ ________________________________________________________________________________
 
   --tst-page-width-l: 1728px;
   --tst-page-width-m: 1296px;
-  /* --tst-page-width-s: 1024px; */
+  --tst-page-width-s: 1024px;
   /* --tst-page-width-text: 720px; */
   --tst-default-page-width: var(--tst-page-width-m);
 
@@ -2078,6 +2078,39 @@ ________________________________________________________________________________
 }
 
 .tst-agentur .tst-col-2 .tst-img {
+  width: 100%;
+  height: 100%;
+}
+
+/*______________________________________________________________________________
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+tourTemplate()
+________________________________________________________________________________
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+
+#uMap {
+  border-radius: var(--tst-border-radius);
+}
+
+.tst-offene-touren .tst-tour-dates {
+  margin-bottom: var(--tst-space-xl);
+}
+
+.tst-offene-touren .tst-paragraph {
+  margin-bottom: 0;
+}
+
+.tst-offene-touren p.tst-paragraph:last-of-type {
+  margin-bottom: var(--tst-space-l);
+}
+
+.tst-galerie .tst-slider li {
+  aspect-ratio: 1.3 / 1;
+}
+
+.tst-galerie .tst-img {
   width: 100%;
   height: 100%;
 }

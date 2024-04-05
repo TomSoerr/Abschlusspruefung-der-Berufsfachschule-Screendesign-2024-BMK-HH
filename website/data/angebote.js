@@ -57,6 +57,30 @@ export default {
         '2024-06-09': ['9. Juni 20:00-21:30 Uhr', 'ausgebucht'],
         '2024-09-09': ['9. September 20 Uhr'],
       },
+      mapSrc: '//umap.openstreetmap.de/en/map/treffpunkt-bar-barrossa_56930',
+      treffpunkt: 'Südufer Brooksbrücke, vor der Bar Barrossa',
+      offeneTour:
+        '**Einzelpreis:** <br> Erwachsene 17,50 Euro <br> Kinder (bis 12 Jahre) 10 Euro',
+      privateTour:
+        '**Gruppenpreis:** <br> 180 Euro <br> Teilnehmeranzahl: max. 12 Teilnehmer',
+      galerie: [
+        {
+          src: 'ap2024_tour_27.jpg',
+          alt: 'Bild von einem Totenkopf auf einem Skelett',
+        },
+        {
+          src: 'ap2024_hafencity_28.jpg',
+          alt: 'Dunkle Gasse in der Speicherstadt',
+        },
+        {
+          src: 'ap2024_tour_20.jpg',
+          alt: 'Türbogen mit einem Totenkopf',
+        },
+        {
+          src: 'ap2024_hafencity_25.jpg',
+          alt: 'Brücke bei neblichem Wetter und in der Nacht',
+        },
+      ],
     },
     'sportliche-entdeckertour': {
       name: 'Sportliche Entdeckertour',

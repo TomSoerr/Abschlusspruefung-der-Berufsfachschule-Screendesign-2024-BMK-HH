@@ -20,8 +20,9 @@ Disclaimer for Noto Sans: The "Noto Sans" font in this project is licensed under
 
 # Eigenstädnigkeitserklärung
 
-| Funktion/Detail       | Quelle                         |
-| --------------------- | ------------------------------ |
-| Material Design Icons | https://fonts.google.com/icons |
-| Noto Sans             | https://fonts.google.com       |
-| Poppins               | https://fonts.google.com       |
+| Funktion/Detail       | Quelle                            |
+| --------------------- | --------------------------------- |
+| Material Design Icons | https://fonts.google.com/icons    |
+| Noto Sans             | https://fonts.google.com          |
+| Poppins               | https://fonts.google.com          |
+| Karte mit Treffpunkt  | https://umap.openstreetmap.de/de/ |
