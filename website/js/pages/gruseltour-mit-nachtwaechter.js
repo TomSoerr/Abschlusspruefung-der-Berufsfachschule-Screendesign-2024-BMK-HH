@@ -3,6 +3,8 @@ import main from '../modules/main.js';
 import section from '../modules/section.js';
 import p from '../modules/paragraph.js';
 import image from '../modules/image.js';
+import slider from '../modules/slider.js';
+import col2 from '../modules/col-2.js';
 import button from '../modules/button.js';
 import footer from '../modules/footer.js';
 import Helper from '../modules/helper.js';
@@ -16,6 +18,9 @@ const _ = Helper.create;
 function tourTemplate({ site }) {
   const tourData = angebote[Helper.getFolderData(`${site}.html`)][site];
   document.title = tourData.name;
+
+  const map = _('template');
+  map.innerHTML = `<iframe id="uMap" width="100%" height="500px" frameborder="0" allowfullscreen allow="geolocation" src="${tourData.mapSrc}?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&editMode=disabled&moreControl=false&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=false&onLoadPanel=none&captionBar=false&captionMenus=false"></iframe>`;
 
   return [
     hero({
@@ -36,46 +41,57 @@ function tourTemplate({ site }) {
         href: `${Helper.getFolderData(`${site}.html`)}.html`,
       }),
     ]),
+    section(
+      [
+        col2({
+          left: [
+            _('h2', { text: 'Die nächste offenen Touren' }),
+            tourDate({ filterBy: site, noLink: true }),
+            ...p({ text: tourData.offeneTour }),
+            button({
+              text: 'Offene Tour buchen',
+              href: 'buchung.html',
+              type: 'link',
+            }),
+          ],
+          right: [
+            _('h2', { text: 'Treffpunkt' }),
+            ...p({ text: tourData.treffpunkt }),
+            map.content,
+          ],
+        }),
+      ],
+      'tst-offene-touren',
+    ),
     section([
-      _('h2', { text: 'Die nächste offenen Touren' }),
-      tourDate({ filterBy: site, noLink: true }),
+      _('h2', { text: 'Private Tour' }),
+      ...p({ text: tourData.privateTour }),
+      button({
+        text: 'Private Tour anfragen',
+        href: 'kontakt.html',
+        home: true,
+      }),
     ]),
+    section(
+      [
+        _('h2', { text: 'Galerie' }),
+        slider({
+          content: tourData.galerie.map((img) =>
+            _('li', null, [
+              image({ src: img.src, alt: img.alt, hidden: true }),
+            ]),
+          ),
+        }),
+      ],
+      'tst-galerie',
+    ),
   ];
 }
 
 function load() {
   document.body.append(
     nav(),
-    main(
-      ...tourTemplate({ site: 'gruseltour-mit-nachtwaechter' }),
-      section([
-        _('h2', { text: 'Offene Touren' }),
-        ...p({
-          text: 'Einzelpreis: <br> Erwachsene 17,50 Euro <br> Kinder (bis 12 Jahre) 10 Euro <br> Treffpunkt: Südufer Brooksbrücke, vor der Bar Barrossa',
-        }),
-        image({
-          src: 'karte',
-          alt: 'Einbindung des Orientierungsplans mit Kennzeichnung des Treffpunkts',
-        }),
-        button({
-          text: 'Offene Tour buchen',
-          href: 'buchung.html',
-          type: 'link',
-        }),
-        _('h2', { text: 'Private Touren' }),
-        ...p({
-          text: 'Teilnehmeranzahl: max. 12 Teilnehmer <br> Gruppenpreis: 180 €',
-        }),
-        button({
-          text: 'Private Tour anfragen',
-          href: 'kontakt.html',
-          home: true,
-        }),
-        _('h6', {
-          text: Helper.relativPath(window.location.pathname, 'impressum.html'),
-        }),
-      ]),
-    ),
+    main(...tourTemplate({ site: 'gruseltour-mit-nachtwaechter' })),
     footer(),
   );
 }
