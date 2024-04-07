@@ -28,50 +28,50 @@ function tourTemplate({ site }) {
       heading: tourData.name,
     }),
     section([
-      ...p({ text: tourData.text }),
-      _(
-        'ul',
-        null,
-        tourData.kategorien.map((cat) => category({ c: cat, home: true })),
-      ),
-
       button({
         type: 'link',
         text: 'Zurück zur Übersicht',
         href: `${Helper.getFolderData(`${site}.html`)}.html`,
       }),
+      _(
+        'ul',
+        null,
+        tourData.kategorien.map((cat) => category({ c: cat, home: true })),
+      ),
     ]),
-    section(
-      [
-        col2({
-          left: [
-            _('h2', { text: 'Die nächste offenen Touren' }),
-            tourDate({ filterBy: site, noLink: true }),
+    section([
+      col2({
+        right: [
+          _('h2', { text: 'Die nächste offenen Touren' }),
+          tourDate({ filterBy: site, noLink: true }),
+          _('div', { class: 'tst-preise' }, [
+            _('h2', { text: 'Offene Tour' }),
             ...p({ text: tourData.offeneTour }),
             button({
               text: 'Offene Tour buchen',
               href: 'buchung.html',
               type: 'link',
             }),
-          ],
-          right: [
-            _('h2', { text: 'Treffpunkt' }),
-            ...p({ text: tourData.treffpunkt }),
-            map.content,
-          ],
-        }),
-      ],
-      'tst-offene-touren',
-    ),
-    section([
-      _('h2', { text: 'Private Tour' }),
-      ...p({ text: tourData.privateTour }),
-      button({
-        text: 'Private Tour anfragen',
-        href: 'kontakt.html',
-        home: true,
+          ]),
+          _('div', { class: 'tst-preise' }, [
+            _('h2', { text: 'Private Tour' }),
+            ...p({ text: tourData.privateTour }),
+            button({
+              text: 'Private Tour anfragen',
+              href: 'kontakt.html',
+              home: true,
+            }),
+          ]),
+        ],
+        left: [
+          ...p({ text: tourData.text }),
+          _('h2', { text: 'Treffpunkt' }),
+          ...p({ text: tourData.treffpunkt }),
+          map.content,
+        ],
       }),
     ]),
+
     section(
       [
         _('h2', { text: 'Galerie' }),

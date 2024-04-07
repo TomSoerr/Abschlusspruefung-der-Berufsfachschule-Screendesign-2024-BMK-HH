@@ -144,19 +144,18 @@ ________________________________________________________________________________
   --tst-aspect-ratio-sub: 16 / 5;
   --tst-aspect-ratio-sub-mobile: 48vh;
 
-  --tst-color-primary: #fdfeff;
+  /* needs to get changes inside nav.js:321 */
+  --tst-animation-short: 0.2s;
 
-  --tst-color-secondary: #5fd2ff;
-  --tst-color-secondary-light: #d2f2ff;
-  --tst-color-secondary-2: #fac60b;
-  --tst-color-accent: #b26ef7;
-  --tst-color-accent-dark: #9e3dff;
+  --tst-color-primary: #fdfeff;
 
   --tst-color-text: #000a14;
   --tst-color-nav: var(--tst-color-primary);
 
-  /* needs to get changes inside nav.js:321 */
-  --tst-animation-short: 0.2s;
+  --tst-color-secondary: #fac919;
+  --tst-color-secondary-light: #f1f7fd;
+  --tst-color-accent: #5f64ff;
+  --tst-color-accent-dark: var(--tst-color-accent);
 }
 
 [data-scrolled="true"] {
@@ -303,7 +302,7 @@ p.tst-paragraph strong {
   font-weight: 700;
 }
 
-address p.tst-paragraph {
+address p {
   font-style: normal;
   margin-bottom: 0;
 }
@@ -877,7 +876,7 @@ main {
 }
 
 .tst-section.secondary-2 {
-  background-color: var(--tst-color-secondary-2);
+  background-color: var(--tst-color-secondary);
 }
 
 .tst-section.wide .tst-section-inner {
@@ -920,7 +919,7 @@ Section specific
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
 
 #tst-footer {
-  background-color: var(--tst-color-secondary);
+  background-color: var(--tst-color-primary);
   color: var(--tst-color-text);
   position: relative;
   --wave-height: 4rem;
@@ -1194,20 +1193,8 @@ ________________________________________________________________________________
   display: grid;
   gap: var(--tst-space-m);
   margin: var(--tst-space-x) 0;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-auto-flow: dense;
-}
-
-#tst-form > * {
-  grid-column: 1 / 2;
-}
-
-#tst-form > label[for="message"] {
-  grid-area: 1 / 2 / 6 / 3;
-}
-
-#tst-form > label[for="message"] textarea {
-  height: 100% !important;
 }
 
 @media (max-width: 768px) {
@@ -1231,10 +1218,11 @@ ________________________________________________________________________________
   padding: var(--tst-space-xs) var(--tst-space-s);
   position: relative;
   border: 2px solid var(--tst-color-secondary-light);
+  border-radius: var(--tst-border-radius);
 }
 
 #tst-form label:not([for="privacy"]):focus-within {
-  border: 2px solid var(--tst-color-secondary-2);
+  border: 2px solid var(--tst-color-secondary);
 }
 
 #tst-form label span.label {
@@ -1414,7 +1402,7 @@ ________________________________________________________________________________
   border-radius: 5rem;
   padding: 0rem 1rem;
   background-color: inherit;
-  border: 2px solid var(--tst-color-secondary-2);
+  border: 2px solid var(--tst-color-secondary);
   font-size: 1.5rem;
   background-color: var(--tst-color-primary);
   color: var(--tst-color-text);
@@ -1428,11 +1416,11 @@ ________________________________________________________________________________
 [data-category="be"] [data-category="be"],
 [data-category="in"] [data-category="in"],
 [data-category="ou"] [data-category="ou"] {
-  background-color: var(--tst-color-secondary-2);
+  background-color: var(--tst-color-secondary);
 }
 
 .tst-category-cell:is(:hover, :focus-within) {
-  background-color: var(--tst-color-secondary-2);
+  background-color: var(--tst-color-secondary);
   text-decoration: none;
 }
 
@@ -2113,4 +2101,30 @@ ________________________________________________________________________________
 .tst-galerie .tst-img {
   width: 100%;
   height: 100%;
+}
+
+/*______________________________________________________________________________
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+data-page="buchung"
+________________________________________________________________________________
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+
+[data-page="buchung"] .tst-col-2 {
+  flex-direction: row-reverse;
+}
+
+/*______________________________________________________________________________
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+data-page="gruseltour-mit-nachtwaechter"
+________________________________________________________________________________
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+[data-page="gruseltour-mit-nachtwaechter"] .tst-col-2 > * {
+  min-width: min(calc(100vw - var(--tst-space-x) * 2), 30rem);
+}
+[data-page="gruseltour-mit-nachtwaechter"] .tst-col-2-left {
+  flex: 1.3 1 0;
 }

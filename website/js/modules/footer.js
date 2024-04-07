@@ -59,38 +59,50 @@ export default function footer() {
             ),
           ]),
         ]),
-
       ]),
 
       _('div', { class: 'tst-footer-contact' }, [
         _('h3', null, ['Kontakt']),
         _('address', null, [
           _('p', { text: 'Agentur Aye Aye' }),
-          _('p', { text: 'Akina Henyes und Anjuli Sayyed' }),
-          _('p', null, ['Am Sandtorkai 48']),
-          _('p', null, ['20457 Hamburg']),
-          _('p', null, ['Tel: (040) 13 99 04-0']),
-          _('p', null, ['E-Mail: info@aye-aye.hamburg']),
+          _('p', { text: 'Am Sandtorkai 48' }),
+          _('p', { text: '20457 Hamburg' }),
+          _('p', null, [
+            _('a', {
+              href: 'tel:+49401399040',
+              text: '(0 40) 13 99 040',
+            }),
+          ]),
+          _('p', null, [
+            _('a', {
+              href: 'mailto:info@aye-aye.hamburg',
+              text: 'info@aye-aye.hamburg',
+            }),
+          ]),
         ]),
       ]),
 
-      ...allTours.map((tour) => _('div', { class: `tst-footer-${tour.folder}` }, [
-        _('h3', null, [tour.parent]),
-        _('ul', null, [
-          ...tour.unterpunkte.map((sub) => _('li', null, [
-            _(
-              'a',
-              {
-                href: `${Helper.relativPath(window.location.pathname, sub.href)}`,
-                class: 'tst-preload',
-                text: sub.text,
-              },
-              null,
-              events,
+      ...allTours.map((tour) =>
+        _('div', { class: `tst-footer-${tour.folder}` }, [
+          _('h3', null, [tour.parent]),
+          _('ul', null, [
+            ...tour.unterpunkte.map((sub) =>
+              _('li', null, [
+                _(
+                  'a',
+                  {
+                    href: `${Helper.relativPath(window.location.pathname, sub.href)}`,
+                    class: 'tst-preload',
+                    text: sub.text,
+                  },
+                  null,
+                  events,
+                ),
+              ]),
             ),
-          ])),
+          ]),
         ]),
-      ])),
+      ),
 
       _('div', { class: 'tst-footer-legal' }, [
         _('h3', null, ['Rechtliches']),

@@ -6,6 +6,7 @@ import Helper from '../modules/helper.js';
 import hero from '../modules/hero.js';
 import p from '../modules/paragraph.js';
 import { buchungForm } from '../modules/form.js';
+import col2 from '../modules/col-2.js';
 
 const _ = Helper.create;
 
@@ -15,18 +16,48 @@ function load() {
   document.body.append(
     nav(),
     main(
-      hero({ img: { src: 'ap2024_tour_14.jpg', alt: 'Bild mit einer Karte' }, heading: 'Ihr direkter Draht zu uns' }),
+      hero({
+        img: { src: 'ap2024_hafencity_29.jpg', alt: 'Bild mit einer Karte' },
+        heading: 'Ihr direkter Draht zu uns',
+      }),
       section([
+        col2({
+          right: [...buchungForm({ text: 'Ich möchte mit auf Tour …' })],
+          left: [
+            _('h2', { text: 'Kontakt' }),
 
-        _('address', null, [
-          ...p(
-            {
-              text: 'info@aye-aye.hamburg oder (0 40) 13 99 040 <br> Agentur Aye Aye <br> Akina Henyes und Anjuli Sayyed <br> Am Sandtorkai 48 <br> 20457 Hamburg <br> Mail: info@aye-aye.hamburg <br> Telefon (0 40) 13 99 04-0 <br> Telefax (0 40) 13 99 04-30',
-            },
-          ),
-        ]),
+            _('address', null, [
+              _('p', null, [
+                _('a', {
+                  href: 'mailto:info@aye-aye.hamburg',
+                  text: 'info@aye-aye.hamburg',
+                }),
+                _('span', { text: ' oder ' }),
+                _('a', {
+                  href: 'tel:+49401399040',
+                  text: '(0 40) 13 99 040',
+                }),
+              ]),
+              _('br'),
+              _('p', { text: 'Agentur Aye Aye' }),
+              _('p', { text: 'Am Sandtorkai 48' }),
+              _('p', { text: '20457 Hamburg' }),
+              _('p', null, [
+                _('a', {
+                  href: 'tel:+49401399040',
+                  text: '(0 40) 13 99 040',
+                }),
+              ]),
+              _('p', null, [
+                _('a', {
+                  href: 'mailto:info@aye-aye.hamburg',
+                  text: 'info@aye-aye.hamburg',
+                }),
+              ]),
+            ]),
+          ],
+        }),
       ]),
-      buchungForm({ text: 'Ich möchte mit auf Tour …' }),
     ),
     footer(),
   );
