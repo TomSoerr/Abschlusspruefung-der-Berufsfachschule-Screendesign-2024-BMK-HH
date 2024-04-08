@@ -9,7 +9,6 @@ const navigation = (function navigationIIFE() {
   let navSubMenuEl = null;
   let navImgTimeout = 1;
   let navBreakpoint = null;
-  let scrollTop = null;
   let navIconFontSize = null;
   let htmlSpaceX = null;
   let navGapX = null;
@@ -24,6 +23,9 @@ const navigation = (function navigationIIFE() {
   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
 
   function scrolled() {
+    const scrollTop = document.querySelector(
+      'main > header:first-child',
+    ).clientHeight;
     return (
       document.body.scrollTop > scrollTop ||
       document.documentElement.scrollTop > scrollTop
@@ -65,9 +67,6 @@ const navigation = (function navigationIIFE() {
       }
     }
   }
-
-  // add function that is called when the window is scrolled
-  Helper.addScrollFn(hideNavOnScroll);
 
   /* ______________________________________
   Mobile Navigation
@@ -186,11 +185,9 @@ const navigation = (function navigationIIFE() {
       getComputedStyle(navHtmlEl.children[0]).getPropertyValue('padding-left'),
     );
 
-    // set the scroll top for the shrink nav function
-    scrollTop = document.querySelector('main > :first-child').clientHeight;
-
     Helper.addScrollFn(shrinkNav);
     Helper.addScrollFn(removePreloadClass);
+    Helper.addScrollFn(hideNavOnScroll);
 
     // highlight the current nav link
     if (Helper.pathToMain(window.location.pathname)) {
@@ -210,7 +207,6 @@ const navigation = (function navigationIIFE() {
         activeLink.classList.add('tst-active');
       }
     }
-    // debugger;
 
     // calculate the min width of the nav for the Breakpoint
     calculateNavBreakpoint(10);

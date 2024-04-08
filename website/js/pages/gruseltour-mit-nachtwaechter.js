@@ -26,6 +26,7 @@ function tourTemplate({ site }) {
     hero({
       img: { src: tourData.img.src, alt: tourData.img.alt },
       heading: tourData.name,
+      small: true,
     }),
 
     section(

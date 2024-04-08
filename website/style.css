@@ -96,6 +96,7 @@ ________________________________________________________________________________
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
 
 :root {
+  scroll-behavior: smooth;
   /* sets font size to 10px and respects user font preferences */
   font-size: 62.5%;
   --tst-backup-fonts: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -125,12 +126,12 @@ ________________________________________________________________________________
   --tst-default-page-width: var(--tst-page-width-m);
 
   --tst-h1: 6rem;
-  --tst-h1: clamp(2.1rem, 5vw, 5.5rem);
+  --tst-h1: 4rem;
   --tst-h2: 3rem;
   --tst-h3: 2.5rem;
   --tst-text: 1.7rem;
 
-  --tst-border-radius: 0.3rem;
+  --tst-border-radius: 0.4rem;
 
   --tst-nav-height: 8.5rem;
   --tst-nav-gap-x: 4rem;
@@ -139,10 +140,8 @@ ________________________________________________________________________________
   --tst-current-nav-height: var(--tst-nav-height);
   --tst-nav-underline-offset: 1rem;
 
-  --tst-aspect-ratio-home: 16 / 7;
-  --tst-aspect-ratio-home-mobile: 70vh;
-  --tst-aspect-ratio-sub: 16 / 5;
-  --tst-aspect-ratio-sub-mobile: 48vh;
+  --tst-aspect-ratio-home: 70vh;
+  --tst-aspect-ratio-sub: 40vh;
 
   /* needs to get changes inside nav.js:321 */
   --tst-animation-short: 0.2s;
@@ -155,7 +154,7 @@ ________________________________________________________________________________
   --tst-color-secondary: #fac919;
   --tst-color-secondary-light: #f1f7fd;
   --tst-color-accent: #5f64ff;
-  --tst-color-accent-dark: var(--tst-color-accent);
+  --tst-color-accent-dark: #5c61ff;
 }
 
 [data-scrolled="true"] {
@@ -1096,89 +1095,148 @@ Section specific
 hero.js
 ________________________________________________________________________________
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
-/*______________________________________
-Section specific
-¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
-.tst-hero {
-  overflow: hidden;
-}
-
-.tst-hero.tst-section > .tst-section-inner {
-  aspect-ratio: var(--tst-aspect-ratio-sub);
-  min-height: var(--tst-aspect-ratio-sub-mobile);
-  padding: 0;
-  position: relative;
+.tst-hero .tst-col-2-left {
   display: flex;
   flex-direction: column;
   justify-content: end;
+}
+
+.tst-hero .tst-col-2 {
+  flex-wrap: wrap-reverse;
+}
+
+.tst-hero .tst-col-2 > * {
+  min-width: min(calc(100vw - var(--tst-space-x) * 2), 33rem);
+}
+
+.tst-hero .tst-col-2-right {
+  aspect-ratio: 1 / 1.33;
+  max-height: var(--tst-aspect-ratio-home);
+  align-self: start;
+}
+
+.tst-hero.sub .tst-col-2-right {
+  max-height: var(--tst-aspect-ratio-sub);
+}
+
+.tst-hero.sub .tst-section-inner {
+  padding-bottom: 0;
+}
+
+.tst-hero.sub .tst-col-2 > * {
+  min-width: min(calc(100vw - var(--tst-space-x) * 2), 30rem);
+}
+
+.tst-hero.sub .tst-col-2-right {
+  flex: 1.4 1 0;
+}
+
+.tst-hero .tst-col-2-right img {
   width: 100%;
+  height: 100%;
 }
 
-[data-page="index"] .tst-hero.tst-section > .tst-section-inner {
-  aspect-ratio: var(--tst-aspect-ratio-home);
-  min-height: var(--tst-aspect-ratio-home-mobile);
+.tst-hero h1 {
+  margin: 0;
 }
 
-.tst-hero > .tst-section-inner h1 {
-  max-width: 80%;
-}
-
-.tst-hero > .tst-section-inner > div {
-  background-color: var(--tst-color-primary);
-  max-width: calc(var(--tst-default-page-width) + var(--tst-space-x) * 2);
+.tst-hero-appendix .tst-paragraph {
+  font-size: 1.9;
   margin: 0 auto;
-  padding: var(--tst-space-l) var(--tst-space-x);
-  z-index: 50;
-  position: relative;
-  width: 100%;
 }
 
-.tst-hero > .tst-section-inner > div::before,
-.tst-hero > .tst-section-inner > div::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: var(--tst-space-x);
-  height: 100%;
-  transform: translateX(calc(-100% + 1px));
+/* index */
+
+[data-page="index"] .tst-hero .tst-col-2-left {
+  justify-content: center;
+}
+
+html:not([data-scrolled="true"]) [data-page="index"] #tst-site-nav {
+  background-color: var(--tst-color-accent-dark);
+  color: var(--tst-color-primary);
+}
+
+html:not([data-scrolled="true"])
+  [data-page="index"]
+  #tst-site-nav
+  .tst-nav-sub-level
+  ul {
+  background-color: var(--tst-color-accent-dark);
+}
+
+html:not([data-scrolled="true"])
+  [data-page="index"]
+  #tst-site-nav:not(.tst-nav-mobile)
+  .tst-section-inner
+  ul
+  :is(li.tst-hover, li:not(.tst-preload))::before {
   background-color: var(--tst-color-primary);
 }
 
-.tst-hero > .tst-section-inner > div::after {
-  right: 0;
-  left: unset;
-  transform: translateX(calc(100% - 1px));
+html:not([data-scrolled="true"])
+  [data-page="index"]
+  #tst-site-nav
+  #tst-menu-btn {
+  color: var(--tst-color-primary);
 }
 
-.tst-hero .tst-img {
-  height: 100%;
-  width: 100%;
-  filter: brightness(0.8);
-  position: absolute;
+html:not([data-scrolled="true"])
+  [data-page="index"]
+  #tst-site-nav.tst-nav-mobile.tst-nav-open
+  > .tst-section-inner
+  > ul {
+  background-color: var(--tst-color-accent-dark);
 }
 
-.tst-hero + .tst-section > .tst-section-inner {
-  padding-top: 0;
+html:not([data-scrolled="true"])
+  [data-page="index"]
+  #tst-site-nav.tst-nav-mobile.tst-section
+  .tst-section-inner
+  li.tst-nav-sub-level.tst-open {
+  border-color: var(--tst-color-primary);
+}
+
+html:not([data-scrolled="true"])
+  [data-page="index"]
+  #tst-site-nav.tst-nav-mobile.tst-section
+  .tst-section-inner
+  li.tst-nav-sub-level
+  li
+  a {
+  background-color: var(--tst-color-accent-dark);
+  color: var(--tst-color-primary);
+}
+
+[data-page="index"] .tst-hero {
+  background-color: var(--tst-color-accent);
+  color: var(--tst-color-primary);
+}
+
+html:not([data-scrolled="true"]) [data-page="index"] #tst-site-logo {
+  filter: grayscale(100%) brightness(0) invert(1);
 }
 
 @media (max-width: 480px) {
-  body[data-page="index"] .tst-hero + .tst-section > .tst-section-inner {
-    padding-top: var(--tst-space-y);
-  }
+}
 
-  body[data-page="index"] .tst-hero .tst-img {
-    filter: brightness(0.7);
-  }
+/*______________________________________________________________________________
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+data-page="buchung"
+________________________________________________________________________________
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
 
-  body[data-page="index"] .tst-hero > .tst-section-inner > div {
-    background-color: transparent;
-  }
+[data-page="buchung"] section .tst-col-2 {
+  flex-direction: row-reverse;
+}
 
-  body[data-page="index"] .tst-hero > .tst-section-inner h1 {
-    color: var(--tst-color-primary);
-    max-width: unset;
-  }
+[data-page="buchung"] section .tst-col-2 > * {
+  min-width: min(calc(100vw - var(--tst-space-x) * 2), 30rem);
+}
+
+[data-page="buchung"] section .tst-col-2-right {
+  flex: 1.4 1 0;
 }
 
 /*______________________________________________________________________________
@@ -2160,10 +2218,14 @@ ________________________________________________________________________________
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-data-page="buchung"
+tour overview
 ________________________________________________________________________________
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
 
-[data-page="buchung"] .tst-col-2 {
-  flex-direction: row-reverse;
+.tst-tour-overview .tst-col-2 > * {
+  min-width: min(calc(100vw - var(--tst-space-x) * 2), 30rem);
+}
+
+.tst-tour-overview .tst-col-2-left {
+  flex: 1.4 1 0;
 }

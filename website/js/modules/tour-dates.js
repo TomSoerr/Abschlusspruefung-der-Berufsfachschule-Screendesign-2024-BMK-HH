@@ -56,8 +56,14 @@ allDatesArr = allDatesArr.sort((a, b) => a.date.localeCompare(b.date));
 /**
  * @param {Object} param0 - Object with the maxDates and filterBy properties
  */
-function filterDates({ maxDates, filterBy }) {
+function filterDates({ maxDates, filterBy, groupBy }) {
   allDatesArr = allDatesArr.slice(0, maxDates);
+
+  if (groupBy) {
+    allDatesArr = allDatesArr.filter(
+      (date) => Helper.getFolderPath(date.href) === groupBy,
+    );
+  }
 
   if (filterBy) {
     allDatesArr = allDatesArr.filter((date) => date.filename === filterBy);
@@ -225,10 +231,44 @@ function tourDateSlider({ maxDates = 10, filterBy = null }) {
   return slider;
 }
 
-function tourDate({ maxDates = 10, filterBy = null } = {}) {
+function tourDateLink({ maxDates = 10, filterBy = null }) {
   const datesList = [];
 
   filterDates({ maxDates, filterBy }).forEach((date, index) => {
+    datesList.push(
+      _(
+        'li',
+        {
+          data: { status: date.details[1] },
+        },
+        [
+          _(
+            'a',
+            {
+              href: date.href,
+            },
+            [
+              _('strong', { text: date.name, class: 'arrow' }),
+              _('span', { text: date.details[0], class: 'tst-date' }),
+              _('span', { text: date.details[1], class: 'tst-status' }),
+            ],
+          ),
+        ],
+      ),
+    );
+  });
+
+  const slider = [_('ul', { class: 'tst-tour-dates' }, datesList)];
+
+  return slider;
+}
+
+// kdsafkaskfjklasdf
+
+function tourDate({ maxDates = 10, filterBy = null, groupBy } = {}) {
+  const datesList = [];
+
+  filterDates({ maxDates, filterBy, groupBy }).forEach((date, index) => {
     datesList.push(
       _(
         'li',
@@ -253,4 +293,4 @@ function tourDate({ maxDates = 10, filterBy = null } = {}) {
   return _('ul', { class: 'tst-tour-dates' }, datesList);
 }
 
-export { tourDate, tourDateSlider };
+export { tourDate, tourDateSlider, tourDateLink };

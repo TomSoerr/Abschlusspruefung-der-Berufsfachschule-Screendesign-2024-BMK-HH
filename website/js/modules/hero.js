@@ -1,7 +1,7 @@
 import Helper from './helper.js';
 // import picture from './picture.js';
 import image from './image.js';
-// import button from './button.js';
+import col2 from './col-2.js';
 
 const _ = Helper.create;
 
@@ -15,14 +15,15 @@ const _ = Helper.create;
 export default function hero({
   img,
   heading,
-  aside = null,
+  content = [],
+  small = false,
 } = {}) {
-  return _('header', { class: 'tst-hero tst-section wide' }, [
+  return _('header', { class: `tst-hero tst-section${small ? ' sub' : ''}` }, [
     _('div', { class: 'tst-section-inner' }, [
-      image({ hidden: true, src: img.src, alt: img.alt }),
-      _('div', null, [
-        _('h1', null, [heading]),
-      ]),
+      col2({
+        left: [_('h1', null, [heading]), ...content],
+        right: [image({ hidden: true, src: img.src, alt: img.alt })],
+      }),
     ]),
   ]);
 }
