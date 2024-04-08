@@ -60,9 +60,8 @@ export default {
       mapSrc: '//umap.openstreetmap.de/en/map/treffpunkt-bar-barrossa_56930',
       treffpunkt: 'Südufer Brooksbrücke, vor der Bar Barrossa',
       offeneTour:
-        '**Einzelpreis:** <br> Erwachsene 17,50 Euro <br> Kinder (bis 12 Jahre) 10 Euro',
-      privateTour:
-        '**Gruppenpreis:** <br> 180 Euro <br> Teilnehmeranzahl: max. 12 Teilnehmer',
+        '(Einzelpreis) <br>  **10 €** Kinder (bis 12 Jahre) <br> **17,50 €** Erwachsene',
+      privateTour: '(Gruppenpreis) <br> **180 €** Gruppe (max. 12 Teilnehmer)',
       galerie: [
         {
           src: 'ap2024_tour_27.jpg',
@@ -96,7 +95,6 @@ export default {
       },
     },
   },
-
   'kindergeburtstage': {
     'piraten-rallye': {
       name: 'Piraten-Rallye',
