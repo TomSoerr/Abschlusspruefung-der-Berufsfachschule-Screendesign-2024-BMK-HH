@@ -129,6 +129,17 @@ export default function footer() {
               events,
             ),
           ]),
+          _('li', null, [
+            _(
+              'a',
+              {
+                href: `${Helper.pathToMain(window.location.pathname)}kontakt.html`,
+                class: 'tst-preload',
+              },
+              ['Kontakt'],
+              events,
+            ),
+          ]),
         ]),
       ]),
       _('div', { class: 'tst-by-link' }, [

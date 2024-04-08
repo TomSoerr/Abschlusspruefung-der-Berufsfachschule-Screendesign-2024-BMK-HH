@@ -197,11 +197,7 @@ export default class Helper {
   static relativPath(from, to) {
     const relativePath = Helper.pathToMain(from);
 
-    if (to === 'buchen.html') {
-      console.log('buchen');
-    }
-
-    if (to === '#') {
+    if (to.match(/^#/)) {
       return to;
     }
 

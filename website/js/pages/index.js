@@ -36,7 +36,7 @@ const kundenmeinungenData = [
 
 const kundenmeinungen = ({ quotes }) =>
   section([
-    _('h2', { text: 'Kundenmeinungen' }),
+    _('h2', { text: 'Kundenmeinungen', id: 'kume' }),
     slider({
       content: quotes.map((quote) =>
         _('li', null, [
@@ -122,18 +122,22 @@ function load() {
     main(
       hero({
         img: {
-          src: 'ap2024_hafencity_07.jpg',
+          src: 'home-hero.jpg',
           alt: 'Hafencity',
           hidden: true,
         },
         heading: 'Leinen los für Erlebnisse im Hamburg Hafen? Aye, Aye!',
+        content: [
+          ...p({
+            text: 'Wir nehmen euch mit auf eine **Entdeckungsreise** in den neuesten und den ältesten Stadtteil Hamburgs, die Hafencity und die Speicherstadt. <br> Wir möchten euch zeigen, dass Geschichte und Architektur alles andere als langweilig, sondern – ganz im Gegenteil – *spannend* und voller *Überraschungen* sein können. Ob bei einem **Kindergeburtstag**, einer **Klassenfahrt**, einer **Stadtrallye** oder einem **Familienausflug** hier bei uns an der Elbe gibt es immer etwas Aufregendes zu erleben und zu erfahren. ',
+          }),
+          button({
+            text: 'Mehr erfahren',
+            href: '#kume',
+            color: 'primary',
+          }),
+        ],
       }),
-      section([
-        ...p({
-          text: 'Wir nehmen euch mit auf eine **Entdeckungsreise** in den neuesten und den ältesten Stadtteil Hamburgs, die Hafencity und die Speicherstadt. <br> Wir möchten euch zeigen, dass Geschichte und Architektur alles andere als langweilig, sondern – ganz im Gegenteil – *spannend* und voller *Überraschungen* sein können. Ob bei einem **Kindergeburtstag**, einer **Klassenfahrt**, einer **Stadtrallye** oder einem **Familienausflug** hier bei uns an der Elbe gibt es immer etwas Aufregendes zu erleben und zu erfahren. ',
-        }),
-        button({ text: 'Kontakt', href: 'kontakt.html', home: true }),
-      ]),
 
       kundenmeinungen({ quotes: kundenmeinungenData }),
 
