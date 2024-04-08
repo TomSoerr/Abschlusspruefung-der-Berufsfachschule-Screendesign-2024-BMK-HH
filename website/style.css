@@ -2078,21 +2078,74 @@ tourTemplate()
 ________________________________________________________________________________
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
 
+/* left */
 #uMap {
   border-radius: var(--tst-border-radius);
 }
 
-.tst-offene-touren .tst-tour-dates {
+.tst-tour-template .tst-col-2-left {
+  flex: 1.4 1 0;
+}
+
+.tst-tour-template .tst-col-2-left h2 {
+  margin-top: var(--tst-space-xl);
+}
+
+.tst-tour-template .tst-col-2 > * {
+  min-width: min(calc(100vw - var(--tst-space-x) * 2), 30rem);
+}
+
+/* right */
+
+.tst-tour-template .tst-tour-dates {
   margin-bottom: var(--tst-space-xl);
 }
 
-.tst-offene-touren .tst-paragraph {
+.tst-tour-template .tst-preise {
+  border-bottom: 2px solid var(--tst-color-text);
+  margin-bottom: var(--tst-space-xl);
+}
+
+.tst-tour-template .tst-preise:last-child {
   margin-bottom: 0;
 }
 
-.tst-offene-touren p.tst-paragraph:last-of-type {
-  margin-bottom: var(--tst-space-l);
+.tst-tour-template .tst-preise h2 {
+  margin-bottom: 0;
 }
+
+.tst-tour-template .tst-preise p.tst-paragraph:first-of-type {
+  opacity: 0.56;
+  margin-bottom: var(--tst-space-m);
+}
+
+.tst-tour-template .tst-preise p.tst-paragraph:not(:first-of-type) strong {
+  font-size: var(--tst-h3);
+  display: inline-block;
+}
+
+.tst-tour-template .tst-preise p.tst-paragraph:not(:first-of-type):has(strong) {
+  margin: 0;
+}
+
+.tst-tour-template .tst-paragraph {
+  max-width: 100%;
+}
+
+.tst-tour-template .tst-preise .tst-button {
+  margin: var(--tst-space-m) 0 var(--tst-space-s);
+}
+
+.tst-tour-template .tst-col-2-right .tst-kategorien {
+  display: flex;
+  gap: var(--tst-space-xs);
+}
+
+.tst-tour-template .tst-col-2-right .tst-kategorien li {
+  list-style: none;
+}
+
+/* galerie */
 
 .tst-galerie .tst-slider li {
   aspect-ratio: 1.3 / 1;
@@ -2113,18 +2166,4 @@ ________________________________________________________________________________
 
 [data-page="buchung"] .tst-col-2 {
   flex-direction: row-reverse;
-}
-
-/*______________________________________________________________________________
-||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-data-page="gruseltour-mit-nachtwaechter"
-________________________________________________________________________________
-¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
-[data-page="gruseltour-mit-nachtwaechter"] .tst-col-2 > * {
-  min-width: min(calc(100vw - var(--tst-space-x) * 2), 30rem);
-}
-[data-page="gruseltour-mit-nachtwaechter"] .tst-col-2-left {
-  flex: 1.3 1 0;
 }

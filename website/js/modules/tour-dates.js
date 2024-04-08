@@ -234,7 +234,6 @@ function tourDate({ maxDates = 10, filterBy = null } = {}) {
         'li',
         {
           data: { status: date.details[1] },
-          class: index === 0 ? 'active' : 'hidden',
         },
         [
           _(
