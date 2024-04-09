@@ -245,21 +245,10 @@ const navigation = (function navigationIIFE() {
             id: 'tst-site-logo',
           },
           [
-            _('picture', null, [
-              _('source', {
-                media: '(min-width: 501px)',
-                srcset: Helper.imgPath(Helper.navItems.logo.src),
-              }),
-
-              _('source', {
-                media: '(max-width: 500px)',
-                srcset: Helper.imgPath(Helper.navItems.logo.srcset),
-              }),
-              _('img', {
-                src: Helper.imgPath(Helper.navItems.logo.src),
-                alt: Helper.navItems.logo.alt,
-              }),
-            ]),
+            _('img', {
+              src: Helper.imgPath(Helper.navItems.logo.src),
+              alt: Helper.navItems.logo.alt,
+            }),
           ],
         ),
         // Main Navigation

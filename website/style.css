@@ -140,9 +140,6 @@ ________________________________________________________________________________
   --tst-current-nav-height: var(--tst-nav-height);
   --tst-nav-underline-offset: 1rem;
 
-  --tst-aspect-ratio-home: 70vh;
-  --tst-aspect-ratio-sub: 40vh;
-
   /* needs to get changes inside nav.js:321 */
   --tst-animation-short: 0.2s;
 
@@ -153,8 +150,8 @@ ________________________________________________________________________________
 
   --tst-color-secondary: #fac919;
   --tst-color-secondary-light: #f1f7fd;
-  --tst-color-accent: #5f64ff;
-  --tst-color-accent-dark: #5c61ff;
+  --tst-color-accent: #5c61ff;
+  --tst-color-accent-light: #e3e9ff;
 }
 
 [data-scrolled="true"] {
@@ -275,7 +272,7 @@ h3 {
 a {
   text-decoration: none;
   position: relative;
-  color: var(--tst-color-accent-dark);
+  color: var(--tst-color-accent);
 }
 
 a:is(:hover, :focus-visible) {
@@ -433,8 +430,8 @@ ________________________________________________________________________________
 
 .tst-button.primary:is(:hover, :focus-visible) {
   color: var(--tst-color-primary);
-  background-color: var(--tst-color-accent);
-  border-color: var(--tst-color-accent);
+  background-color: transparent;
+  border-color: var(--tst-color-primary);
 }
 
 /*______________________________________________________________________________
@@ -838,7 +835,7 @@ ________________________________________________________________________________
 
 .tst-col-2 > * {
   flex: 1 1 0;
-  min-width: min(calc(100vw - var(--tst-space-x) * 2), 50rem);
+  min-width: min(calc(100vw - var(--tst-space-x) * 2), 33rem);
 }
 
 /*______________________________________________________________________________
@@ -1095,7 +1092,16 @@ Section specific
 hero.js
 ________________________________________________________________________________
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
-.tst-hero .tst-col-2-left {
+.tst-hero .tst-picture {
+  aspect-ratio: 16 / 11;
+  height: 100%;
+}
+
+.tst-hero.sub .tst-picture {
+  aspect-ratio: 16 / 9;
+}
+
+.tst-hero .tst-col-2:first-child .tst-col-2-left {
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -1105,54 +1111,40 @@ ________________________________________________________________________________
   flex-wrap: wrap-reverse;
 }
 
-.tst-hero .tst-col-2 > * {
-  min-width: min(calc(100vw - var(--tst-space-x) * 2), 33rem);
-}
-
-.tst-hero .tst-col-2-right {
-  aspect-ratio: 1 / 1.33;
-  max-height: var(--tst-aspect-ratio-home);
-  align-self: start;
-}
-
-.tst-hero.sub .tst-col-2-right {
-  max-height: var(--tst-aspect-ratio-sub);
-}
-
 .tst-hero.sub .tst-section-inner {
   padding-bottom: 0;
 }
 
-.tst-hero.sub .tst-col-2 > * {
-  min-width: min(calc(100vw - var(--tst-space-x) * 2), 30rem);
-}
-
-.tst-hero.sub .tst-col-2-right {
+.tst-hero .tst-col-2-right {
   flex: 1.4 1 0;
-}
-
-.tst-hero .tst-col-2-right img {
-  width: 100%;
-  height: 100%;
 }
 
 .tst-hero h1 {
   margin: 0;
 }
 
-.tst-hero-appendix .tst-paragraph {
-  font-size: 1.9;
-  margin: 0 auto;
+.tst-hero .tst-col-2-right .tst-paragraph {
+  padding: var(--tst-space-m) 0 0;
 }
 
-/* index */
+.tst-hero .tst-paragraph {
+  margin: 0;
+}
 
-[data-page="index"] .tst-hero .tst-col-2-left {
-  justify-content: center;
+.tst-hero .tst-button {
+  margin-top: var(--tst-space-m);
+}
+
+[data-page="index"] .tst-hero h1 {
+  margin-bottom: var(--tst-space-m);
+}
+
+[data-page="index"] .tst-hero .tst-section-inner {
+  padding-bottom: calc(var(--tst-space-y) * 2);
 }
 
 html:not([data-scrolled="true"]) [data-page="index"] #tst-site-nav {
-  background-color: var(--tst-color-accent-dark);
+  background-color: var(--tst-color-accent);
   color: var(--tst-color-primary);
 }
 
@@ -1161,7 +1153,7 @@ html:not([data-scrolled="true"])
   #tst-site-nav
   .tst-nav-sub-level
   ul {
-  background-color: var(--tst-color-accent-dark);
+  background-color: var(--tst-color-accent);
 }
 
 html:not([data-scrolled="true"])
@@ -1185,7 +1177,7 @@ html:not([data-scrolled="true"])
   #tst-site-nav.tst-nav-mobile.tst-nav-open
   > .tst-section-inner
   > ul {
-  background-color: var(--tst-color-accent-dark);
+  background-color: var(--tst-color-accent);
 }
 
 html:not([data-scrolled="true"])
@@ -1203,7 +1195,7 @@ html:not([data-scrolled="true"])
   li.tst-nav-sub-level
   li
   a {
-  background-color: var(--tst-color-accent-dark);
+  background-color: var(--tst-color-accent);
   color: var(--tst-color-primary);
 }
 
@@ -1216,9 +1208,6 @@ html:not([data-scrolled="true"]) [data-page="index"] #tst-site-logo {
   filter: grayscale(100%) brightness(0) invert(1);
 }
 
-@media (max-width: 480px) {
-}
-
 /*______________________________________________________________________________
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -1229,10 +1218,6 @@ ________________________________________________________________________________
 
 [data-page="buchung"] section .tst-col-2 {
   flex-direction: row-reverse;
-}
-
-[data-page="buchung"] section .tst-col-2 > * {
-  min-width: min(calc(100vw - var(--tst-space-x) * 2), 30rem);
 }
 
 [data-page="buchung"] section .tst-col-2-right {
@@ -1511,7 +1496,7 @@ ________________________________________________________________________________
 
 .tst-tour-list-card {
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
+  grid-template-columns: 1fr 1.4fr;
   gap: var(--tst-space-l);
   padding: var(--tst-space-l) 0;
   border-bottom: var(--tst-color-text) 2px solid;
@@ -1578,19 +1563,18 @@ ________________________________________________________________________________
 
 /* tourCardImg() */
 
-.tst-tour-list-card .tst-image {
-  position: relative;
-  align-self: start;
-}
-
-.tst-tour-list-card .tst-img {
+.tst-tour-list-card .tst-picture {
   aspect-ratio: 2 / 1.5;
+  height: auto;
 }
 
 /* default-page-width + space-x * 2 */
 @media (min-width: 1376px) {
-  .tst-tour-list-card {
-    padding: var(--tst-space-l) var(--tst-space-xl);
+  .tst-tour-list-card .tst-tour-list-content {
+    padding-right: var(--tst-space-xl);
+  }
+  .tst-tour-list-card .tst-picture {
+    padding-left: var(--tst-space-xl);
   }
 }
 
@@ -1599,8 +1583,8 @@ ________________________________________________________________________________
     grid-template-columns: 1fr;
   }
 
-  .tst-tour-list-card > .tst-img {
-    aspect-ratio: 2 / 1.2;
+  .tst-tour-list-card .tst-picture {
+    aspect-ratio: 16 / 9;
   }
 }
 
@@ -1722,7 +1706,7 @@ ________________________________________________________________________________
 }
 
 :is(.tst-slider-prev, .tst-slider-next):is(:hover, :focus-visible) {
-  color: var(--tst-color-accent-dark);
+  color: var(--tst-color-accent);
 }
 
 .tst-slider-prev {
@@ -1970,7 +1954,7 @@ ________________________________________________________________________________
 
 .tst-tour-dates li a:is(:hover, :focus-visible) strong {
   text-decoration: underline;
-  color: var(--tst-color-accent-dark);
+  color: var(--tst-color-accent);
 }
 
 .tst-tour-dates
@@ -2073,7 +2057,7 @@ ________________________________________________________________________________
 /* left */
 
 .tst-tour-dates-slider .tst-col-2-left {
-  flex: 1.2 1 0;
+  flex: 1.4 1 0;
 }
 
 .tst-tour-dates-slider .tst-col-2-left a::after {
@@ -2113,7 +2097,19 @@ ________________________________________________________________________________
   flex-wrap: wrap-reverse;
 }
 
+.tst-agentur .tst-col-2-right .tst-picture {
+  aspect-ratio: 16 / 9;
+  align-self: start;
+  height: 100%;
+}
+
+.tst-agentur .tst-col-2 > * {
+  min-width: min(calc(100vw - var(--tst-space-x) * 2), 42rem);
+}
+
 .tst-agentur .tst-col-2-left {
+  flex: 1.4 1 0;
+  margin: 0 auto;
   max-width: 75ch;
   margin: 0 auto;
 }
@@ -2121,11 +2117,6 @@ ________________________________________________________________________________
 .tst-agentur .tst-col-2-left .tst-paragraph {
   margin-left: auto;
   margin-right: auto;
-}
-
-.tst-agentur .tst-col-2 .tst-img {
-  width: 100%;
-  height: 100%;
 }
 
 /*______________________________________________________________________________
@@ -2147,10 +2138,6 @@ ________________________________________________________________________________
 
 .tst-tour-template .tst-col-2-left h2 {
   margin-top: var(--tst-space-xl);
-}
-
-.tst-tour-template .tst-col-2 > * {
-  min-width: min(calc(100vw - var(--tst-space-x) * 2), 30rem);
 }
 
 /* right */
@@ -2221,10 +2208,6 @@ ________________________________________________________________________________
 tour overview
 ________________________________________________________________________________
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
-
-.tst-tour-overview .tst-col-2 > * {
-  min-width: min(calc(100vw - var(--tst-space-x) * 2), 30rem);
-}
 
 .tst-tour-overview .tst-col-2-left {
   flex: 1.4 1 0;

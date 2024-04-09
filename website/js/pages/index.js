@@ -12,6 +12,7 @@ import slider from '../modules/slider.js';
 import image from '../modules/image.js';
 import col2 from '../modules/col-2.js';
 import cta from '../modules/cta.js';
+import picture from '../modules/picture.js';
 
 const _ = Helper.create;
 
@@ -54,13 +55,13 @@ const empfehlungenData = [
     heading: 'Akinas Lieblingstour: Die Gruseltour mit Nachtwächter',
     text: 'Ich mag die *Gruseltour mit dem Nachtwächter* am liebsten. Bei der Ausarbeitung dieser Tour sind wir auf großartige Geschichten und Legenden aus der Speicherstadt gestoßen. Unser Guide Thomas taucht mit den Kindern innerhalb kürzester Zeit in eine ***fantastische Welt*** ein, sodass sie alles um sich herum vergessen und nur noch den **gruseligen Geschichten** lauschen. Auch manch Erwachsene habe ich schon vor Schreck kreischen hören, wenn unsere Schausteller unvermittelt auftauchen. Ein großer Gruselspaß!',
     link: { text: 'Zur Gruseltour', href: 'gruseltour-mit-nachtwaechter.html' },
-    img: { src: 'ap2024_team_Akina_Henyes_2.jpg', alt: 'Akina Henyes' },
+    img: { src: 'ap2024-team-Akina-Henyes-2.jpg', alt: 'Akina Henyes' },
   },
   {
     heading: 'Anjulis Lieblingstour: Die Klabautermann-Tour',
     text: 'Mein absoluter Favorit ist unsere *Klabautermann-Tour*. Ich mag die **Seefahrer- und Schmugglergeschichten** und entdecke an den Orten, die wir besuchen, immer wieder neue und spannende Details. Die Kinder wollen am Ende der Tour immer alle zur See fahren und das zeigt mir, dass wir alles richtig gemacht haben.',
     link: { text: 'Zur Klabautermann Tour', href: 'klabautermann-tour.html' },
-    img: { src: 'ap2024_team_Anjuli_Sayyed_2.jpg', alt: 'Anjuli Sayyed' },
+    img: { src: 'ap2024-team-Anjuli-Sayyed-2.jpg', alt: 'Anjuli Sayyed' },
   },
 ];
 
@@ -79,7 +80,7 @@ const empfehlungen = ({ data }) =>
               teaserText: item.link.text,
             }),
           ]),
-          image({ hidden: true, ...item.img }),
+          image({ hidden: true, size: 'small', ...item.img }),
         ]),
       ),
     ],
@@ -105,8 +106,8 @@ const agentur = () =>
         ],
 
         right: [
-          image({
-            src: 'ap2024_team_Anjuli_Akina_2.jpg',
+          picture({
+            src: 'ap2024-team-Anjuli-Akina-2.jpg',
             hidden: true,
             alt: 'Aye Aye Team',
           }),
@@ -122,41 +123,52 @@ function load() {
     main(
       hero({
         img: {
-          src: 'home-hero.jpg',
+          src: 'ap2024-tour-08.jpg',
           alt: 'Hafencity',
           hidden: true,
         },
-        heading: 'Leinen los für Erlebnisse im Hamburg Hafen? Aye, Aye!',
+        heading: 'Leinen los für Erlebnisse im Hamburger Hafen? Aye, Aye!',
         content: [
           ...p({
-            text: 'Wir nehmen euch mit auf eine **Entdeckungsreise** in den neuesten und den ältesten Stadtteil Hamburgs, die Hafencity und die Speicherstadt. <br> Wir möchten euch zeigen, dass Geschichte und Architektur alles andere als langweilig, sondern – ganz im Gegenteil – *spannend* und voller *Überraschungen* sein können. Ob bei einem **Kindergeburtstag**, einer **Klassenfahrt**, einer **Stadtrallye** oder einem **Familienausflug** hier bei uns an der Elbe gibt es immer etwas Aufregendes zu erleben und zu erfahren. ',
+            text: 'Wir nehmen euch mit auf eine **Entdeckungsreise** in den neuesten und den ältesten Stadtteil Hamburgs, die Hafencity und die Speicherstadt.',
           }),
-          button({
-            text: 'Mehr erfahren',
-            href: '#kume',
-            color: 'primary',
+        ],
+        contentAppend: [
+          col2({
+            right: [
+              ...p({
+                text: 'Wir möchten euch zeigen, dass Geschichte und Architektur alles andere als langweilig, sondern – ganz im Gegenteil – *spannend* und voller *Überraschungen* sein können. Ob bei einem **Kindergeburtstag**, einer **Klassenfahrt**, einer **Stadtrallye** oder einem **Familienausflug** hier bei uns an der Elbe gibt es immer etwas Aufregendes zu erleben und zu erfahren. ',
+              }),
+            ],
+            left: [
+              button({
+                text: 'Alle Angebote ansehen',
+                href: '#touren-hilfe',
+                color: 'primary',
+              }),
+            ],
           }),
         ],
       }),
-
-      kundenmeinungen({ quotes: kundenmeinungenData }),
 
       section([
         _('h2', { text: 'Die nächsten Termine' }),
         tourDateSlider({ maxDates: 6 }),
       ]),
 
+      kundenmeinungen({ quotes: kundenmeinungenData }),
+
+      tourGrid(),
+
       cta({
-        text: 'Möchtest du, dass deine Kinder Hamburg auf eine ganz besondere Art und Weise kennenlernen? Dann buche jetzt eine unserer Touren!',
+        text: 'Egal ob Familienurlaub, Stadtreise, Kindergeburtstag oder Klassenfahrt, bei uns ist für jeden etwas dabei. Buche jetzt eines unserer Angebote!',
         buttonObj: {
-          text: 'Tour Buchen',
+          text: 'Buchen',
           href: 'buchen.html',
           // color: 'primary',
         },
         // classes: 'secondary',
       }),
-
-      tourGrid(),
 
       empfehlungen({ data: empfehlungenData }),
 
