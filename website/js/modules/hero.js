@@ -1,6 +1,5 @@
 import Helper from './helper.js';
 import picture from './picture.js';
-import image from './image.js';
 import col2 from './col-2.js';
 
 const _ = Helper.create;
