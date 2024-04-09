@@ -2,6 +2,15 @@ import Helper from './helper.js';
 
 const _ = Helper.create;
 
+function injectImageSize(src, size) {
+  if (!size) {
+    return src;
+  }
+
+  const [name, ext] = src.split('.');
+  return `${name}-${size}.${ext}`;
+}
+
 /**
  * @param {Object} content
  * @param {string} content.src - The source of the image
@@ -11,11 +20,15 @@ const _ = Helper.create;
  * @returns {HTMLElement}
  */
 export default function image({
-  hidden = false, src = 'undefined', alt = 'undefined', CssClass = '',
+  hidden = false,
+  src = 'undefined',
+  alt = 'undefined',
+  CssClass = '',
+  size = null,
 } = {}) {
   return _('img', {
-    src: Helper.imgPath(src, hidden),
+    src: injectImageSize(Helper.imgPath(src, hidden), size),
     alt,
-    class: (!CssClass) ? 'tst-img' : `tst-img ${CssClass}`,
+    class: !CssClass ? 'tst-img' : `tst-img ${CssClass}`,
   });
 }

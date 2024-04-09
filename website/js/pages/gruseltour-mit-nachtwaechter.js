@@ -2,7 +2,6 @@ import nav from '../modules/nav.js';
 import main from '../modules/main.js';
 import section from '../modules/section.js';
 import p from '../modules/paragraph.js';
-import image from '../modules/image.js';
 import slider from '../modules/slider.js';
 import col2 from '../modules/col-2.js';
 import button from '../modules/button.js';
@@ -12,6 +11,7 @@ import angebote from '../../data/angebote.js';
 import hero from '../modules/hero.js';
 import { category } from '../modules/categories.js';
 import { tourDate } from '../modules/tour-dates.js';
+import picture from '../modules/picture.js';
 
 const _ = Helper.create;
 
@@ -33,7 +33,7 @@ function tourTemplate({ site }) {
       [
         col2({
           right: [
-            _('h2', { text: 'Die nächste offenen Touren' }),
+            _('h2', { text: 'Nächste Termine' }),
             tourDate({ filterBy: site, noLink: true }),
             _('div', { class: 'tst-preise' }, [
               _('h2', { text: 'Offene Tour' }),
@@ -86,7 +86,7 @@ function tourTemplate({ site }) {
         slider({
           content: tourData.galerie.map((img) =>
             _('li', null, [
-              image({ src: img.src, alt: img.alt, hidden: true }),
+              picture({ src: img.src, alt: img.alt, hidden: true }),
             ]),
           ),
         }),

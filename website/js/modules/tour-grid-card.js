@@ -5,17 +5,13 @@ import { categoryIcon } from './categories.js';
 
 const _ = Helper.create;
 
-export default function tourGridCard({
-  name,
-  img,
-  categories = [],
-  href,
-}) {
+export default function tourGridCard({ name, img, categories = [], href }) {
   return _('section', { class: 'tst-tour-card' }, [
     image({
       src: img.src,
       alt: img.alt,
       hidden: true,
+      size: 'medium',
     }),
     _('div', null, [
       _('h3', null, [name]),
@@ -23,7 +19,9 @@ export default function tourGridCard({
       _(
         'div',
         { class: 'tst-category-icons' },
-        categories.map((categoryItem) => categoryIcon({ c: categoryItem, home: true })),
+        categories.map((categoryItem) =>
+          categoryIcon({ c: categoryItem, home: true }),
+        ),
       ),
 
       button({

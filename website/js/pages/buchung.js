@@ -17,7 +17,7 @@ function load() {
     nav(),
     main(
       hero({
-        img: { src: 'ap2024_hafencity_29.jpg', alt: 'Bild mit einer Karte' },
+        img: { src: 'ap2024-hafencity-29.jpg', alt: 'Bild mit einer Karte' },
         heading: 'Ihr direkter Draht zu uns',
         small: true,
       }),
