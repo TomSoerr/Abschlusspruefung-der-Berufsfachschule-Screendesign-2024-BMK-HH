@@ -90,7 +90,7 @@ const empfehlungen = ({ data }) =>
 const agentur = () =>
   section(
     [
-      _('h2', { text: 'Mehr über uns' }),
+      _('h2', { text: 'Mehr über unsere Agentur' }),
 
       col2({
         left: [

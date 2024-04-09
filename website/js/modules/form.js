@@ -140,7 +140,7 @@ const formItems = (() => {
 
   const date = () =>
     _('label', { for: 'date' }, [
-      _('span', { text: 'Datum*', class: 'label' }),
+      _('span', { text: 'Termin*', class: 'label' }),
       _(
         'input',
         {
@@ -150,7 +150,7 @@ const formItems = (() => {
           id: 'date',
           placeholder: ' ',
           required: true,
-          title: 'Datum',
+          title: 'Termin',
           data: {
             msg: 'Bitte gib das Datum an',
           },
