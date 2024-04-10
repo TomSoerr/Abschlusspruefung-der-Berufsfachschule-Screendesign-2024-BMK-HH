@@ -2038,7 +2038,9 @@ ________________________________________________________________________________
 
 .tst-tour-dates-slider .tst-col-2-right ul {
   position: relative;
-  aspect-ratio: 1 / 1.2;
+  aspect-ratio: 1 / 1;
+  height: 100%;
+  max-width: 100%;
 }
 
 .tst-tour-dates-slider .tst-col-2-right li {
