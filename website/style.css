@@ -148,10 +148,9 @@ ________________________________________________________________________________
   --tst-color-text: #000a14;
   --tst-color-nav: var(--tst-color-primary);
 
-  --tst-color-secondary: #fac919;
-  --tst-color-secondary-light: #f1f7fd;
   --tst-color-accent: #5c61ff;
-  --tst-color-accent-light: #e3e9ff;
+  --tst-color-accent-light: #e3e8fa;
+  --tst-color-accent-2: #fac919;
 }
 
 [data-scrolled="true"] {
@@ -874,11 +873,11 @@ main {
 }
 
 .tst-section.secondary {
-  background-color: var(--tst-color-secondary);
+  background-color: var(--tst-color-accent-2);
 }
 
 .tst-section.secondary-2 {
-  background-color: var(--tst-color-secondary);
+  background-color: var(--tst-color-accent-2);
 }
 
 .tst-section.wide .tst-section-inner {
@@ -1098,7 +1097,10 @@ Section specific
 hero.js
 ________________________________________________________________________________
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
-.tst-hero .tst-picture {
+.tst-hero:not(.sub) .tst-section-inner {
+}
+
+.tst-hero:not(.sub) .tst-section-inner .tst-hero .tst-picture {
   aspect-ratio: 16 / 11;
   height: 100%;
 }
@@ -1165,6 +1167,18 @@ ________________________________________________________________________________
 
 [data-page="index"] .tst-hero .tst-section-inner {
   padding-bottom: calc(var(--tst-space-y) * 2);
+  height: calc(100vh - var(--tst-nav-height));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+[data-page="index"] .tst-hero .tst-col-2:first-child {
+  max-height: 80%;
+}
+
+[data-page="index"] .tst-hero .tst-col-2:first-child .tst-col-2-right {
+  height: 100%;
 }
 
 html:not([data-scrolled="true"]) [data-page="index"] #tst-site-nav {
@@ -1281,15 +1295,15 @@ ________________________________________________________________________________
 #tst-form label {
   display: flex;
   flex-direction: column;
-  background-color: var(--tst-color-secondary-light);
+  background-color: var(--tst-color-accent-light);
   padding: var(--tst-space-xs) var(--tst-space-s);
   position: relative;
-  border: 2px solid var(--tst-color-secondary-light);
+  border: 2px solid var(--tst-color-accent-light);
   border-radius: var(--tst-border-radius);
 }
 
 #tst-form label:not([for="privacy"]):focus-within {
-  border: 2px solid var(--tst-color-secondary);
+  border: 2px solid var(--tst-color-accent-2);
 }
 
 #tst-form label span.label {
@@ -1469,7 +1483,7 @@ ________________________________________________________________________________
   border-radius: 5rem;
   padding: 0rem 1rem;
   background-color: inherit;
-  border: 2px solid var(--tst-color-secondary);
+  border: 2px solid var(--tst-color-accent-2);
   font-size: 1.5rem;
   background-color: var(--tst-color-primary);
   color: var(--tst-color-text);
@@ -1483,11 +1497,11 @@ ________________________________________________________________________________
 [data-category="be"] [data-category="be"],
 [data-category="in"] [data-category="in"],
 [data-category="ou"] [data-category="ou"] {
-  background-color: var(--tst-color-secondary);
+  background-color: var(--tst-color-accent-2);
 }
 
 .tst-category-cell:is(:hover, :focus-within) {
-  background-color: var(--tst-color-secondary);
+  background-color: var(--tst-color-accent-2);
   text-decoration: none;
 }
 
@@ -1573,7 +1587,7 @@ ________________________________________________________________________________
 }
 
 .tst-tour-list-info li > a {
-  color: var(--tst-color-secondary-text);
+  color: var(--tst-color-accent-2-text);
 }
 
 .tst-tour-list-info li span {
@@ -1785,7 +1799,7 @@ ________________________________________________________________________________
   left: 0;
   transform: translate(0rem, -2.2rem);
   line-height: 1;
-  color: var(--tst-color-secondary);
+  color: var(--tst-color-accent-2);
 }
 
 .tst-slider blockquote::after {
@@ -1849,7 +1863,7 @@ ________________________________________________________________________________
   left: 0;
   transform: translate(0rem, -1.87rem);
   line-height: 1;
-  color: var(--tst-color-secondary);
+  color: var(--tst-color-accent-2);
 }
 
 .tst-empfehlungen .tst-img {
