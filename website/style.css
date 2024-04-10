@@ -1173,6 +1173,20 @@ ________________________________________________________________________________
   justify-content: center;
 }
 
+[data-page="index"] .tst-hero .tst-col-2 {
+  flex-wrap: nowrap;
+}
+
+@media (max-width: 768px) {
+  [data-page="index"] .tst-hero .tst-col-2 {
+    flex-wrap: wrap-reverse;
+  }
+
+  [data-page="index"] .tst-hero .tst-section-inner {
+    height: unset;
+  }
+}
+
 [data-page="index"] .tst-hero .tst-col-2:first-child {
   max-height: 80%;
 }
