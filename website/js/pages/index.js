@@ -109,7 +109,7 @@ const agentur = () =>
           picture({
             src: 'ap2024-team-Anjuli-Akina-2.jpg',
             hidden: true,
-            alt: 'Aye Aye Team',
+            alt: 'Akina Henyes und Anjuli Sayyed an einem Computer',
           }),
         ],
       }),
@@ -124,7 +124,7 @@ function load() {
       hero({
         img: {
           src: 'ap2024-tour-08.jpg',
-          alt: 'Hafencity',
+          alt: 'Grüne hügelige Wiese in der Hafencity mit Familien die Picknick machen und spielen',
           hidden: true,
         },
         heading: 'Leinen los für Erlebnisse im Hamburger Hafen? Aye, Aye!',

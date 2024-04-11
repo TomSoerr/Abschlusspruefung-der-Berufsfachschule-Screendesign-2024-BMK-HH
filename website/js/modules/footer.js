@@ -20,7 +20,7 @@ const allTours = Object.values(Helper.navItems.navigation).filter(
 
 export default function footer() {
   return _('footer', { class: 'tst-section', id: 'tst-footer' }, [
-    image({ src: 'wave.svg', alt: 'wave', CssClass: 'before' }),
+    image({ src: 'wave.svg', alt: 'Deko Welle', CssClass: 'before' }),
     _('div', { class: 'tst-section-inner' }, [
       image({ src: 'logo-sw.svg', alt: 'Logo' }),
 
