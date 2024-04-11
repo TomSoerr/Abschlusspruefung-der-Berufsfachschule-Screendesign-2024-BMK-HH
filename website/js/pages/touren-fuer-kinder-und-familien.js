@@ -21,7 +21,10 @@ function load() {
     main(
       hero({
         heading: 'Stadtführungen der anderen Art für Kinder und Familien',
-        img: { src: 'ap2024-tour-06.jpg', alt: 'Hafencity' },
+        img: {
+          src: 'ap2024-tour-06.jpg',
+          alt: 'Schausteller mit der komplett silber ist mit einer menge an Kindern um ihn herum',
+        },
 
         small: true,
       }),

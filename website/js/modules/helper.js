@@ -49,7 +49,7 @@ export default class Helper {
   Site structure
   ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ */
   static navItems = {
-    logo: { src: 'logo.svg', alt: 'Logo', srcset: 'logo-mobile.svg' },
+    logo: { src: 'logo.svg', alt: 'Logo' },
     navigation: [
       {
         parent: 'Kinder & Familien',
