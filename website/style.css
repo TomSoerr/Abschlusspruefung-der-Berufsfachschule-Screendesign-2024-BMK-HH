@@ -1220,6 +1220,14 @@ html:not([data-scrolled="true"]) [data-page="index"] #tst-site-nav {
 
 html:not([data-scrolled="true"])
   [data-page="index"]
+  #tst-site-nav.tst-nav-mobile.tst-section
+  .tst-section-inner
+  li.tst-nav-sub-level.tst-open {
+  color: var(--tst-color-text);
+}
+
+html:not([data-scrolled="true"])
+  [data-page="index"]
   #tst-site-nav
   .tst-nav-sub-level
   ul {
