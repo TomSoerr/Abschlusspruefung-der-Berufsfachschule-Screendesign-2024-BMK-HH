@@ -164,7 +164,7 @@ function load() {
         text: 'Egal ob Familienurlaub, Stadtreise, Kindergeburtstag oder Klassenfahrt, bei uns ist für jeden etwas dabei. Buche jetzt eines unserer Angebote!',
         buttonObj: {
           text: 'Buchen',
-          href: 'buchen.html',
+          href: 'buchung.html',
           // color: 'primary',
         },
         // classes: 'secondary',

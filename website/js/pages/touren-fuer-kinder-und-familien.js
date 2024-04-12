@@ -38,7 +38,7 @@ function load() {
               _('div', { class: 'tst-button-group' }, [
                 button({
                   text: 'Tour buchen',
-                  href: 'buchen.html',
+                  href: 'buchung.html',
                   home: true,
                 }),
                 button({
