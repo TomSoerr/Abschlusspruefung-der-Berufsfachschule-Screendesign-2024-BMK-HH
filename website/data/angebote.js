@@ -39,7 +39,7 @@ export default {
       alter: '6-10 Jahre (in Begleitung Erwachsener)',
       kategorien: ['kt', 'in'],
       termine: {
-        '2024-06-03': ['3.Juni 15:00-16:30 Uhr', 'wenige Restplätze'],
+        '2024-06-03': ['3 .Juni 15:00-16:30 Uhr', 'wenige Restplätze'],
       },
     },
     'klabautermanntour': {
