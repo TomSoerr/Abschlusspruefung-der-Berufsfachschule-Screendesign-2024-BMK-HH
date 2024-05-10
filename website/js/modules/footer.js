@@ -146,7 +146,7 @@ export default function footer() {
         _(
           'a',
           {
-            href: 'https://tomsoerr.github.io/portfolio/#/contact',
+            href: 'https://tomsoerr.github.io/#/kontakt',
             target: '_blank',
             class: 'tst-preload',
           },
