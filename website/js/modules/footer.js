@@ -33,11 +33,12 @@ export default function footer() {
                 target: '_blank',
               },
               [
-                image({
-                  src: 'facebook.svg',
-                  hidden: true,
-                  alt: 'Facebook',
-                }),
+                // image({
+                //   src: 'facebook.svg',
+                //   hidden: true,
+                //   alt: 'Facebook',
+                // }),
+                "Facebook"
               ],
             ),
           ]),
@@ -49,11 +50,12 @@ export default function footer() {
                 target: '_blank',
               },
               [
-                image({
-                  src: 'instagram.svg',
-                  alt: 'Instagram',
-                  hidden: true,
-                }),
+                // image({
+                //   src: 'instagram.svg',
+                //   alt: 'Instagram',
+                //   hidden: true,
+                // }),
+                "Instagram"
               ],
             ),
           ]),
