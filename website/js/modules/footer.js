@@ -20,6 +20,8 @@ const allTours = Object.values(Helper.navItems.navigation).filter(
 
 export default function footer() {
   return _('footer', { class: 'tst-section', id: 'tst-footer' }, [
+    _('span', { style: 'z-index: 1000; position: fixed; bottom: 0; left: 0; color: black; background-color: white; text-decoration: none; font-size: 16px; font-family: sans-serif; padding: 2px; border: thin solid black;', text: 'Keine kommerzielle Website, nur für Bildungszwecke.' }),
+    _('a', {style: 'z-index: 1000; position: fixed; bottom: 0; right: 0; color: black; background-color: white; text-decoration: none; font-size: 16px; font-family: sans-serif; padding: 2px; border: thin solid black;', href: 'https://tomsoerr.github.io/#/impressum', text: "Impressum" }),
     _('div', { class: 'tst-section-inner' }, [
       image({ src: 'logo-sw.svg', alt: 'Logo' }),
 
