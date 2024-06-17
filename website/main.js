@@ -1,8 +1,8 @@
 import Helper from './js/modules/helper.js';
 
-if (window.location.hostname.match(/github/)) {
-  Helper.development = false;
-}
+// if (window.location.hostname.match(/github/)) {
+//   Helper.development = false;
+// }
 
 /* ______________________________________
 initialize Helper class
